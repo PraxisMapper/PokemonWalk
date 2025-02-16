@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b2hnhr1t57jm7"]
+
+[node name="CellTracker" type="Node2D"]

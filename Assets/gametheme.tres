@@ -1,0 +1,42 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://csq6qjiqail4e"]
+
+[ext_resource type="FontFile" uid="uid://dqxphtyt6cbw5" path="res://Assets/quaver.ttf" id="1_u7ifk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8h0g"]
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m0me4"]
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g31m"]
+bg_color = Color(0.176419, 0.176419, 0.176419, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[resource]
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 0
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_u7ifk")
+Button/styles/disabled = SubResource("StyleBoxFlat_l8h0g")
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxFlat_m0me4")
+Button/styles/normal = SubResource("StyleBoxFlat_2g31m")
+Button/styles/pressed = null
+Label/fonts/font = ExtResource("1_u7ifk")
+RichTextLabel/fonts/bold_font = ExtResource("1_u7ifk")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_u7ifk")
+RichTextLabel/fonts/italics_font = ExtResource("1_u7ifk")
+RichTextLabel/fonts/mono_font = ExtResource("1_u7ifk")
+RichTextLabel/fonts/normal_font = ExtResource("1_u7ifk")
+TextEdit/fonts/font = ExtResource("1_u7ifk")

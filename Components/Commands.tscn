@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqkyt5e3qh8y7"]
+
+[ext_resource type="Script" path="res://Components/Commands.gd" id="1_2a1y6"]
+
+[node name="Commands" type="Node2D"]
+script = ExtResource("1_2a1y6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1080.0
+offset_bottom = 350.0
+color = Color(0.133333, 0.145098, 0.00392157, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 10.0
+offset_right = 576.0
+offset_bottom = 56.0
+text = "Commands"
+
+[node name="btnWild" type="Button" parent="."]
+offset_left = 26.0
+offset_top = 102.0
+offset_right = 346.0
+offset_bottom = 166.0
+text = "Fight wild Pokemon"
+
+[node name="btnGym" type="Button" parent="."]
+offset_left = 388.0
+offset_top = 102.0
+offset_right = 564.0
+offset_bottom = 166.0
+text = "FIght Gym"
+
+[node name="btnPokedex" type="Button" parent="."]
+offset_left = 32.0
+offset_top = 210.0
+offset_right = 262.0
+offset_bottom = 274.0
+text = "View Pokedex"
+
+[node name="btnChangeTeam" type="Button" parent="."]
+offset_left = 344.0
+offset_top = 211.0
+offset_right = 570.0
+offset_bottom = 275.0
+text = "Change Team"
+
+[connection signal="pressed" from="btnWild" to="." method="WildBattle"]

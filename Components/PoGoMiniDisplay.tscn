@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://byo6edysi20a"]
+
+[ext_resource type="Script" path="res://Components/po_go_mini_display.gd" id="1_0r1i4"]
+[ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="2_2samd"]
+
+[node name="PoGoMiniDisplay" type="Node2D"]
+script = ExtResource("1_0r1i4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 96.0
+offset_bottom = 96.0
+mouse_filter = 1
+
+[node name="txrPokemon" type="TextureRect" parent="."]
+offset_right = 192.0
+offset_bottom = 192.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="lblName" type="Label" parent="."]
+offset_top = 1.0
+offset_right = 97.0
+offset_bottom = 16.0
+theme = ExtResource("2_2samd")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Name3"
+horizontal_alignment = 1
+
+[node name="lblPower" type="Label" parent="."]
+offset_top = 82.0
+offset_right = 96.0
+offset_bottom = 96.0
+theme = ExtResource("2_2samd")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "CP"
+horizontal_alignment = 1
+
+[node name="ClickListener" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 96.0
+offset_bottom = 96.0
+mouse_filter = 1

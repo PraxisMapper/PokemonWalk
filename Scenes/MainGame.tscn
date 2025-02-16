@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6eifg1lfwklb"]
+
+[ext_resource type="Script" path="res://Scenes/MainGame.gd" id="1_t5qxi"]
+[ext_resource type="PackedScene" uid="uid://gclnpuvxbwr4" path="res://Components/PartyDisplay.tscn" id="2_btuf5"]
+[ext_resource type="PackedScene" uid="uid://b2hnhr1t57jm7" path="res://PraxisMapper/Controls/CellTracker.tscn" id="2_gehoh"]
+[ext_resource type="PackedScene" uid="uid://oqn0ra3pglqe" path="res://Components/AreaInfo.tscn" id="3_bgh5c"]
+[ext_resource type="PackedScene" path="res://PraxisMapper/Controls/PlaceTracker.tscn" id="3_e0eka"]
+[ext_resource type="PackedScene" uid="uid://bqkyt5e3qh8y7" path="res://Components/Commands.tscn" id="4_q0adx"]
+[ext_resource type="PackedScene" uid="uid://b87f88w2akk0n" path="res://Components/DailyChallenge.tscn" id="9_4puci"]
+
+[node name="MainGame" type="Node2D"]
+script = ExtResource("1_t5qxi")
+
+[node name="CellTracker" parent="." instance=ExtResource("2_gehoh")]
+
+[node name="PlaceTracker" parent="." instance=ExtResource("3_e0eka")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 540.0
+offset_bottom = 960.0
+color = Color(0.0823529, 0, 0.180392, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 178.0
+offset_top = 3.0
+offset_right = 291.0
+offset_bottom = 26.0
+text = "Praxismon Go!"
+
+[node name="PartyDisplay" parent="." instance=ExtResource("2_btuf5")]
+position = Vector2(10, 35)
+
+[node name="AreaInfo" parent="." instance=ExtResource("3_bgh5c")]
+position = Vector2(0, 543)
+
+[node name="Commands" parent="." instance=ExtResource("4_q0adx")]
+position = Vector2(-2, 745)
+
+[node name="DailyChallenge" parent="." instance=ExtResource("9_4puci")]
+position = Vector2(-3, 425)

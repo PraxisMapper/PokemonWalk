@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://be3xs3yc68qvm"]
+
+[ext_resource type="Script" path="res://Components/PokemonDisplay.gd" id="1_duupg"]
+
+[node name="PokemonDisplay" type="Node2D"]
+script = ExtResource("1_duupg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 270.0
+offset_bottom = 96.0
+color = Color(0.0784314, 0.0392157, 0.00392157, 1)
+
+[node name="pokemonImg" type="Sprite2D" parent="."]
+centered = false
+
+[node name="pkName" type="Label" parent="."]
+offset_left = 83.0
+offset_right = 130.0
+offset_bottom = 23.0
+text = "Name"
+
+[node name="pkLvl" type="Label" parent="."]
+offset_left = 84.0
+offset_top = 22.0
+offset_right = 124.0
+offset_bottom = 45.0
+text = "Lv:"
+
+[node name="pkHP" type="Label" parent="."]
+offset_left = 84.0
+offset_top = 47.0
+offset_right = 141.0
+offset_bottom = 70.0
+text = "HP: X/X"
+
+[node name="pkItem" type="Label" parent="."]
+offset_left = 85.0
+offset_top = 67.0
+offset_right = 126.0
+offset_bottom = 90.0
+text = "Item:"
+
+[node name="btnChange" type="Button" parent="."]
+offset_left = 201.0
+offset_top = 20.0
+offset_right = 267.0
+offset_bottom = 51.0
+text = "Change"

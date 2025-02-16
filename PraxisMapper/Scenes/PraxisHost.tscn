@@ -1,0 +1,114 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnctpjt4eedin"]
+
+[ext_resource type="Script" path="res://PraxisMapper/Scenes/praxis_host.gd" id="1_1npn5"]
+
+[node name="PraxisHost" type="Node2D"]
+script = ExtResource("1_1npn5")
+
+[node name="lblStatus" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 201.0
+offset_right = 109.0
+offset_bottom = 224.0
+text = "Server Status:
+"
+
+[node name="lblLog" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 226.0
+offset_right = 109.0
+offset_bottom = 249.0
+
+[node name="lblRecentClients" type="Label" parent="."]
+offset_left = 478.0
+offset_top = 3.0
+offset_right = 593.0
+offset_bottom = 26.0
+text = "Recent Clients:"
+
+[node name="lblIP" type="Label" parent="."]
+offset_left = 836.0
+offset_top = 3.0
+offset_right = 876.0
+offset_bottom = 26.0
+text = "IP: "
+
+[node name="UITimer" type="Timer" parent="."]
+autostart = true
+
+[node name="SaveTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+offset_top = 10.0
+offset_right = 75.0
+offset_bottom = 33.0
+text = "Add Host:"
+
+[node name="txtHostIp" type="LineEdit" parent="."]
+offset_left = 82.0
+offset_top = 7.0
+offset_right = 310.0
+offset_bottom = 38.0
+
+[node name="txtLocation" type="LineEdit" parent="."]
+offset_left = 89.0
+offset_top = 69.0
+offset_right = 317.0
+offset_bottom = 100.0
+editable = false
+
+[node name="txtRange" type="LineEdit" parent="."]
+offset_left = 469.0
+offset_top = 74.0
+offset_right = 697.0
+offset_bottom = 105.0
+editable = false
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 410.0
+offset_top = 76.0
+offset_right = 481.0
+offset_bottom = 99.0
+text = "Range:"
+
+[node name="BtnAddHost" type="Button" parent="."]
+offset_left = 327.0
+offset_top = 8.0
+offset_right = 438.0
+offset_bottom = 39.0
+text = "Add And Ping"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 67.0
+offset_right = 79.0
+offset_bottom = 90.0
+text = "Location:"
+
+[node name="btnBroadcast" type="Button" parent="."]
+offset_left = 816.0
+offset_top = 151.0
+offset_right = 899.0
+offset_bottom = 182.0
+text = "Test Broadcast loop"
+
+[node name="btnTestSend2" type="Button" parent="."]
+offset_left = 810.0
+offset_top = 86.0
+offset_right = 893.0
+offset_bottom = 117.0
+text = "Test Direct Send"
+
+[node name="lblId" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 146.0
+offset_right = 50.0
+offset_bottom = 169.0
+text = "My ID: "
+
+[connection signal="timeout" from="UITimer" to="." method="UpdateUI"]
+[connection signal="timeout" from="SaveTimer" to="." method="SaveHostData"]
+[connection signal="button_down" from="btnBroadcast" to="." method="StartBroadcastSearch"]
+[connection signal="button_down" from="btnTestSend2" to="." method="TestDirectSend"]

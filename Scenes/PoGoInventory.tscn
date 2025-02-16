@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctwjfi6yfhnpm"]
+
+[ext_resource type="Script" path="res://Scenes/po_go_inventory.gd" id="1_608n8"]
+[ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="2_hw26e"]
+
+[node name="PoGoInventory" type="Node2D"]
+script = ExtResource("1_608n8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 360.0
+offset_bottom = 440.0
+color = Color(0.00311409, 0, 0.243411, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_top = 5.0
+offset_right = 93.0
+offset_bottom = 22.0
+theme = ExtResource("2_hw26e")
+theme_override_font_sizes/font_size = 16
+text = "Sorting by:"
+
+[node name="btnSortKey" type="Button" parent="."]
+offset_left = 99.0
+offset_top = 3.0
+offset_right = 268.0
+offset_bottom = 27.0
+theme = ExtResource("2_hw26e")
+text = "Order Caught"
+
+[node name="sc" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(340, 350)
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 381.0
+offset_bottom = 385.0
+
+[node name="gc" type="GridContainer" parent="sc"]
+custom_minimum_size = Vector2(340, 350)
+layout_mode = 2
+columns = 3
+
+[node name="btnClose" type="Button" parent="."]
+offset_left = 255.0
+offset_top = 405.0
+offset_right = 341.0
+offset_bottom = 433.0
+theme = ExtResource("2_hw26e")
+theme_override_font_sizes/font_size = 16
+text = "Close"
+
+[node name="btnClose2" type="Button" parent="."]
+offset_left = 26.0
+offset_top = 405.0
+offset_right = 152.0
+offset_bottom = 433.0
+theme = ExtResource("2_hw26e")
+theme_override_font_sizes/font_size = 16
+text = "Auto-Transfer"
+
+[node name="lblCount" type="Label" parent="."]
+offset_left = 560.0
+offset_top = 12.0
+offset_right = 1072.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 16
+text = "Current Inventory: "
+horizontal_alignment = 2
+
+[connection signal="button_down" from="btnSortKey" to="." method="ChangeSort"]
+[connection signal="button_down" from="btnClose" to="." method="Close"]
+[connection signal="button_down" from="btnClose2" to="." method="SmartClearInventory"]

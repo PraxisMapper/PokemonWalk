@@ -1,0 +1,20 @@
+join introCharacter center
+introCharacter: Whos there? Help me!
+label question
+introCharacter: I was investigating a new discovery, but something happened, and I feel all scrambled. I can't remember who I am. I feel like I could be one of several different people, but I don't know which one I was first. You can see me, right? Can you tell me, am I a boy or a girl?
+- You're a girl!
+	set {ProfGender} = "F"
+- You're a boy!
+	set {ProfGender} = "M"
+- You look like a big pile of static from here.
+	introCharacter: Yes, that's how I feel, but I was hoping you'd be able to help me fix that as an outside observer.
+	jump IntroTimeline/question
+label pokemon
+introCharacter: OK, great! I feel like one person again! Before I go to write down all of my new discoveries, I need to know\: do you know what a Pokemon is?
+- Yeah, I've played all the games
+- Sure, it's that super popular TV show
+- I have no idea what a Pokemon is
+	Developer: You did not download this game as your first experience with Pokemon. Lying to the Professor will only hurt their feelings. Try again.
+	jump pokemon
+introCharacter: Oh, I see. You're from a different world than I am. But a nearby one, like part of mine leaked into yours. Close enough. I'm going to give you my buddy Pokemon to help you out. You're going to need to go explore your world, catch and train up some Pokemon, and send a whole bunch of them to my lab.
+introCharacter: I have a lot of new theories from my recent..... uh.... discombobulation that I need to put into practice, but I'll need a lot of Pokemon for this testing. Speaking of, I need to write down this experience before I forget all of this. Have fun on your Pokemon adventure! I'll be talking to you soon.

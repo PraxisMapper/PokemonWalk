@@ -1,0 +1,21 @@
+join assistant center
+label menu
+assistant: What do you need help with?
+- How do I change or power up my buddy?
+	assistant: Hold on the buddy panel in the upper right to pick a new buddy. Tap them to open up their info page, where you can spend stardust to level them or candies to evolve them.
+	assistant: Taking your buddy to places of interest like parks, libraries, nature reserves, historical points, and more will also be tracked, and each place on their list counts as a free level up. There is no limit to how many places they can gain a level from.
+- How do location codes work?
+	assistant: PlusCodes are a way of putting a grid over the planet to identify areas. Each one is a 20x20 grid, containing more 20x20 grids. The 11th letter is treated differently, but lets you be more precise.
+	assistant: The first pairs of letters or numbers are the biggest, and the last ones are the smallest, with a + separating the first 8 from the last 2 or 3.  With 10 letters, the grid space is about 45 feet on each side. With 8, its about 900.
+	assistant: The values go from 2 to 9, then B to X. Smaller values are south or west, larger values are north or east. With some practice, you can figure out which direction one code is from another.
+- What do I do in this game?
+	assistant: Firstly, you need to walk around in real life. This is a locative game, and your location is the key to what's happening in-game.
+	assistant: As you walk, you'll both get coins you can use to catch and upgrade pokemon, and you'll fight pokemon. Battles are run automatically with your buddy in the top of the screen. You have to wait an hour after entering a space before you can get coins or pokemon from it again.
+	assistant: If your buddy wins, you'll get XP, stardust, and candy for the pokemon you beat. You will also catch it if you have 10 or more coins spare.
+	assistant: Power up your pokemon with stardust and candy so they'll win more fights, and you can fight raid bosses. They're stronger, rare pokemon that you will have to fight using 6 pokemon of your choice. Your strongest 6 are auto-chosen when a raid starts, but you can change them by tapping the panels for each one.
+- What does Auto-Tranfer do?
+	assistant: Tapping Auto-Transfer in the Inventory screen will trade weaker duplicate pokemon for candy.
+	assistant: It sorts your pokemon by combat power, skips the top half of the list, then skips any pokemon you don't have duplicates of, and transfers the rest.
+- Exit Help
+	[end_timeline]
+jump menu

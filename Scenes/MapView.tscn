@@ -1,0 +1,241 @@
+[gd_scene load_steps=11 format=3 uid="uid://d0u4xxxcd4uco"]
+
+[ext_resource type="Script" path="res://Scenes/map_view.gd" id="1_rqcnq"]
+[ext_resource type="PackedScene" uid="uid://i7s1o6y03ab0" path="res://PraxisMapper/Controls/ScrollingCenteredMap.tscn" id="2_mqn16"]
+[ext_resource type="PackedScene" uid="uid://bev1jin6r7t6n" path="res://PraxisMapper/Controls/GetFile.tscn" id="3_iilpo"]
+[ext_resource type="Texture2D" uid="uid://c5qg38y1c2hkg" path="res://Assets/Trainers/LEADER_Giovanni.png" id="4_2ae7k"]
+[ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="4_dw2l7"]
+[ext_resource type="Texture2D" uid="uid://c1rvh58sfrtgm" path="res://Assets/Front/EEVEE.png" id="5_bq2b2"]
+[ext_resource type="PackedScene" uid="uid://byo6edysi20a" path="res://Components/PoGoMiniDisplay.tscn" id="5_fhuqw"]
+[ext_resource type="Script" path="res://PraxisMapper/Controls/RecentActivityTracker.gd" id="6_jo0bv"]
+[ext_resource type="PackedScene" uid="uid://dgnoeyus8vqce" path="res://PraxisMapper/Controls/PlaceTracker.tscn" id="7_b3tg4"]
+[ext_resource type="Texture2D" uid="uid://c3033wigb05gp" path="res://PraxisMapper/Resources/kenney_arrow.png" id="9_psrup"]
+
+[node name="MapView" type="Node2D"]
+script = ExtResource("1_rqcnq")
+
+[node name="ScrollingCenteredMap" parent="." instance=ExtResource("2_mqn16")]
+position = Vector2(-224, -287)
+scale = Vector2(0.5, 0.5)
+
+[node name="GetFile" parent="." instance=ExtResource("3_iilpo")]
+scale = Vector2(0.5, 0.5)
+
+[node name="header" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="header"]
+offset_right = 360.0
+offset_bottom = 100.0
+color = Color(0.351608, 0.0676409, 0.295713, 1)
+
+[node name="Label" type="Label" parent="header"]
+offset_left = 1.0
+offset_top = -60.0
+offset_right = 67.0
+offset_bottom = -32.0
+theme_override_font_sizes/font_size = 20
+text = "Player:"
+
+[node name="Label3" type="Label" parent="header"]
+offset_left = 663.0
+offset_top = 4.0
+offset_right = 717.0
+offset_bottom = 27.0
+text = "Buddy:"
+
+[node name="lblCoins" type="Label" parent="header"]
+offset_left = 4.0
+offset_top = 23.0
+offset_right = 58.0
+offset_bottom = 46.0
+theme = ExtResource("4_dw2l7")
+text = "Coins:"
+
+[node name="lblStardust" type="Label" parent="header"]
+offset_left = 133.0
+offset_top = -52.0
+offset_right = 213.0
+offset_bottom = -29.0
+theme = ExtResource("4_dw2l7")
+text = "Stardust:"
+
+[node name="lblXp" type="Label" parent="header"]
+offset_left = 4.0
+offset_top = 39.0
+offset_right = 74.0
+offset_bottom = 62.0
+theme = ExtResource("4_dw2l7")
+text = "XP:"
+
+[node name="lblLocation" type="Label" parent="header"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 74.0
+offset_bottom = 25.0
+theme = ExtResource("4_dw2l7")
+text = "Location:"
+
+[node name="lblPlaces" type="Label" parent="header"]
+offset_left = 2.0
+offset_top = 56.0
+offset_right = 260.0
+offset_bottom = 97.0
+theme = ExtResource("4_dw2l7")
+text = "Places:"
+autowrap_mode = 3
+
+[node name="lblLevel" type="Label" parent="header"]
+offset_left = 459.0
+offset_top = 38.0
+offset_right = 512.0
+offset_bottom = 61.0
+theme = ExtResource("4_dw2l7")
+text = "Level:"
+
+[node name="chkAutoHeal" type="CheckBox" parent="header"]
+offset_left = 943.0
+offset_top = 105.0
+offset_right = 1048.0
+offset_bottom = 136.0
+button_pressed = true
+text = "Auto-Heal"
+
+[node name="chkAutoCatch" type="CheckBox" parent="header"]
+offset_left = 936.0
+offset_top = 141.0
+offset_right = 1050.0
+offset_bottom = 172.0
+button_pressed = true
+text = "Auto-Catch"
+
+[node name="txrTrainer" type="TextureRect" parent="header"]
+offset_left = 480.0
+offset_top = -104.0
+offset_right = 608.0
+offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_2ae7k")
+
+[node name="PoGoMiniDisplay" parent="header" instance=ExtResource("5_fhuqw")]
+position = Vector2(264, 4)
+
+[node name="footer" type="ColorRect" parent="."]
+offset_top = 540.0
+offset_right = 360.0
+offset_bottom = 640.0
+color = Color(0.204415, 0.0222078, 0.387335, 1)
+
+[node name="btnPokemon" type="Button" parent="footer"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 19.0
+offset_right = 105.0
+offset_bottom = 51.0
+theme = ExtResource("4_dw2l7")
+text = "Pokemon"
+
+[node name="btnSpawns" type="Button" parent="footer"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 58.0
+offset_right = 164.0
+offset_bottom = 90.0
+theme = ExtResource("4_dw2l7")
+text = "Learn Spawns"
+
+[node name="btnRaid" type="Button" parent="footer"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 21.0
+offset_right = 258.0
+offset_bottom = 53.0
+theme = ExtResource("4_dw2l7")
+text = "Fight Local Raid"
+
+[node name="btnHelp" type="Button" parent="footer"]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 55.0
+offset_right = 335.0
+offset_bottom = 88.0
+theme = ExtResource("4_dw2l7")
+text = "Help"
+
+[node name="recentTracker" type="Node" parent="."]
+script = ExtResource("6_jo0bv")
+
+[node name="PlaceTracker" parent="." instance=ExtResource("7_b3tg4")]
+
+[node name="walkNotice" type="ColorRect" parent="."]
+visible = false
+offset_left = 264.0
+offset_top = 100.0
+offset_right = 360.0
+offset_bottom = 196.0
+color = Color(0.676576, 0.35021, 0.108325, 1)
+
+[node name="lblMessage" type="Label" parent="walkNotice"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 98.0
+offset_bottom = 40.0
+theme = ExtResource("4_dw2l7")
+theme_override_font_sizes/font_size = 8
+text = "You Got/Won/Caught/X"
+autowrap_mode = 3
+
+[node name="tmrHide" type="Timer" parent="walkNotice"]
+wait_time = 2.0
+
+[node name="txrOpponent" type="TextureRect" parent="walkNotice"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 1.0
+offset_right = 225.0
+offset_bottom = 193.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_bq2b2")
+
+[node name="playerArrow" type="Sprite2D" parent="."]
+position = Vector2(180, 320)
+texture = ExtResource("9_psrup")
+
+[node name="popup" type="Node2D" parent="."]
+position = Vector2(0, 100)
+
+[node name="boxAlreadyWon" type="ColorRect" parent="."]
+offset_left = 462.0
+offset_top = 276.0
+offset_right = 822.0
+offset_bottom = 449.0
+color = Color(0.2914, 0.00329824, 0.144743, 1)
+
+[node name="Label" type="Label" parent="boxAlreadyWon"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 356.0
+offset_bottom = 98.0
+theme = ExtResource("4_dw2l7")
+text = "You have already defeated the raid boss in this tile today.
+
+Come back tomorrow or walk to another map tile"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="btnMove" type="Button" parent="boxAlreadyWon"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 123.0
+offset_right = 210.0
+offset_bottom = 154.0
+theme = ExtResource("4_dw2l7")
+text = "Close"
+
+[connection signal="button_down" from="footer/btnPokemon" to="." method="ShowPokemonInventory"]
+[connection signal="button_down" from="footer/btnSpawns" to="." method="SpawnInfo"]
+[connection signal="button_down" from="footer/btnRaid" to="." method="RaidBattle"]
+[connection signal="button_down" from="footer/btnHelp" to="." method="ShowHelp"]
+[connection signal="timeout" from="walkNotice/tmrHide" to="." method="HideWalkNotice"]
+[connection signal="button_down" from="boxAlreadyWon/btnMove" to="." method="HideAlreadyWon"]

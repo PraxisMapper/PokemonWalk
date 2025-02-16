@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://byuoc420a66nc"]
+
+[ext_resource type="Script" path="res://PraxisMapper/Scenes/LoginScene.gd" id="1_xhe06"]
+[ext_resource type="PackedScene" uid="uid://8os6eof5qcbh" path="res://PraxisMapper/APICalls/PraxisEndpoints.tscn" id="2_xm5lo"]
+
+[node name="LoginScene" type="Node2D"]
+script = ExtResource("1_xhe06")
+
+[node name="lblTitle" type="Label" parent="."]
+offset_left = 248.0
+offset_top = 4.0
+offset_right = 852.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 50
+text = "PraxisMapper Test Client"
+
+[node name="lblUsername" type="Label" parent="."]
+offset_left = 17.0
+offset_top = 288.0
+offset_right = 290.0
+offset_bottom = 363.0
+theme_override_font_sizes/font_size = 52
+text = "Username:"
+
+[node name="lblPassword" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 576.0
+offset_right = 288.0
+offset_bottom = 651.0
+theme_override_font_sizes/font_size = 52
+text = "Password:"
+
+[node name="txtUsername" type="LineEdit" parent="."]
+offset_left = 396.0
+offset_top = 285.0
+offset_right = 1012.0
+offset_bottom = 365.0
+theme_override_font_sizes/font_size = 52
+
+[node name="txtPassword" type="LineEdit" parent="."]
+offset_left = 396.0
+offset_top = 580.0
+offset_right = 1012.0
+offset_bottom = 660.0
+theme_override_font_sizes/font_size = 52
+
+[node name="lblServer" type="Label" parent="."]
+offset_left = 37.0
+offset_top = 910.0
+offset_right = 310.0
+offset_bottom = 985.0
+theme_override_font_sizes/font_size = 52
+text = "Server:
+"
+
+[node name="txtServer" type="LineEdit" parent="."]
+offset_left = 26.0
+offset_top = 1000.0
+offset_right = 1041.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 52
+text = "http://192.168.50.74:5000"
+
+[node name="btnLogin" type="Button" parent="."]
+offset_left = 458.985
+offset_top = 1285.65
+offset_right = 603.984
+offset_bottom = 1365.65
+theme_override_font_sizes/font_size = 52
+text = "Login
+"
+
+[node name="btnCreateAcct" type="Button" parent="."]
+offset_left = 322.0
+offset_top = 1449.0
+offset_right = 713.0
+offset_bottom = 1529.0
+theme_override_font_sizes/font_size = 52
+text = "Create Account
+"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="lblError" type="Label" parent="."]
+offset_left = 42.0
+offset_top = 1124.0
+offset_right = 297.0
+offset_bottom = 1196.0
+theme_override_font_sizes/font_size = 50
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="PraxisEndpoints" parent="." instance=ExtResource("2_xm5lo")]
+
+[connection signal="pressed" from="btnLogin" to="." method="_on_btn_login_pressed"]
+[connection signal="pressed" from="btnCreateAcct" to="." method="_on_btn_create_acct_pressed"]

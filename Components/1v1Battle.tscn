@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmw3hrey0qya3"]
+
+[ext_resource type="PackedScene" uid="uid://bpebv3bpdb1k6" path="res://Components/PokemonDisplayMini.tscn" id="1_5hpuq"]
+
+[node name="1v1Battle" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 544.0
+offset_bottom = 100.0
+color = Color(0.172549, 0.529412, 0.243137, 1)
+
+[node name="pdmL1" parent="." instance=ExtResource("1_5hpuq")]
+position = Vector2(331, 4)
+
+[node name="pdmR1" parent="." instance=ExtResource("1_5hpuq")]
+position = Vector2(-2, 0)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 240.0
+offset_top = 16.0
+offset_right = 280.0
+offset_bottom = 39.0
+text = "VS"
+
+[node name="lblWinner1" type="Label" parent="."]
+offset_left = 164.0
+offset_top = 65.0
+offset_right = 379.0
+offset_bottom = 88.0
+horizontal_alignment = 1

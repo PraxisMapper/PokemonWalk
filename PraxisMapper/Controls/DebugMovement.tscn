@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://cajwrijcg2n1h"]
+
+[ext_resource type="Script" path="res://PraxisMapper/Controls/DebugMovement.gd" id="1_1g2xv"]
+[ext_resource type="Texture2D" uid="uid://c3033wigb05gp" path="res://PraxisMapper/Resources/kenney_arrow.png" id="2_u00f4"]
+
+[node name="DebugMovement" type="Node2D"]
+script = ExtResource("1_1g2xv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 75.0
+offset_bottom = 48.0
+color = Color(1, 1, 1, 0.513726)
+
+[node name="ButtonNorth" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 49.0
+offset_bottom = 24.0
+icon = ExtResource("2_u00f4")
+
+[node name="ButtonSouth" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 48.0
+offset_right = 73.0
+offset_bottom = 72.0
+rotation = 3.14159
+icon = ExtResource("2_u00f4")
+
+[node name="ButtonEast" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 12.0
+offset_right = 98.0
+offset_bottom = 36.0
+rotation = 1.5708
+icon = ExtResource("2_u00f4")
+
+[node name="ButtonWest" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_top = 34.0
+offset_right = 24.0
+offset_bottom = 58.0
+rotation = -1.5708
+icon = ExtResource("2_u00f4")
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 125.0
+offset_bottom = 69.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_top = 42.0
+offset_right = 90.0
+offset_bottom = 68.0
+text = "PlusCode10"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/ButtonNorth" to="." method="GoNorth"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/ButtonSouth" to="." method="GoSouth"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/ButtonEast" to="." method="GoEast"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/ButtonWest" to="." method="GoWest"]

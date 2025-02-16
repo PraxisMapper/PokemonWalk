@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ddybadwubt4b1"]
+
+[node name="IntroSplash" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1080.0
+offset_bottom = 1920.0
+color = Color(0.0313726, 0.00392157, 0.0392157, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 276.0
+offset_top = 38.0
+offset_right = 704.0
+offset_bottom = 61.0
+text = "Welcome!
+"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 96.0
+offset_top = 913.0
+offset_right = 633.0
+offset_bottom = 988.0
+text = "This is a Pokemon fan game and isn't authorized or endorsed by Nintendo or any other company involved in official Pokemon works. No claims of ownership are made or implied."
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 109.0
+offset_top = 1275.0
+offset_right = 640.0
+offset_bottom = 1350.0
+text = "Map Data sourced from OpenStreetMap on May 1, 2023. Processed and generated for use March 10, 2024 (Rev 1). Data available via Open Database License (ODbL) rules at (URL TBD)"
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 47.0
+offset_top = 1557.0
+offset_right = 555.0
+offset_bottom = 1658.0
+text = "This game will use your device's GPS for location information to affect gameplay. This game does not use any internet connectivity, and no information of any kind leaves your device because of this game."
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="."]
+offset_left = 210.0
+offset_top = 1823.0
+offset_right = 860.0
+offset_bottom = 1887.0
+text = "Grant GPS permissions and start playing!"
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 67.0
+offset_top = 194.0
+offset_right = 997.0
+offset_bottom = 217.0
+text = "This is a fan game and isn't associated with anything official and does not claim ownership of anything pokemon related."

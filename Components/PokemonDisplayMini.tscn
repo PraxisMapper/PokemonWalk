@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpebv3bpdb1k6"]
+
+[ext_resource type="Script" path="res://Components/PokemonDisplayMini.gd" id="1_4670d"]
+
+[node name="PokemonDisplayMini" type="Node2D"]
+script = ExtResource("1_4670d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 211.0
+offset_bottom = 92.0
+color = Color(0.431373, 0.109804, 0.219608, 1)
+
+[node name="pokemonImg" type="Sprite2D" parent="."]
+centered = false
+
+[node name="lblName" type="Label" parent="."]
+offset_left = 90.0
+offset_top = 1.0
+offset_right = 143.0
+offset_bottom = 24.0

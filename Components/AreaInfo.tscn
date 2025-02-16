@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://oqn0ra3pglqe"]
+
+[ext_resource type="Script" path="res://Components/AreaInfo.gd" id="1_5qcub"]
+
+[node name="AreaInfo" type="Node2D"]
+script = ExtResource("1_5qcub")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 540.0
+offset_bottom = 200.0
+color = Color(0.00392157, 0.0862745, 0.141176, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 197.0
+offset_top = 2.0
+offset_right = 273.0
+offset_bottom = 25.0
+text = "Area Info:"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 22.0
+offset_right = 135.0
+offset_bottom = 45.0
+text = "Current Position:"
+
+[node name="lblPlusCode" type="Label" parent="."]
+offset_left = 143.0
+offset_top = 24.0
+offset_right = 196.0
+offset_bottom = 47.0
+text = "xxxxxx"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 265.0
+offset_top = 27.0
+offset_right = 344.0
+offset_bottom = 50.0
+text = "Gym Rule:"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 61.0
+offset_right = 44.0
+offset_bottom = 84.0
+text = "Pokemon Caught:"
+
+[node name="lblCaught" type="Label" parent="."]
+offset_left = 150.0
+offset_top = 63.0
+offset_right = 190.0
+offset_bottom = 86.0
+text = "x/y"
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 88.0
+offset_right = 81.0
+offset_bottom = 111.0
+text = "Available:"
+
+[node name="lblAvailable" type="Label" parent="."]
+offset_left = 90.0
+offset_top = 89.0
+offset_right = 535.0
+offset_bottom = 112.0
+autowrap_mode = 3
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 43.0
+offset_right = 53.0
+offset_bottom = 66.0
+text = "Place:"
+
+[node name="lblPlace" type="Label" parent="."]
+offset_left = 57.0
+offset_top = 44.0
+offset_right = 97.0
+offset_bottom = 67.0

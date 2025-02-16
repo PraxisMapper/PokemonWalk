@@ -1,0 +1,279 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmtvesi6uwifa"]
+
+[ext_resource type="Script" path="res://Components/po_go_full_display.gd" id="1_32yl8"]
+[ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="2_oe6ot"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u26e7"]
+width = 192
+height = 192
+
+[node name="PoGoFullDisplay" type="Node2D"]
+script = ExtResource("1_32yl8")
+
+[node name="sc" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(360, 440)
+offset_right = 360.0
+offset_bottom = 440.0
+
+[node name="c" type="ColorRect" parent="sc"]
+custom_minimum_size = Vector2(360, 680)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.0115189, 0.193908, 0.250748, 1)
+
+[node name="txrPoke" type="TextureRect" parent="sc/c"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 197.0
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_u26e7")
+
+[node name="lblName" type="Label" parent="sc/c"]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 4.0
+offset_right = 250.0
+offset_bottom = 27.0
+theme = ExtResource("2_oe6ot")
+text = "Name"
+
+[node name="lblPower" type="Label" parent="sc/c"]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 42.0
+offset_right = 255.0
+offset_bottom = 65.0
+theme = ExtResource("2_oe6ot")
+text = "Power"
+
+[node name="lblIVs" type="Label" parent="sc/c"]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 60.0
+offset_right = 356.0
+offset_bottom = 104.0
+theme = ExtResource("2_oe6ot")
+text = "IVs:"
+autowrap_mode = 3
+
+[node name="lblCandy" type="Label" parent="sc/c"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 115.0
+offset_right = 266.0
+offset_bottom = 132.0
+theme = ExtResource("2_oe6ot")
+text = "Candy:
+"
+
+[node name="lblLevel" type="Label" parent="sc/c"]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 23.0
+offset_right = 250.0
+offset_bottom = 46.0
+theme = ExtResource("2_oe6ot")
+text = "Level"
+
+[node name="lblTypes" type="Label" parent="sc/c"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 133.0
+offset_right = 358.0
+offset_bottom = 196.0
+theme = ExtResource("2_oe6ot")
+text = "Type:"
+autowrap_mode = 3
+
+[node name="btnEvolve" type="Button" parent="sc/c"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 212.0
+offset_right = 164.0
+offset_bottom = 276.0
+theme = ExtResource("2_oe6ot")
+text = "Evolve for X"
+autowrap_mode = 3
+
+[node name="btnTransform" type="Button" parent="sc/c"]
+visible = false
+layout_mode = 0
+offset_left = 47.0
+offset_top = 279.0
+offset_right = 164.0
+offset_bottom = 343.0
+theme = ExtResource("2_oe6ot")
+text = "Change Form for 100 Coins"
+autowrap_mode = 3
+
+[node name="btnBoost" type="Button" parent="sc/c"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 280.0
+offset_right = 349.0
+offset_bottom = 343.0
+theme = ExtResource("2_oe6ot")
+text = "Powerup for X Stardust"
+autowrap_mode = 3
+
+[node name="btnTransfer" type="Button" parent="sc/c"]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 207.0
+offset_right = 347.0
+offset_bottom = 258.0
+theme = ExtResource("2_oe6ot")
+text = "Transfer for 1 Candy"
+autowrap_mode = 3
+
+[node name="btnClose" type="Button" parent="sc/c"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 639.0
+offset_right = 213.0
+offset_bottom = 672.0
+theme = ExtResource("2_oe6ot")
+text = "Close"
+
+[node name="moves" type="ColorRect" parent="sc/c"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 353.0
+offset_right = 358.0
+offset_bottom = 472.0
+mouse_filter = 1
+color = Color(0.254989, 0.011707, 0.216899, 1)
+
+[node name="lblFastMove" type="Label" parent="sc/c/moves"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 196.0
+offset_bottom = 40.0
+theme = ExtResource("2_oe6ot")
+text = "Fast Move:
+"
+autowrap_mode = 3
+
+[node name="lblCharge1" type="Label" parent="sc/c/moves"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 44.0
+offset_right = 168.0
+offset_bottom = 79.0
+theme = ExtResource("2_oe6ot")
+text = "Charge Move:
+"
+autowrap_mode = 3
+
+[node name="lblCharge2" type="Label" parent="sc/c/moves"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 83.0
+offset_right = 190.0
+offset_bottom = 118.0
+theme = ExtResource("2_oe6ot")
+text = "Charge Move 2:
+"
+autowrap_mode = 3
+
+[node name="btnChangeFast" type="Button" parent="sc/c/moves"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 6.0
+offset_right = 361.0
+offset_bottom = 34.0
+theme = ExtResource("2_oe6ot")
+text = "Change (100 coins)"
+
+[node name="btnChangeCharge1" type="Button" parent="sc/c/moves"]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 43.0
+offset_right = 356.0
+offset_bottom = 73.0
+theme = ExtResource("2_oe6ot")
+text = "Change (500 coins)"
+
+[node name="btnChangeCharge2" type="Button" parent="sc/c/moves"]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 82.0
+offset_right = 354.0
+offset_bottom = 107.0
+theme = ExtResource("2_oe6ot")
+text = "Unlock (1000 coins)"
+
+[node name="placesList" type="ColorRect" parent="sc/c"]
+layout_mode = 0
+offset_top = 470.0
+offset_right = 360.0
+offset_bottom = 637.0
+mouse_filter = 1
+color = Color(0.142319, 1.90899e-05, 0.14841, 1)
+
+[node name="sc" type="ScrollContainer" parent="sc/c/placesList"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 164.0
+
+[node name="lblPlaces" type="Label" parent="sc/c/placesList/sc"]
+custom_minimum_size = Vector2(360, 20)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("2_oe6ot")
+text = "Places:
+"
+autowrap_mode = 3
+
+[node name="megastone" type="ColorRect" parent="sc/c"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 199.0
+offset_right = -81.0
+offset_bottom = 351.0
+color = Color(0.00201937, 0.501983, 0.612949, 1)
+
+[node name="btnMega1" type="Button" parent="sc/c/megastone"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 115.0
+offset_bottom = 72.0
+theme = ExtResource("2_oe6ot")
+text = "Mega-Evolve 1 for 100 Candy"
+autowrap_mode = 3
+
+[node name="btnMega2" type="Button" parent="sc/c/megastone"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 80.0
+offset_right = 111.0
+offset_bottom = 144.0
+theme = ExtResource("2_oe6ot")
+text = "Mega-Evolve 2 for 100 Candy"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="sc/c"]
+visible = false
+layout_mode = 0
+offset_left = 454.0
+offset_top = 716.0
+offset_right = 515.0
+offset_bottom = 747.0
+text = "Debug"
+
+[connection signal="button_down" from="sc/c/btnEvolve" to="." method="Evolve"]
+[connection signal="button_down" from="sc/c/btnTransform" to="." method="Evolve"]
+[connection signal="button_down" from="sc/c/btnBoost" to="." method="Boost"]
+[connection signal="button_down" from="sc/c/btnTransfer" to="." method="Transfer"]
+[connection signal="button_down" from="sc/c/btnClose" to="." method="Close"]
+[connection signal="button_down" from="sc/c/moves/btnChangeFast" to="." method="ChangeFastMove"]
+[connection signal="button_down" from="sc/c/moves/btnChangeCharge1" to="." method="ChangeCharge1"]
+[connection signal="button_down" from="sc/c/moves/btnChangeCharge2" to="." method="UnlockOrChangeCharge2"]
+[connection signal="button_down" from="sc/c/megastone/btnMega1" to="." method="MegaEvolve1"]
+[connection signal="button_down" from="sc/c/megastone/btnMega2" to="." method="MegaEvolve2"]
+[connection signal="button_down" from="sc/c/Button" to="." method="DebugEvolveAll"]

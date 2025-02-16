@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6cfprdbul55o"]
+
+[ext_resource type="Script" path="res://PraxisMapper/FullOffline/FullOfflineTiles.gd" id="1_rv5jx"]
+[ext_resource type="PackedScene" uid="uid://8os6eof5qcbh" path="res://PraxisMapper/APICalls/PraxisEndpoints.tscn" id="2_rp3kp"]
+[ext_resource type="Script" path="res://PraxisMapper/FullOffline/DrawOfflineTile.gd" id="3_n6eua"]
+[ext_resource type="Script" path="res://PraxisMapper/FullOffline/DrawOfflineNameTile.gd" id="4_n8854"]
+[ext_resource type="Script" path="res://PraxisMapper/FullOffline/DrawOfflineBoundsTile.gd" id="5_apl8f"]
+[ext_resource type="Script" path="res://PraxisMapper/FullOffline/DrawOfflineTerrainTile.gd" id="6_fvihv"]
+
+[node name="OfflineData" type="Node2D"]
+script = ExtResource("1_rv5jx")
+
+[node name="PraxisEndpoints" parent="." instance=ExtResource("2_rp3kp")]
+
+[node name="svc" type="SubViewportContainer" parent="."]
+offset_left = -10000.0
+offset_right = -9960.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="svc"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="fullMap" type="Node2D" parent="svc/SubViewport"]
+script = ExtResource("3_n6eua")
+
+[node name="subcam" type="Camera2D" parent="svc/SubViewport"]
+anchor_mode = 0
+
+[node name="svc2" type="SubViewportContainer" parent="."]
+offset_left = -10000.0
+offset_right = -9960.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="svc2"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="nameMap" type="Node2D" parent="svc2/SubViewport"]
+script = ExtResource("4_n8854")
+
+[node name="subcam" type="Camera2D" parent="svc2/SubViewport"]
+anchor_mode = 0
+
+[node name="svc3" type="SubViewportContainer" parent="."]
+offset_left = -10000.0
+offset_right = -9488.0
+offset_bottom = 512.0
+
+[node name="SubViewport" type="SubViewport" parent="svc3"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="boundsMap" type="Node2D" parent="svc3/SubViewport"]
+script = ExtResource("5_apl8f")
+
+[node name="subcam" type="Camera2D" parent="svc3/SubViewport"]
+anchor_mode = 0
+
+[node name="svc4" type="SubViewportContainer" parent="."]
+offset_left = -10000.0
+offset_right = -9488.0
+offset_bottom = 512.0
+
+[node name="SubViewport" type="SubViewport" parent="svc4"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="terrainMap" type="Node2D" parent="svc4/SubViewport"]
+script = ExtResource("6_fvihv")
+
+[node name="subcam" type="Camera2D" parent="svc4/SubViewport"]
+anchor_mode = 0
+
+[node name="Banner" type="ColorRect" parent="."]
+visible = false
+offset_right = 1081.0
+offset_bottom = 40.0
+color = Color(0.631373, 0.603922, 0.301961, 1)
+
+[node name="lblStatus" type="Label" parent="Banner"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "Data Status"
+horizontal_alignment = 1
+vertical_alignment = 1

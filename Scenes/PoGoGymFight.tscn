@@ -1,0 +1,178 @@
+[gd_scene load_steps=7 format=3 uid="uid://boribdyb7trxc"]
+
+[ext_resource type="Script" path="res://Scenes/po_go_gym_fight.gd" id="1_gumfl"]
+[ext_resource type="PackedScene" uid="uid://ctwjfi6yfhnpm" path="res://Scenes/PoGoInventory.tscn" id="2_8r15x"]
+[ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="2_l7mcl"]
+[ext_resource type="PackedScene" uid="uid://byo6edysi20a" path="res://Components/PoGoMiniDisplay.tscn" id="3_ausoc"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nbgnh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ek52t"]
+width = 192
+height = 192
+noise = SubResource("FastNoiseLite_nbgnh")
+
+[node name="PoGoGymFight" type="Node2D"]
+script = ExtResource("1_gumfl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 360.0
+offset_bottom = 440.0
+color = Color(0.0210432, 0.147749, 0.0436101, 1)
+
+[node name="txrBoss" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 6.0
+offset_top = 19.0
+offset_right = 198.0
+offset_bottom = 211.0
+texture = SubResource("NoiseTexture2D_ek52t")
+flip_h = true
+
+[node name="txrParty1" type="TextureRect" parent="."]
+offset_left = 259.0
+offset_top = 21.0
+offset_right = 451.0
+offset_bottom = 213.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("NoiseTexture2D_ek52t")
+
+[node name="txrParty2" type="TextureRect" parent="."]
+offset_left = 261.0
+offset_top = 99.0
+offset_right = 453.0
+offset_bottom = 291.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("NoiseTexture2D_ek52t")
+
+[node name="txrParty3" type="TextureRect" parent="."]
+offset_left = 258.0
+offset_top = 142.0
+offset_right = 450.0
+offset_bottom = 334.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("NoiseTexture2D_ek52t")
+
+[node name="txrParty4" type="TextureRect" parent="."]
+offset_left = 210.0
+offset_top = 6.0
+offset_right = 402.0
+offset_bottom = 198.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("NoiseTexture2D_ek52t")
+
+[node name="txrParty5" type="TextureRect" parent="."]
+offset_left = 210.0
+offset_top = 81.0
+offset_right = 402.0
+offset_bottom = 273.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("NoiseTexture2D_ek52t")
+
+[node name="txrParty6" type="TextureRect" parent="."]
+offset_left = 207.0
+offset_top = 116.0
+offset_right = 399.0
+offset_bottom = 308.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("NoiseTexture2D_ek52t")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 157.0
+offset_top = 415.0
+offset_right = 236.0
+offset_bottom = 435.0
+theme = ExtResource("2_l7mcl")
+text = "Exit"
+
+[node name="sc" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(350, 180)
+offset_left = 5.0
+offset_top = 230.0
+offset_right = 365.0
+offset_bottom = 410.0
+
+[node name="lblLog" type="Label" parent="sc"]
+custom_minimum_size = Vector2(350, 180)
+layout_mode = 2
+theme = ExtResource("2_l7mcl")
+text = "Log:
+"
+autowrap_mode = 3
+
+[node name="lblTimer" type="Label" parent="."]
+offset_left = 47.0
+offset_top = 214.0
+offset_right = 97.0
+offset_bottom = 237.0
+theme = ExtResource("2_l7mcl")
+text = "Timer:"
+
+[node name="pickParty" type="ColorRect" parent="."]
+offset_left = -1387.0
+offset_top = 3.0
+offset_right = -1027.0
+offset_bottom = 443.0
+color = Color(0.290226, 0.214487, 0.0025284, 1)
+
+[node name="lblPartyHeader" type="Label" parent="pickParty"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 1.0
+offset_right = 209.0
+offset_bottom = 24.0
+theme = ExtResource("2_l7mcl")
+text = "Select your party to fight "
+
+[node name="txrBoss2" type="TextureRect" parent="pickParty"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 36.0
+offset_right = 204.0
+offset_bottom = 228.0
+texture = SubResource("NoiseTexture2D_ek52t")
+flip_h = true
+
+[node name="PoGoMiniDisplay" parent="pickParty" instance=ExtResource("3_ausoc")]
+position = Vector2(5, 234)
+
+[node name="PoGoMiniDisplay2" parent="pickParty" instance=ExtResource("3_ausoc")]
+position = Vector2(124, 234)
+
+[node name="PoGoMiniDisplay3" parent="pickParty" instance=ExtResource("3_ausoc")]
+position = Vector2(245, 234)
+
+[node name="PoGoMiniDisplay4" parent="pickParty" instance=ExtResource("3_ausoc")]
+position = Vector2(5, 337)
+
+[node name="PoGoMiniDisplay5" parent="pickParty" instance=ExtResource("3_ausoc")]
+position = Vector2(124, 337)
+
+[node name="PoGoMiniDisplay6" parent="pickParty" instance=ExtResource("3_ausoc")]
+position = Vector2(245, 337)
+
+[node name="btnStartFight" type="Button" parent="pickParty"]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 159.0
+offset_right = 329.0
+offset_bottom = 193.0
+theme = ExtResource("2_l7mcl")
+text = "Start Fight!"
+
+[node name="btnCancel" type="Button" parent="pickParty"]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 51.0
+offset_right = 316.0
+offset_bottom = 92.0
+theme = ExtResource("2_l7mcl")
+text = "Close"
+
+[node name="PoGoInventory" parent="." instance=ExtResource("2_8r15x")]
+position = Vector2(1444, 11)
+
+[connection signal="button_down" from="Button" to="." method="Close"]
+[connection signal="button_down" from="pickParty/btnStartFight" to="." method="Start"]
+[connection signal="button_down" from="pickParty/btnCancel" to="." method="Close"]

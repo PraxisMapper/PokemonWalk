@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://fipn8k07sdhc"]
+
+[ext_resource type="Script" path="res://PraxisMapper/FullOffline/FullSingleTileQueued.gd" id="1_32cvw"]
+[ext_resource type="Script" path="res://PraxisMapper/FullOffline/DrawSingleTile.gd" id="2_wqwey"]
+
+[node name="OfflineData" type="Node2D"]
+script = ExtResource("1_32cvw")
+
+[node name="svc" type="SubViewportContainer" parent="."]
+offset_left = -10000.0
+offset_right = -9960.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="svc"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="fullMap" type="Node2D" parent="svc/SubViewport"]
+script = ExtResource("2_wqwey")
+
+[node name="subcam" type="Camera2D" parent="svc/SubViewport"]
+anchor_mode = 0
+
+[node name="Banner" type="Node2D" parent="."]
+z_index = 3
+
+[node name="ColorRect" type="ColorRect" parent="Banner"]
+offset_right = 720.0
+offset_bottom = 61.0
+color = Color(1, 1, 0, 1)
+
+[node name="Status" type="Label" parent="Banner"]
+offset_right = 720.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "Drawing"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://8os6eof5qcbh"]
+
+[ext_resource type="Script" path="res://PraxisMapper/APICalls/PraxisEndpoints.gd" id="1_4ulsm"]
+
+[node name="PraxisEndpoints" type="Node2D"]
+script = ExtResource("1_4ulsm")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]

@@ -1,0 +1,175 @@
+[gd_scene load_steps=4 format=3 uid="uid://i7s1o6y03ab0"]
+
+[ext_resource type="Script" path="res://PraxisMapper/Controls/ScrollingCenteredMap.gd" id="1_17115"]
+[ext_resource type="PackedScene" uid="uid://b16445g8mkbaa" path="res://PraxisMapper/FullOffline/FullSingleTile.tscn" id="2_cuosq"]
+[ext_resource type="PackedScene" uid="uid://fipn8k07sdhc" path="res://PraxisMapper/FullOffline/FullSingleTileQueued.tscn" id="5_p6el8"]
+
+[node name="ScrollingCenteredMap" type="Node2D"]
+script = ExtResource("1_17115")
+
+[node name="mapBase" type="Node2D" parent="."]
+
+[node name="MapTile-22" type="TextureRect" parent="mapBase"]
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile-12" type="TextureRect" parent="mapBase"]
+offset_left = 320.0
+offset_right = 320.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile02" type="TextureRect" parent="mapBase"]
+offset_left = 640.0
+offset_right = 640.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile12" type="TextureRect" parent="mapBase"]
+offset_left = 960.0
+offset_right = 960.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile22" type="TextureRect" parent="mapBase"]
+offset_left = 1280.0
+offset_right = 1280.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile-21" type="TextureRect" parent="mapBase"]
+offset_top = 500.0
+offset_right = 320.0
+offset_bottom = 1000.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile-11" type="TextureRect" parent="mapBase"]
+offset_left = 320.0
+offset_top = 500.0
+offset_right = 640.0
+offset_bottom = 1000.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile01" type="TextureRect" parent="mapBase"]
+offset_left = 640.0
+offset_top = 500.0
+offset_right = 960.0
+offset_bottom = 1000.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile11" type="TextureRect" parent="mapBase"]
+offset_left = 960.0
+offset_top = 500.0
+offset_right = 960.0
+offset_bottom = 500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile21" type="TextureRect" parent="mapBase"]
+offset_left = 1280.0
+offset_top = 500.0
+offset_right = 1600.0
+offset_bottom = 1000.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile-20" type="TextureRect" parent="mapBase"]
+offset_top = 1000.0
+offset_bottom = 1000.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile-10" type="TextureRect" parent="mapBase"]
+offset_left = 320.0
+offset_top = 1000.0
+offset_right = 640.0
+offset_bottom = 1500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile00" type="TextureRect" parent="mapBase"]
+offset_left = 640.0
+offset_top = 1000.0
+offset_right = 640.0
+offset_bottom = 1000.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile10" type="TextureRect" parent="mapBase"]
+offset_left = 960.0
+offset_top = 1000.0
+offset_right = 960.0
+offset_bottom = 1000.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile20" type="TextureRect" parent="mapBase"]
+offset_left = 1280.0
+offset_top = 1000.0
+offset_right = 1600.0
+offset_bottom = 1500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile-2-1" type="TextureRect" parent="mapBase"]
+offset_top = 1500.0
+offset_bottom = 1500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile-1-1" type="TextureRect" parent="mapBase"]
+offset_left = 320.0
+offset_top = 1500.0
+offset_right = 320.0
+offset_bottom = 1500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile0-1" type="TextureRect" parent="mapBase"]
+offset_left = 640.0
+offset_top = 1500.0
+offset_right = 640.0
+offset_bottom = 1500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile1-1" type="TextureRect" parent="mapBase"]
+offset_left = 960.0
+offset_top = 1500.0
+offset_right = 960.0
+offset_bottom = 1500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile2-1" type="TextureRect" parent="mapBase"]
+offset_left = 1280.0
+offset_top = 1500.0
+offset_right = 1280.0
+offset_bottom = 1500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile-2-2" type="TextureRect" parent="mapBase"]
+offset_top = 2000.0
+offset_bottom = 2000.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile-1-2" type="TextureRect" parent="mapBase"]
+offset_left = 320.0
+offset_top = 2000.0
+offset_right = 640.0
+offset_bottom = 2500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile0-2" type="TextureRect" parent="mapBase"]
+offset_left = 640.0
+offset_top = 2000.0
+offset_right = 640.0
+offset_bottom = 2000.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile1-2" type="TextureRect" parent="mapBase"]
+offset_left = 960.0
+offset_top = 2000.0
+offset_right = 1280.0
+offset_bottom = 2500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MapTile2-2" type="TextureRect" parent="mapBase"]
+offset_left = 1280.0
+offset_top = 2000.0
+offset_right = 1600.0
+offset_bottom = 2500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="trackedChildren" type="Node2D" parent="."]
+
+[node name="TileDrawer" parent="." instance=ExtResource("2_cuosq")]
+process_mode = 4
+visible = false
+alwaysDrawNewTile = false
+
+[node name="TileDrawerQueued" parent="." instance=ExtResource("5_p6el8")]

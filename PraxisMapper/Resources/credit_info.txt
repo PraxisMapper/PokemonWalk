@@ -1,0 +1,5 @@
+Kenney.nl: splat images
+
+Map data from OpenStreetMap, available under the ODbL (openstreetmap.org/copyright)
+
+Titillium font available via SIL Open Font License.
