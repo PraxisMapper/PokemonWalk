@@ -94,6 +94,7 @@ offset_left = 47.0
 offset_top = 212.0
 offset_right = 164.0
 offset_bottom = 276.0
+mouse_filter = 1
 theme = ExtResource("2_oe6ot")
 text = "Evolve for X"
 autowrap_mode = 3
@@ -115,6 +116,7 @@ offset_left = 210.0
 offset_top = 280.0
 offset_right = 349.0
 offset_bottom = 343.0
+mouse_filter = 1
 theme = ExtResource("2_oe6ot")
 text = "Powerup for X Stardust"
 autowrap_mode = 3
@@ -125,6 +127,7 @@ offset_left = 234.0
 offset_top = 207.0
 offset_right = 347.0
 offset_bottom = 258.0
+mouse_filter = 1
 theme = ExtResource("2_oe6ot")
 text = "Transfer for 1 Candy"
 autowrap_mode = 3
@@ -186,6 +189,7 @@ offset_left = 196.0
 offset_top = 6.0
 offset_right = 361.0
 offset_bottom = 34.0
+mouse_filter = 1
 theme = ExtResource("2_oe6ot")
 text = "Change (100 coins)"
 
@@ -195,6 +199,7 @@ offset_left = 204.0
 offset_top = 43.0
 offset_right = 356.0
 offset_bottom = 73.0
+mouse_filter = 1
 theme = ExtResource("2_oe6ot")
 text = "Change (500 coins)"
 
@@ -204,6 +209,7 @@ offset_left = 185.0
 offset_top = 82.0
 offset_right = 354.0
 offset_bottom = 107.0
+mouse_filter = 1
 theme = ExtResource("2_oe6ot")
 text = "Unlock (1000 coins)"
 
@@ -266,14 +272,14 @@ offset_right = 515.0
 offset_bottom = 747.0
 text = "Debug"
 
-[connection signal="button_down" from="sc/c/btnEvolve" to="." method="Evolve"]
-[connection signal="button_down" from="sc/c/btnTransform" to="." method="Evolve"]
-[connection signal="button_down" from="sc/c/btnBoost" to="." method="Boost"]
-[connection signal="button_down" from="sc/c/btnTransfer" to="." method="Transfer"]
-[connection signal="button_down" from="sc/c/btnClose" to="." method="Close"]
-[connection signal="button_down" from="sc/c/moves/btnChangeFast" to="." method="ChangeFastMove"]
-[connection signal="button_down" from="sc/c/moves/btnChangeCharge1" to="." method="ChangeCharge1"]
-[connection signal="button_down" from="sc/c/moves/btnChangeCharge2" to="." method="UnlockOrChangeCharge2"]
-[connection signal="button_down" from="sc/c/megastone/btnMega1" to="." method="MegaEvolve1"]
-[connection signal="button_down" from="sc/c/megastone/btnMega2" to="." method="MegaEvolve2"]
+[connection signal="pressed" from="sc/c/btnEvolve" to="." method="Evolve"]
+[connection signal="pressed" from="sc/c/btnTransform" to="." method="Transform"]
+[connection signal="pressed" from="sc/c/btnBoost" to="." method="Boost"]
+[connection signal="pressed" from="sc/c/btnTransfer" to="." method="Transfer"]
+[connection signal="pressed" from="sc/c/btnClose" to="." method="Close"]
+[connection signal="pressed" from="sc/c/moves/btnChangeFast" to="." method="ChangeFastMove"]
+[connection signal="pressed" from="sc/c/moves/btnChangeCharge1" to="." method="ChangeCharge1"]
+[connection signal="pressed" from="sc/c/moves/btnChangeCharge2" to="." method="UnlockOrChangeCharge2"]
+[connection signal="pressed" from="sc/c/megastone/btnMega1" to="." method="MegaEvolve1"]
+[connection signal="pressed" from="sc/c/megastone/btnMega2" to="." method="MegaEvolve2"]
 [connection signal="button_down" from="sc/c/Button" to="." method="DebugEvolveAll"]

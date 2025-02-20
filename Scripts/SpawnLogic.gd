@@ -73,7 +73,7 @@ static var eventEntries = [
 	{ #7, Feb 19-25
 		name = "Hisuian Week",
 		description = "Back in the old days, pokemon looked like this",
-		spawns = {"GROWLITHE_1" = 1, "VOLTORB_1" = 1, "ZORUA_1" = 1, "SLIGGOO_1" = 1, "QUILFISH_1" =1,
+		spawns = {"GROWLITHE_1" = 1, "VOLTORB_1" = 1, "ZORUA_1" = 1, "SLIGGOO_1" = 1, "QWILFISH_1" =1,
 		"SNEASEL_1" = 1, "RUFFLET_1" = 1, "KLEAVOR" = 1}
 	},
 	{ #8, Feb 26 - Mar 4 (or Mar 3 on leap year)
@@ -189,7 +189,7 @@ static var eventEntries = [
 	{#26, Jul 2-8 (4th of july week)
 		name = "Hisuian Week",
 		description = "Back in the old days, pokemon looked like this",
-		spawns = {"GROWLITHE_1" = 1, "VOLTORB_1" = 1, "ZORUA_1" = 1, "SLIGGOO_1" = 1, "QUILFISH_1" =1,
+		spawns = {"GROWLITHE_1" = 1, "VOLTORB_1" = 1, "ZORUA_1" = 1, "SLIGGOO_1" = 1, "QWILFISH_1" =1,
 		"SNEASEL_1" = 1, "RUFFLET_1" = 1, "KLEAVOR" = 1}
 	}, 
 	{ #27, Jul 9-15
@@ -311,7 +311,7 @@ static var eventEntries = [
 	{ #46, Nov 19-25
 		name = "Hisuian Week",
 		description = "Back in the old days, pokemon looked like this",
-		spawns = {"GROWLITHE_1" = 1, "VOLTORB_1" = 1, "ZORUA_1" = 1, "SLIGGOO_1" = 1, "QUILFISH_1" =1,
+		spawns = {"GROWLITHE_1" = 1, "VOLTORB_1" = 1, "ZORUA_1" = 1, "SLIGGOO_1" = 1, "QWILFISH_1" =1,
 		"SNEASEL_1" = 1, "RUFFLET_1" = 1, "KLEAVOR" = 1}
 	},
 	{ #47, Nov 26 - Dec 2

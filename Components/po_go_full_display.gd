@@ -119,6 +119,8 @@ func FillPage():
 		$sc/c/btnEvolve.disabled = true
 	
 	$sc/c/btnTransfer.text = "Transfer to get " + str(candyGrind) + " Candies"
+	if GameGlobals.playerData.buddy == pokemonData.id:
+		$sc/c/btnTransfer.disabled = true
 
 	#this part is here to handle when we push a button to update that display.
 	GameGlobals.updateHeader.emit()
