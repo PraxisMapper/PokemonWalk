@@ -19,6 +19,7 @@ position = Vector2(-224, -287)
 scale = Vector2(0.5, 0.5)
 
 [node name="GetFile" parent="." instance=ExtResource("3_iilpo")]
+position = Vector2(0, 100)
 scale = Vector2(0.5, 0.5)
 
 [node name="header" type="Node" parent="."]
@@ -161,6 +162,15 @@ offset_bottom = 88.0
 theme = ExtResource("4_dw2l7")
 text = "Help"
 
+[node name="btnHelp2" type="Button" parent="footer"]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 9.0
+offset_right = 348.0
+offset_bottom = 42.0
+theme = ExtResource("4_dw2l7")
+text = "Options"
+
 [node name="recentTracker" type="Node" parent="."]
 script = ExtResource("6_jo0bv")
 
@@ -237,5 +247,6 @@ text = "Close"
 [connection signal="button_down" from="footer/btnSpawns" to="." method="SpawnInfo"]
 [connection signal="button_down" from="footer/btnRaid" to="." method="RaidBattle"]
 [connection signal="button_down" from="footer/btnHelp" to="." method="ShowHelp"]
+[connection signal="pressed" from="footer/btnHelp2" to="." method="ShowOptions"]
 [connection signal="timeout" from="walkNotice/tmrHide" to="." method="HideWalkNotice"]
 [connection signal="button_down" from="boxAlreadyWon/btnMove" to="." method="HideAlreadyWon"]

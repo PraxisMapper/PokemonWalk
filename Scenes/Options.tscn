@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://hni73v3pyiqg"]
+
+[ext_resource type="Script" path="res://Scenes/options.gd" id="1_3h4ao"]
+[ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="2_05dgt"]
+
+[node name="Options" type="Node2D"]
+script = ExtResource("1_3h4ao")
+
+[node name="cr" type="ColorRect" parent="."]
+offset_right = 360.0
+offset_bottom = 440.0
+color = Color(0, 0.279055, 0.216098, 1)
+
+[node name="btnExport" type="Button" parent="cr"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 85.0
+offset_right = 231.0
+offset_bottom = 111.0
+theme = ExtResource("2_05dgt")
+text = "Export Data"
+
+[node name="btnImport" type="Button" parent="cr"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 171.0
+offset_right = 233.0
+offset_bottom = 197.0
+theme = ExtResource("2_05dgt")
+text = "Import Data"
+
+[node name="btnClose" type="Button" parent="cr"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 340.0
+offset_right = 226.0
+offset_bottom = 366.0
+theme = ExtResource("2_05dgt")
+text = "Close"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Export"
+position = Vector2i(-400, 50)
+size = Vector2i(352, 400)
+min_size = Vector2i(180, 70)
+keep_title_visible = false
+content_scale_factor = 0.6
+mode_overrides_title = false
+access = 2
+
+[node name="crInfo" type="ColorRect" parent="."]
+visible = false
+offset_left = 25.0
+offset_top = 68.0
+offset_right = 341.0
+offset_bottom = 224.0
+color = Color(0.244581, 0.181031, 0, 1)
+
+[node name="lblInfo" type="Label" parent="crInfo"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 59.0
+offset_right = 217.0
+offset_bottom = 83.0
+theme = ExtResource("2_05dgt")
+text = "Data Exported"
+
+[connection signal="pressed" from="cr/btnExport" to="." method="SaveFile2"]
+[connection signal="pressed" from="cr/btnImport" to="." method="ImportData"]
+[connection signal="pressed" from="cr/btnClose" to="." method="Close"]

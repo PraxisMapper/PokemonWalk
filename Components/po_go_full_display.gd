@@ -62,6 +62,7 @@ func FillPage():
 	#No pokemon should have more than 1, so we can just check the first (for now, may change
 	#if I add giant/dynamax ones)
 	
+	$sc/c/megastone.position.x = -599
 	if baseData.otherForms != null and baseData.otherForms.size() > 0:
 		#var formType = baseData.formType
 		var keyCheck = baseData.key.split("_")[0] + "_" + baseData.otherForms[0]

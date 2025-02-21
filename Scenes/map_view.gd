@@ -264,3 +264,8 @@ func HideAlreadyWon():
 
 func ShowHelp():
 	Dialogic.start('HelpTimeline')
+
+func ShowOptions():
+	var optionScene = preload("res://Scenes/Options.tscn").instantiate()
+	clearPopup()
+	$popup.add_child(optionScene)

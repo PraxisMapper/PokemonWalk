@@ -76,6 +76,11 @@ func _ready():
 	
 	styleData = PraxisCore.GetStyle("suggestedmini")
 	Load()
+	
+	#If some error caused a player's candy to go negative, fix it.
+	for family in playerData.candyByFamily:
+		if playerData.candyByFamily[family] < 0:
+			playerData.candyByFamily[family] = 1
 
 	if (playerData.buddy == ""):
 		if pokemon.size() > 0:

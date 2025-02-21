@@ -93,6 +93,7 @@ func getCell6FileSync(plusCode6):
 		return true #already downloaded this! May have a future setup to force this.
 
 	$client.cancel_request()	
+	$Banner.visible = true
 	#$client.request_completed.connect(request_complete)
 	$client.download_file = "user://Data/Full/" + plusCode6 + ".json"
 	var status = $client.request(serverPath + cell6Path + plusCode6)
@@ -101,7 +102,7 @@ func getCell6FileSync(plusCode6):
 		return
 	
 	#isActive = true
-	$Banner.visible = true
+	#$Banner.visible = true
 	
 	var results = await $client.request_completed
 	print(results)
