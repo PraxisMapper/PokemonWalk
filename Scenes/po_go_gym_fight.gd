@@ -115,6 +115,7 @@ func Start():
 	$txrParty6.texture = load(PokemonHelpers.GetPokemonFrontSprite($pickParty/PoGoMiniDisplay6.data.key, false, "M"))
 	
 	battle.boss = battle.HydrateGoPokemon(boss)
+	battle.boss.Stamina *= 2.5 # Increase boss durability so they're not automatic wins.
 	battle.team.append(PoGoCombat.HydrateGoPokemon($pickParty/PoGoMiniDisplay.data))
 	battle.team.append(PoGoCombat.HydrateGoPokemon($pickParty/PoGoMiniDisplay2.data))
 	battle.team.append(PoGoCombat.HydrateGoPokemon($pickParty/PoGoMiniDisplay3.data))

@@ -93,17 +93,17 @@ func FillPage():
 		evoCost = 0
 		
 		if family.size() == 2:
-			if family[0] == pokemonData.key:
+			if family[0] == pokemonData.key.split("_")[0]:
 				evoCost = 50
 			else:
 				$sc/c/btnEvolve.visible = false #we are the max evolution
 				candyGrind = 3
 		elif family.size() == 3: #TODO: this may need to adjust for forms.
-			if family[0] == pokemonData.key:
+			if family[0] == pokemonData.key.split("_")[0]:
 				evoCost = 25
-			elif family[1] == pokemonData.key:
+			elif family[1] == pokemonData.key.split("_")[0]:
 				evoCost = 100
-			elif family[2] == pokemonData.key:
+			elif family[2] == pokemonData.key.split("_")[0]:
 				$sc/c/btnEvolve.visible = false #we are the max evolution
 		else:
 			pass
@@ -112,8 +112,9 @@ func FillPage():
 				evoCost = 50
 			
 		$sc/c/btnEvolve.text = "Evolve for " + str(evoCost) + " Candies"
-	else:
+	else: #if baseData.formType != "TRANSFORM":
 		$sc/c/btnEvolve.visible = false
+	
 	if (!GameGlobals.playerData.candyByFamily.has(pokemonData.family) or 
 		GameGlobals.playerData.candyByFamily[pokemonData.family] < evoCost
 	):
@@ -245,13 +246,15 @@ func MegaEvolve(formIndex):
 func Transform():
 	#Figure out which form we are, and pick the next one.
 	var thisForm = pokemonData.key.split("_")[1]
-	var idx = pokemonData.otherForms.find(thisForm)
-	if idx == pokemonData.otherForms.size() - 1:
+	
+	print(str(GameGlobals.baseData.pokemon[pokemonData.key].otherForms))
+	var idx = GameGlobals.baseData.pokemon[pokemonData.key].otherForms.find(str(thisForm))
+	if idx == GameGlobals.baseData.pokemon[pokemonData.key].otherForms.size() - 1:
 		idx = 0
 	else:
 		idx += 1
 	
-	var newKey = pokemonData.key.split("_")[0] + "_" + pokemonData.otherForms[idx]
+	var newKey = pokemonData.key.split("_")[0] + "_" + GameGlobals.baseData.pokemon[pokemonData.key].otherForms[idx]
 	pokemonData.key = newKey
 	GameGlobals.playerData.currentCoins -= 100
 	GameGlobals.Save()

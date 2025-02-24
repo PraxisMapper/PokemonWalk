@@ -356,7 +356,6 @@ static func SpawnTable(cell8):
 	var table = {
 		total= 0
 	}
-	
 	var commonRng = RandomNumberGenerator.new()
 	commonRng.seed = cell8.hash()
 	var count = GameGlobals.baseData.familiesByHabitat.size()
@@ -370,7 +369,6 @@ static func SpawnTable(cell8):
 	for i in GameGlobals.commonPokemonPerArea:
 		var family = possibleFamilies[commonRng.randi_range(0,options-1)]
 		var base = GameGlobals.baseData.pokemon[family]
-		
 		#If this family has forms, check if we should pick one.
 		if base.otherForms != null and base.otherForms.size() > 0:
 			var checkForm = GameGlobals.baseData.pokemon[family + "_" + base.otherForms[0]]

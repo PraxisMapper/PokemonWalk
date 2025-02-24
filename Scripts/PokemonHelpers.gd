@@ -203,6 +203,8 @@ static func GetCurrentStat(pokemon, statIndex):
 static func GetCombatPower(pogoData):
 	var base = GameGlobals.baseData.pokemon[pogoData.key]
 	var powermultiplier = PoGoLevelCurves.GetCombatPowerMultiplier(pogoData.level) + pogoData.buddyBoost #remember, level is boosts.
+	if (pogoData.has("caughtSpeed") and pogoData.caughtSpeed < 5.5): # TODO Version 2: determine how much walking helps
+		powermultiplier += 0.3
 	
 	var cp = 0
 	cp = base.PoGoAtk * (base.PoGoDef ** 0.5) * (base.PoGoSta ** 0.5) * (powermultiplier ** 2) * 0.1

@@ -6,11 +6,13 @@ var inventoryScreenPL = preload("res://Scenes/PoGoInventory.tscn")
 var infoScreenPL = preload("res://Components/PoGoFullDisplay.tscn")
 
 func _ready() -> void:
+	for p in GameGlobals.baseData.pokemon:
+		DebugSpawnPokemon(p)
 	$ScrollingCenteredMap/TileDrawerQueued/Banner.position = Vector2(182 + 96 + 170 ,237 + 268 + 230 + 35)
 	$ScrollingCenteredMap/TileDrawerQueued/Banner.visible = false
 
 	PraxisCore.plusCode_changed.connect(plusCodeChanged)
-	$recentTracker.newRecent.connect(firstDailyCellVisit)
+	$recentTracker.newRecent.connect(recentCellVisit)
 	$recentTracker.timeDiffSeconds = 60 * 60 #Resets every hour, not day
 	$recentTracker.RemoveOld()
 	plusCodeChanged(PraxisCore.currentPlusCode, "")
@@ -63,8 +65,10 @@ func SetBuddy(data):
 	GameGlobals.Save()
 	clearPopup()
 
-func firstDailyCellVisit(cell10):
-	var newCoins = randi_range(3,8) + int(GameGlobals.playerData.currentLevel / 10)
+func recentCellVisit(cell10):
+	print(PraxisCore.last_location)
+	var speedMul = GameGlobals.walkingMultiplier if PraxisCore.last_location.speed < GameGlobals.speedLimit else  1
+	var newCoins = randi_range(3,8) + int(GameGlobals.playerData.currentLevel / 10) * speedMul
 	GameGlobals.playerData.currentCoins += newCoins
 	var eventResults = randi_range(1, 6) # 1-4: coins: 5-6: combat
 	if eventResults <= 4:
@@ -82,8 +86,10 @@ func firstDailyCellVisit(cell10):
 		
 		$walkNotice/txrOpponent.texture = load(PokemonHelpers.GetPokemonFrontSprite(opponent.key, false, "M"))
 		var results = PoGoAutoBattle.Battle1v1(GameGlobals.pokemon[GameGlobals.playerData.buddy], opponent)
-		print(results)
-		if (results == 1):
+		#print(results)
+		if (results == 1): #victory
+			
+			opponent.caughtSpeed = PraxisCore.last_location.speed
 			if GameGlobals.playerData.autoCatch and GameGlobals.playerData.currentCoins >= 10:
 				GameGlobals.playerData.currentCoins -= 10
 				GameGlobals.pokemon[opponent.id] = opponent
@@ -107,16 +113,19 @@ func firstDailyCellVisit(cell10):
 				candy = 3
 			elif family.size() == 1:
 				xp = 250
-				stardust = 250
+				stardust = 250 
 				candy = 3
+			xp *= speedMul
+			stardust *= speedMul
+			candy *= speedMul
 
 			GameGlobals.GrantPlayerXP(xp)
 			GameGlobals.playerData.stardust += stardust
 			
 			if (GameGlobals.playerData.candyByFamily.has(opponent.family)):
-				GameGlobals.playerData.candyByFamily[opponent.family] += 3
+				GameGlobals.playerData.candyByFamily[opponent.family] += candy
 			else:
-				GameGlobals.playerData.candyByFamily[opponent.family] = 3
+				GameGlobals.playerData.candyByFamily[opponent.family] = candy
 		elif results == 2:
 			$walkNotice/lblMessage.text = "Earned " + str(newCoins) + " and you lost to a " + opponent.name
 	
@@ -150,11 +159,6 @@ func plusCodeChanged(current, old):
 		GameGlobals.currentSpawnTable = SpawnLogic.SpawnTable(cell8)
 		UpdateRaidButton(cell8)
 
-	#Later, I wont want to call this on every change
-	#These might need varied with the number of tiles visible on screen at once.
-	var xDiff = 3
-	var yDiff = 3
-	
 	var baseCell = current.substr(0,6)
 	var cellsToLoad = PlusCodes.GetNearbyCells(baseCell, 1)
 	for c2l in cellsToLoad:
@@ -258,9 +262,10 @@ func RaidBattle():
 func HideAlreadyWon():
 	$boxAlreadyWon.position.x = 600
 
-#func DebugSpawnPokemon(key):
-	#var p = PokemonGenerator.MakeMobilePokemon(key)
-	#GameGlobals.pokemon[p.id] = p
+func DebugSpawnPokemon(key):
+	var p = PokemonGenerator.MakeMobilePokemon(key)
+	GameGlobals.pokemon[p.id] = p
+	GameGlobals.playerData.candyByFamily[p.family] = 300
 
 func ShowHelp():
 	Dialogic.start('HelpTimeline')

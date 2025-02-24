@@ -55,7 +55,12 @@ var playerStart = Vector2(0,0) #This is the player's first detected position whe
 #signals for components that need to respond to it.
 signal plusCode_changed(current, previous) #For when you just need to know your grid position changed
 signal location_changed(dictionary) #For stuff that wants raw GPS data or small changes in position.
-var last_location = {}
+var last_location = {
+	latitude = 1,
+	longitude = 1,
+	speed = 1
+} # is the entire GPS data dictionary
+var current_gps_packet = {}
 
 #Plugin for gps info
 var gps_provider
