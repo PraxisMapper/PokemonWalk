@@ -10,7 +10,7 @@ signal updateHeader
 var currentPlace = ["", ""]
 
 var baseData = {}
-var playerData = {	
+var playerData = {
 	version = 1,
 	saveCreated = Time.get_unix_time_from_system(),
 	currentXp = 0,
@@ -31,6 +31,7 @@ var playerData = {
 	#TODO: store a hash and validate it? Or do I not care about hackers that much?
 	#Probably easier to save this encrypted instead.
 	allowFusions = false, #set to true once unlocked
+	pokemonTransferred = 0, #tracked for story stuff.
 }
 var styleData = {}
 var cachedAreaData = {}
@@ -112,11 +113,19 @@ func UpdateSaveVersion():
 		results = true
 	if playerData.version < 2: #Release 3 of Pokemon Walk
 		playerData.version = 2
+		playerData.pokemonTransferred = 0
 		for p in pokemon:
 			pokemon[p].caughtSpeed = -1
 			pokemon[p].isEvent = false
 			pokemon[p].location = "Unknown"
 			pokemon[p].buddyBoost = pokemon[p].buddyPlaces.size() * 0.01
+			if pokemon[p].distanceWalked >0:
+				print("Break")
+			print("distanceWalked is: " + str(pokemon[p].distanceWalked))
+			pokemon[p].distanceTravelled = pokemon[p].distanceWalked #now tracking actual walking vs all movement
+			pokemon[p].distanceWalked = 0
+			print("distancetravelled is: " + str(pokemon[p].distanceTravelled))
+			print("distanceWalked is: " + str(pokemon[p].distanceWalked))
 		results = true
 		#TODO:additional work here to go from 1 to 2, as I make changes after release.
 	return results

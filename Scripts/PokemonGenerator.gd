@@ -17,8 +17,9 @@ static func MakeMobilePokemon(key):
 	results.level = min(60, randi_range(1, (GameGlobals.playerData.currentLevel + 5) * 2)) #1-12 boosts for new players.
 	results.buddyPlaces = [] # {name, at} for each, to avoid duplicates
 	results.buddyBoost = 0.0 #Increases the combat multiplier by visiting places.
-	results.distanceWalked = 0 #buddys grant candy every km.
+	results.distanceWalked = 0 # Every 1 in this adds 1% combat power.
 	#NEW: ensure these fields are checked for and added when processing data from V1 to V2.
+	results.distanceTravelled = 0 #buddys grant candy every so many.
 	results.caughtSpeed = 0 #This is set to the current speed value if the player wins
 	results.isEvent = false #if this pokemon was from a weekly event, versus a wild spawn
 	results.location = PraxisCore.currentPlusCode.substr(0,8)

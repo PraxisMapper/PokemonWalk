@@ -55,6 +55,8 @@ func ImportData():
 	var gyms = reader.read_file("gymData.json").get_string_from_utf8()
 	GameGlobals.gymData = JSON.parse_string(gyms)
 	
+	GameGlobals.UpdateSaveVersion()
+	
 	GameGlobals.Save()
 	$crInfo.visible = true
 	$crInfo/lblInfo.text = "Data Imported"

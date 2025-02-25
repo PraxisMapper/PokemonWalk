@@ -243,6 +243,15 @@ offset_bottom = 154.0
 theme = ExtResource("4_dw2l7")
 text = "Close"
 
+[node name="lblSpeed" type="Label" parent="."]
+z_index = 10
+offset_left = 83.0
+offset_top = -31.0
+offset_right = 143.0
+offset_bottom = -8.0
+theme = ExtResource("4_dw2l7")
+text = "Speed: "
+
 [connection signal="button_down" from="footer/btnPokemon" to="." method="ShowPokemonInventory"]
 [connection signal="button_down" from="footer/btnSpawns" to="." method="SpawnInfo"]
 [connection signal="button_down" from="footer/btnRaid" to="." method="RaidBattle"]

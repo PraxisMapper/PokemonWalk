@@ -140,6 +140,7 @@ offset_right = 348.0
 offset_bottom = 351.0
 theme = ExtResource("2_oe6ot")
 text = "walk/drive bonus"
+autowrap_mode = 3
 
 [node name="btnClose" type="Button" parent="sc/c"]
 layout_mode = 0

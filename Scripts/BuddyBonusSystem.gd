@@ -12,12 +12,14 @@ static func RecalcBonus():
 	#Intended to be run on a version upgrade to prove a value is legit, 
 	#or to validate a remote pokemon
 	
+const candyDistanceMeters = 340.0 #~200 cells, ~2 minute of highway driving.
 static func AddDistance(buddyKey, cell10s):
-	var candyDistanceMeters = 340.0 #~200 cells, ~2 minute of highway driving.
 	var pokemon = GameGlobals.pokemon[buddyKey]
 	var curCount = int(pokemon.distanceWalked / candyDistanceMeters)
-	pokemon.distanceWalked += PraxisCore.DistanceDegreesToMetersLat(PraxisCore.resolutionCell10) #cell10s # 
-	if int(pokemon.distanceWalked / candyDistanceMeters) != curCount: #just crossed over the threshold
+	pokemon.distanceTravelled += PraxisCore.DistanceDegreesToMetersLat(PraxisCore.resolutionCell10)
+	if (PraxisCore.last_location.speed < GameGlobals.speedLimit):
+		pokemon.distanceWalked += PraxisCore.DistanceDegreesToMetersLat(PraxisCore.resolutionCell10)
+	if int(pokemon.distanceTravelled / candyDistanceMeters) != curCount: #just crossed over the threshold
 		if GameGlobals.playerData.candyByFamily.has(pokemon.family):
 			GameGlobals.playerData.candyByFamily[pokemon.family] += 1
 		else:

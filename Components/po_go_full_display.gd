@@ -30,11 +30,13 @@ func FillPage():
 		
 	$sc/c/lblBonuses.text = ""
 	if pokemonData.caughtSpeed > GameGlobals.speedLimit:
-		$sc/c/lblBonuses.text += str(-GameGlobals.walkingMultiplier) + "% Driving,"
-	elif pokemonData.caughtSpeed > GameGlobals.speedLimit:
-		$sc/c/lblBonuses.text += str(GameGlobals.walkingMultiplier) + "% Walking,"
+		$sc/c/lblBonuses.text += str(int(-GameGlobals.speedBuff * 100)) + "% Drive-Catch,"
+	elif pokemonData.caughtSpeed > 0:
+		$sc/c/lblBonuses.text += str(int(GameGlobals.speedBuff * 100)) + "% Walk-Catch,"
 	if pokemonData.buddyPlaces.size() > 0:
 		$sc/c/lblBonuses.text += str(pokemonData.buddyPlaces.size()) + "% Places,"
+	if pokemonData.distanceWalked > 1000:
+		$sc/c/lblBonuses.text += str(int(pokemonData.distanceWalked * 0.001)) + "% Walking,"
 	
 	#Event pokemon might get a power tweak, but might not?
 	#if (pokemonData.isEvent):
@@ -135,6 +137,9 @@ func FillPage():
 	$sc/c/btnTransfer.text = "Transfer to get " + str(candyGrind) + " Candies"
 	if GameGlobals.playerData.buddy == pokemonData.id:
 		$sc/c/btnTransfer.disabled = true
+	
+	#debugging stuff
+	#$sc/c/placesList/sc/lblPlaces.text += "CaughtSpeed:" + str(pokemonData.caughtSpeed) + "\ndistanceWalked:" + str(pokemonData.distanceWalked) + "\ndistanceTravelled:" + str(pokemonData.distanceTravelled)
 
 	#this part is here to handle when we push a button to update that display.
 	GameGlobals.updateHeader.emit()
@@ -286,6 +291,7 @@ func Transfer():
 	else:
 		GameGlobals.playerData.candyByFamily[pokemonData.family] = candyGrind
 	GameGlobals.pokemon.erase(pokemonData.id)
+	GameGlobals.playerData.pokemonTransferred += 1
 	GameGlobals.Save()
 	updateList.emit()
 	Close()

@@ -85,7 +85,6 @@ func recentCellVisit(cell10):
 		var results = PoGoAutoBattle.Battle1v1(GameGlobals.pokemon[GameGlobals.playerData.buddy], opponent)
 		#print(results)
 		if (results == 1): #victory
-			
 			opponent.caughtSpeed = PraxisCore.last_location.speed
 			if GameGlobals.playerData.autoCatch and GameGlobals.playerData.currentCoins >= 10:
 				GameGlobals.playerData.currentCoins -= 10
@@ -148,6 +147,8 @@ func UpdateRaidButton(cell8):
 func plusCodeChanged(current, old):
 	var workthread = Thread.new()
 	workthread.start(CheckPlaces.bind(current))
+	
+	$lblSpeed.text = "Speed: " + str(PraxisCore.last_location.speed)
 	
 	$header/lblLocation.text = "Location: " + current
 	#Quick check to enable raids, needs done before raid status is checked.

@@ -113,6 +113,7 @@ func SmartClearInventory():
 		else:
 			GameGlobals.playerData.candyByFamily[e.family] = 1
 		GameGlobals.pokemon.erase(e.id)
+		GameGlobals.playerData.pokemonTransferred += 1
 	GameGlobals.pokemonMutex.unlock()
 	GameGlobals.Save()
 	_ready()
