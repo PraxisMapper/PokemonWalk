@@ -30,13 +30,8 @@ static func HydrateGoPokemon(instanceData):
 	var basePokemon = GameGlobals.baseData.pokemon[instanceData.key]
 	var combatPokemon = {}
 	#Create the actual combat-stats for this entry.
-	
 
-	var combatPowerMod = PoGoLevelCurves.GetCombatPowerMultiplier(instanceData.level) + instanceData.buddyBoost
-	if instanceData.caughtSpeed > GameGlobals.speedLimit:
-		combatPowerMod -= .15
-	elif instanceData.caughtSpeed > 0: # Encountered pokemon do not get stronger, nor do ones from earlier releases.
-		combatPowerMod += .15
+	var combatPowerMod = PoGoLevelCurves.GetCombatPowerMultiplier(instanceData)
 	
 	combatPokemon.id = instanceData.id #to help find this specific one in the display later.
 	combatPokemon.name = basePokemon.name

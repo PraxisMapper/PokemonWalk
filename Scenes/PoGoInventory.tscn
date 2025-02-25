@@ -29,10 +29,10 @@ text = "Order Caught"
 
 [node name="sc" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(340, 350)
-offset_left = 35.0
-offset_top = 35.0
+offset_left = 32.0
+offset_top = 43.0
 offset_right = 381.0
-offset_bottom = 385.0
+offset_bottom = 393.0
 
 [node name="gc" type="GridContainer" parent="sc"]
 custom_minimum_size = Vector2(340, 350)
@@ -58,10 +58,11 @@ theme_override_font_sizes/font_size = 16
 text = "Auto-Transfer"
 
 [node name="lblCount" type="Label" parent="."]
-offset_left = 560.0
-offset_top = 12.0
-offset_right = 1072.0
-offset_bottom = 58.0
+offset_left = 120.0
+offset_top = 28.0
+offset_right = 361.0
+offset_bottom = 50.0
+theme = ExtResource("2_hw26e")
 theme_override_font_sizes/font_size = 16
 text = "Current Inventory: "
 horizontal_alignment = 2

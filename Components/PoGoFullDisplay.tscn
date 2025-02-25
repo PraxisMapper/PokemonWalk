@@ -33,27 +33,27 @@ texture = SubResource("NoiseTexture2D_u26e7")
 
 [node name="lblName" type="Label" parent="sc/c"]
 layout_mode = 0
-offset_left = 203.0
+offset_left = 202.0
 offset_top = 4.0
-offset_right = 250.0
+offset_right = 249.0
 offset_bottom = 27.0
 theme = ExtResource("2_oe6ot")
 text = "Name"
 
 [node name="lblPower" type="Label" parent="sc/c"]
 layout_mode = 0
-offset_left = 203.0
+offset_left = 202.0
 offset_top = 42.0
-offset_right = 255.0
+offset_right = 254.0
 offset_bottom = 65.0
 theme = ExtResource("2_oe6ot")
 text = "Power"
 
 [node name="lblIVs" type="Label" parent="sc/c"]
 layout_mode = 0
-offset_left = 201.0
+offset_left = 202.0
 offset_top = 60.0
-offset_right = 356.0
+offset_right = 357.0
 offset_bottom = 104.0
 theme = ExtResource("2_oe6ot")
 text = "IVs:"
@@ -61,9 +61,9 @@ autowrap_mode = 3
 
 [node name="lblCandy" type="Label" parent="sc/c"]
 layout_mode = 0
-offset_left = 200.0
+offset_left = 202.0
 offset_top = 115.0
-offset_right = 266.0
+offset_right = 268.0
 offset_bottom = 132.0
 theme = ExtResource("2_oe6ot")
 text = "Candy:
@@ -71,18 +71,18 @@ text = "Candy:
 
 [node name="lblLevel" type="Label" parent="sc/c"]
 layout_mode = 0
-offset_left = 201.0
+offset_left = 202.0
 offset_top = 23.0
-offset_right = 250.0
+offset_right = 251.0
 offset_bottom = 46.0
 theme = ExtResource("2_oe6ot")
 text = "Level"
 
 [node name="lblTypes" type="Label" parent="sc/c"]
 layout_mode = 0
-offset_left = 199.0
+offset_left = 202.0
 offset_top = 133.0
-offset_right = 358.0
+offset_right = 352.0
 offset_bottom = 196.0
 theme = ExtResource("2_oe6ot")
 text = "Type:"
@@ -112,10 +112,10 @@ autowrap_mode = 3
 
 [node name="btnBoost" type="Button" parent="sc/c"]
 layout_mode = 0
-offset_left = 210.0
-offset_top = 280.0
-offset_right = 349.0
-offset_bottom = 343.0
+offset_left = 211.0
+offset_top = 264.0
+offset_right = 350.0
+offset_bottom = 327.0
 mouse_filter = 1
 theme = ExtResource("2_oe6ot")
 text = "Powerup for X Stardust"
@@ -131,6 +131,15 @@ mouse_filter = 1
 theme = ExtResource("2_oe6ot")
 text = "Transfer for 1 Candy"
 autowrap_mode = 3
+
+[node name="lblBonuses" type="Label" parent="sc/c"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 328.0
+offset_right = 348.0
+offset_bottom = 351.0
+theme = ExtResource("2_oe6ot")
+text = "walk/drive bonus"
 
 [node name="btnClose" type="Button" parent="sc/c"]
 layout_mode = 0

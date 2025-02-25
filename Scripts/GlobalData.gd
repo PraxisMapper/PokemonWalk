@@ -42,8 +42,12 @@ var gymData = {} #may be managed later.
 #If a pokemon is caught below the speed limit, it gets a signficant power boost.
 #Initial value 5.5 m/s (12 mph / 20kph). Chosen because this is the best marathon speed on record.
 var speedLimit = 5.5 
-#This is how much extra you get for walking, versus driving.
+#The additional combat power mod added to a pokemon caught by walking (or removed from one caught by driving)
+var speedBuff = .15
+#This is how much extra stuff (xp, candy, stardust) you get for walking, versus driving.
 var walkingMultiplier = 4 
+#pokemon caught as events, versus wild spawns, might get a power tweak?
+#var eventMod = 0.1
 
 #variables that I didn't end up using.
 var commonPokemonPerArea = 6
@@ -108,11 +112,13 @@ func UpdateSaveVersion():
 		results = true
 	if playerData.version < 2: #Release 3 of Pokemon Walk
 		playerData.version = 2
-		#A: Add caughtSpeed to all pokemon, but set to -1 to indicate it was not officially recorded.
 		for p in pokemon:
 			pokemon[p].caughtSpeed = -1
+			pokemon[p].isEvent = false
+			pokemon[p].location = "Unknown"
+			pokemon[p].buddyBoost = pokemon[p].buddyPlaces.size() * 0.01
 		results = true
-		#TODO: work here to go from 1 to 2, as I make changes after release.
+		#TODO:additional work here to go from 1 to 2, as I make changes after release.
 	return results
 	
 func Load():

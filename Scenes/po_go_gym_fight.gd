@@ -138,10 +138,12 @@ func Start():
 	#now we can check the results of the battle.
 	if battle.boss.Stamina <= 0:
 		#player wins, catch boss, grant other rewards too.
+		boss.caughtSpeed = PraxisCore.last_location.speed
 		GameGlobals.pokemon[boss.id] = boss
 		GameGlobals.playerData.currentCoins += 150
 		GameGlobals.playerData.stardust += 1000
 		GameGlobals.playerData.dailyClearedRaids.append(PraxisCore.currentPlusCode.substr(0,8))
+		
 		GameGlobals.Save()
 	else:
 		#player did not win. I guess the reasons why dont matter.

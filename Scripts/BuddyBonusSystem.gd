@@ -38,7 +38,7 @@ static func UpdateBonus(buddyKey, placedata, currentPosition):
 						add = false
 						break
 				if add:
-					pokemon.buddyBoost += 0.005
+					pokemon.buddyBoost += 0.01
 					pokemon.buddyPlaces.append({n = p.name, tid=p.typeId, at = currentPosition.substr(0,6)}) #at is for validation later.
 				break
 		#Incomplete: We don't have cities in the minimized data, so we can't do this offline at all.

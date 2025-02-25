@@ -17,6 +17,10 @@ func MakeUserCert():
 	key.save("user://generated.key") #both keys unless we add ', true' to this call.
 	key.save("user://generated.pub", true)
 	return key
+	
+func MakeCert(size = 256):
+	var key = crypto.generate_rsa(size)
+	return key
 
 func Sign(userPrivKey, thingToSign, signObject = false):
 	if (thingToSign.has("signature")):

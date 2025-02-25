@@ -13,6 +13,7 @@ func _ready() -> void:
 	GameGlobals.pokemonMutex.lock()
 	sortedList = GameGlobals.pokemon.values()
 	GameGlobals.pokemonMutex.unlock()
+	#print(str(sortedList.size()) + " pokemon in inventory")
 	leftClicked.connect(PopDetails) #default behavior
 	FillGrid()
 

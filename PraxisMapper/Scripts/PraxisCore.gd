@@ -100,7 +100,6 @@ func on_monitoring_location_result(location: Dictionary) -> void:
 
 	last_location = location
 	location_changed.emit(location)
-	print("location changed" + str(location))
 	var plusCode = ""
 	var accuracy = float(location["accuracy"])
 	if (autoPrecision and accuracy <= 6) or precision == 11:

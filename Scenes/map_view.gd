@@ -6,8 +6,6 @@ var inventoryScreenPL = preload("res://Scenes/PoGoInventory.tscn")
 var infoScreenPL = preload("res://Components/PoGoFullDisplay.tscn")
 
 func _ready() -> void:
-	for p in GameGlobals.baseData.pokemon:
-		DebugSpawnPokemon(p)
 	$ScrollingCenteredMap/TileDrawerQueued/Banner.position = Vector2(182 + 96 + 170 ,237 + 268 + 230 + 35)
 	$ScrollingCenteredMap/TileDrawerQueued/Banner.visible = false
 
@@ -66,7 +64,6 @@ func SetBuddy(data):
 	clearPopup()
 
 func recentCellVisit(cell10):
-	print(PraxisCore.last_location)
 	var speedMul = GameGlobals.walkingMultiplier if PraxisCore.last_location.speed < GameGlobals.speedLimit else  1
 	var newCoins = randi_range(3,8) + int(GameGlobals.playerData.currentLevel / 10) * speedMul
 	GameGlobals.playerData.currentCoins += newCoins
@@ -138,7 +135,11 @@ func HideWalkNotice():
 
 func UpdateRaidButton(cell8):
 	if (GameGlobals.playerData.dailyClearedRaids.has(cell8)):
-		$footer/btnRaid.text = "Raid Cleared"
+		var currentString = Time.get_datetime_dict_from_system(true)
+		var today = Time.get_unix_time_from_datetime_string(str(currentString.year) + "-" + str(currentString.month) + "-" + str(currentString.day))
+		var tomorrow = today + (60 * 60 * 24)
+		var unlockTime = tomorrow - Time.get_unix_time_from_system()
+		$footer/btnRaid.text = "Resets in " + str(int(unlockTime) / 3600) + ":" + str((int(unlockTime) % 3600) / 60)
 		$footer/btnRaid.disabled = true
 	else:
 		$footer/btnRaid.text = "Fight Local Raid"
@@ -249,8 +250,8 @@ func RaidBattle():
 	
 	#Their level gets set to a high value. This might vary based on which thing we're fighting.
 	#Remember, my level 50 is level 25 by existing player's expectations. Not actually that hard to beat.
-	boss.level = 50 #Was 70, but you'll need too long to get pokemon that strong.
 	
+	boss.level = max(50, rngLocal.randi_range(1, GameGlobals.playerData.currentLevel * 3 + 5)) #Player Level 15 is where this starts increasing
 	#Update this so the fight goes correctly
 	boss.combatPower = PokemonHelpers.GetCombatPower(boss)
 	raidScene.boss = boss

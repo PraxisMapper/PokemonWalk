@@ -28,6 +28,18 @@ func FillPage():
 	for t in baseData.types:
 		$sc/c/lblTypes.text += t + ", "
 		
+	$sc/c/lblBonuses.text = ""
+	if pokemonData.caughtSpeed > GameGlobals.speedLimit:
+		$sc/c/lblBonuses.text += str(-GameGlobals.walkingMultiplier) + "% Driving,"
+	elif pokemonData.caughtSpeed > GameGlobals.speedLimit:
+		$sc/c/lblBonuses.text += str(GameGlobals.walkingMultiplier) + "% Walking,"
+	if pokemonData.buddyPlaces.size() > 0:
+		$sc/c/lblBonuses.text += str(pokemonData.buddyPlaces.size()) + "% Places,"
+	
+	#Event pokemon might get a power tweak, but might not?
+	#if (pokemonData.isEvent):
+		#$sc/c/lblBonuses.text += 
+	
 	var places = "Places Visited: \n"
 	for p in pokemonData.buddyPlaces:
 		places += p.n + " (" + p.at +")\n"
@@ -108,7 +120,7 @@ func FillPage():
 		else:
 			pass
 			#TODO: Special cases where there's more options in the family line.
-			if pokemonData.key == "EEVEE":
+			if pokemonData.key == "EEVEE" || family[0] == "APPLIN":
 				evoCost = 50
 			
 		$sc/c/btnEvolve.text = "Evolve for " + str(evoCost) + " Candies"
@@ -212,8 +224,9 @@ func Evolve():
 			#print("no equal form for evolution, taking listed one for " + pokemonData.key)
 
 	pokemonData.key = nextstage
-	GameGlobals.pokemon.erase(oldId)
-	GameGlobals.pokemon[pokemonData.id] = pokemonData
+	#This should be unnecessary, the IDs just a unique ID and doesnt need to update with it.
+	#GameGlobals.pokemon.erase(oldId)
+	#GameGlobals.pokemon[pokemonData.id] = pokemonData
 	#TODO: dont change name if it has a nickname.
 	pokemonData.name = GameGlobals.baseData.pokemon[pokemonData.key].name
 	
@@ -245,17 +258,23 @@ func MegaEvolve(formIndex):
 
 func Transform():
 	#Figure out which form we are, and pick the next one.
-	var thisForm = pokemonData.key.split("_")[1]
+	var thisForm = pokemonData.key
+	if thisForm.contains("_"):
+		thisForm = pokemonData.key.split("_")[1]
 	
-	print(str(GameGlobals.baseData.pokemon[pokemonData.key].otherForms))
-	var idx = GameGlobals.baseData.pokemon[pokemonData.key].otherForms.find(str(thisForm))
-	if idx == GameGlobals.baseData.pokemon[pokemonData.key].otherForms.size() - 1:
-		idx = 0
+	if thisForm == GameGlobals.baseData.pokemon[pokemonData.key].otherForms[GameGlobals.baseData.pokemon[pokemonData.key].otherForms.size() - 1]:
+		pokemonData.key = pokemonData.key.split("_")[0]
 	else:
-		idx += 1
+		print(str(GameGlobals.baseData.pokemon[pokemonData.key].otherForms))
+		var idx = GameGlobals.baseData.pokemon[pokemonData.key].otherForms.find(str(thisForm))
+		if idx == GameGlobals.baseData.pokemon[pokemonData.key].otherForms.size() - 1:
+			idx = 0
+		else:
+			idx += 1
 	
-	var newKey = pokemonData.key.split("_")[0] + "_" + GameGlobals.baseData.pokemon[pokemonData.key].otherForms[idx]
-	pokemonData.key = newKey
+		var newKey = pokemonData.key.split("_")[0] + "_" + GameGlobals.baseData.pokemon[pokemonData.key].otherForms[idx]
+		pokemonData.key = newKey
+		
 	GameGlobals.playerData.currentCoins -= 100
 	GameGlobals.Save()
 	updateList.emit()
