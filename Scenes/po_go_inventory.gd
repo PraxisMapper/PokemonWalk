@@ -8,14 +8,35 @@ var sortedList
 signal rightClicked(item)
 signal leftClicked(item)
 
+var currentItemToAdd = 0
+var allItems
+const sizeVec = Vector2(96, 96)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameGlobals.pokemonMutex.lock()
 	sortedList = GameGlobals.pokemon.values()
 	GameGlobals.pokemonMutex.unlock()
-	#print(str(sortedList.size()) + " pokemon in inventory")
+	allItems = sortedList.size() - 1
 	leftClicked.connect(PopDetails) #default behavior
 	FillGrid()
+
+const itemsPerFrame = 3
+func _process(time):
+	var itemsLeft = 0
+	if currentItemToAdd < allItems and itemsLeft < itemsPerFrame:
+		var cc = Control.new()
+		cc.set_size(sizeVec)
+		cc.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		cc.custom_minimum_size = sizeVec
+		var display = plDisplay.instantiate()
+		
+		display.data = sortedList[currentItemToAdd]
+		cc.add_child(display)
+		$sc/gc.add_child(cc)
+		display.leftClicked.connect(emitLeft) 
+		currentItemToAdd += 1
+		itemsLeft += 1
 
 func ChangeSort():
 	if (sortMode == "power"):
@@ -30,33 +51,14 @@ func ChangeSort():
 	FillGrid()
 
 func FillGrid():
-	$sc/gc.queue_free()
+	for x in $sc/gc.get_children():
+		$sc/gc.remove_child(x)
+		x.queue_free()
 	await get_tree().process_frame
-	var newgc = GridContainer.new()
-	newgc.name = "gc"
-	newgc.columns = 3
-	$sc.add_child(newgc)
 	
 	sortedList.sort_custom(SortList)
 	$lblCount.text = "Current Inventory: " + str(sortedList.size())
-	
-	var sizeVec = Vector2(96, 96)
-	for poke in sortedList:
-		#This feels kinda dumb, but I cannot get the PoGoMiniDisplay to be a control 
-		#that works for me, so the fix here is to keep it a Node2D and make it a child
-		#of a Control that has the right minimum size set.
-		var cc = Control.new()
-		cc.set_size(sizeVec)
-		cc.mouse_filter = Control.MOUSE_FILTER_IGNORE # was pass, checking if this helps scrolling on devices.
-		#possible alternatives including setting the filter to pass on display below?
-		cc.custom_minimum_size = sizeVec
-		var display = plDisplay.instantiate()
-		
-		display.data = poke
-		cc.add_child(display)
-		$sc/gc.add_child(cc)
-		display.leftClicked.connect(emitLeft) 
-
+	currentItemToAdd = 0
 
 func SortList(a, b):
 	if sortMode == "order": #the order they were caught in, which should be the order of the dict.

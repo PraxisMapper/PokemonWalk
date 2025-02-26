@@ -158,7 +158,6 @@ func Save():
 func GrantPlayerXP(amount):
 	playerData.currentXp += amount
 	if playerData.currentXp >= 100 * (playerData.currentLevel ** 2):
-		#playerData.currentXp -= (100 * (playerData.level ** 2))
 		playerData.currentLevel += 1
 
 #NOTE: this was for a full-combat setup, but I might keep it for the mobile style as well.

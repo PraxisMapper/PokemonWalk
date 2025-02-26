@@ -83,7 +83,6 @@ func recentCellVisit(cell10):
 		
 		$walkNotice/txrOpponent.texture = load(PokemonHelpers.GetPokemonFrontSprite(opponent.key, false, "M"))
 		var results = PoGoAutoBattle.Battle1v1(GameGlobals.pokemon[GameGlobals.playerData.buddy], opponent)
-		#print(results)
 		if (results == 1): #victory
 			opponent.caughtSpeed = PraxisCore.last_location.speed
 			if GameGlobals.playerData.autoCatch and GameGlobals.playerData.currentCoins >= 10:
@@ -136,8 +135,9 @@ func UpdateRaidButton(cell8):
 	if (GameGlobals.playerData.dailyClearedRaids.has(cell8)):
 		var currentString = Time.get_datetime_dict_from_system(true)
 		var today = Time.get_unix_time_from_datetime_string(str(currentString.year) + "-" + str(currentString.month) + "-" + str(currentString.day))
-		var tomorrow = today + (60 * 60 * 24)
-		var unlockTime = tomorrow - Time.get_unix_time_from_system()
+		var tomorrow = today + 86400
+		var unlockTime =  tomorrow - Time.get_unix_time_from_system()
+		
 		$footer/btnRaid.text = "Resets in " + str(int(unlockTime) / 3600) + ":" + str((int(unlockTime) % 3600) / 60)
 		$footer/btnRaid.disabled = true
 	else:
@@ -156,10 +156,10 @@ func plusCodeChanged(current, old):
 	
 	#check for the spawn table
 	var cell8 = current.substr(0,8)
+	UpdateRaidButton(cell8) # moved here so it unlocks if you're currently in it.
 	if cell8 != old.substr(0,8):
 		#rebuild spawn table.
 		GameGlobals.currentSpawnTable = SpawnLogic.SpawnTable(cell8)
-		UpdateRaidButton(cell8)
 
 	var baseCell = current.substr(0,6)
 	var cellsToLoad = PlusCodes.GetNearbyCells(baseCell, 1)
@@ -210,7 +210,8 @@ func CheckRaidReset():
 		#check if raids need reset first
 	var currentString = Time.get_datetime_dict_from_system(true)
 	var today = Time.get_unix_time_from_datetime_string(str(currentString.year) + "-" + str(currentString.month) + "-" + str(currentString.day))
-	if GameGlobals.playerData.raidsLastCleared < today - (60 * 60 * 24): #is last cleared from midnight the day before
+	if GameGlobals.playerData.raidsLastCleared <= today - 86400: #is last cleared from midnight the day before
+		var tomorrow = today + 86400
 		GameGlobals.playerData.dailyClearedRaids.clear()
 		GameGlobals.playerData.raidsLastCleared = today
 		GameGlobals.Save()

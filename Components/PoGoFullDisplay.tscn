@@ -14,6 +14,7 @@ script = ExtResource("1_32yl8")
 custom_minimum_size = Vector2(360, 440)
 offset_right = 360.0
 offset_bottom = 440.0
+horizontal_scroll_mode = 0
 
 [node name="c" type="ColorRect" parent="sc"]
 custom_minimum_size = Vector2(360, 680)
