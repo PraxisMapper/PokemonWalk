@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djn1ukfg1vgvk"
-path="res://.godot/imported/OVERQWIL.PNG-50acaaefb0c8c7cb67f7492c2b73ef9f.ctex"
+path="res://.godot/imported/OVERQWIL.png-686c43b444a21a12d5745aa2b331e029.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/OVERQWIL.PNG"
-dest_files=["res://.godot/imported/OVERQWIL.PNG-50acaaefb0c8c7cb67f7492c2b73ef9f.ctex"]
+source_file="res://Assets/Front/OVERQWIL.png"
+dest_files=["res://.godot/imported/OVERQWIL.png-686c43b444a21a12d5745aa2b331e029.ctex"]
 
 [params]
 

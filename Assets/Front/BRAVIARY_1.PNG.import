@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ew8mqp13tx3f"
-path="res://.godot/imported/BRAVIARY_1.PNG-5c9986cdb94531ef9cba7ec96c68c108.ctex"
+path="res://.godot/imported/BRAVIARY_1.png-7dd8c631508bcf964e75b8b5f76a7430.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/BRAVIARY_1.PNG"
-dest_files=["res://.godot/imported/BRAVIARY_1.PNG-5c9986cdb94531ef9cba7ec96c68c108.ctex"]
+source_file="res://Assets/Front/BRAVIARY_1.png"
+dest_files=["res://.godot/imported/BRAVIARY_1.png-7dd8c631508bcf964e75b8b5f76a7430.ctex"]
 
 [params]
 
