@@ -21,7 +21,7 @@ func _ready() -> void:
 			continue
 		
 		var odds = snapped(float(spawnTable[k]) / spawnTable.total * 100.0, 2)
-		print(str(GameGlobals.baseData.pokemon[k]))
+		#print(str(GameGlobals.baseData.pokemon[k]))
 		if GameGlobals.baseData.pokemon[k].formName != null:
 			writeup += str(odds) + "% chance: " + GameGlobals.baseData.pokemon[k].name + "(" + GameGlobals.baseData.pokemon[k].formName + ")\n" 
 		else:

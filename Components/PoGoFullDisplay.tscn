@@ -11,13 +11,13 @@ height = 192
 script = ExtResource("1_32yl8")
 
 [node name="sc" type="ScrollContainer" parent="."]
-custom_minimum_size = Vector2(360, 440)
-offset_right = 360.0
-offset_bottom = 440.0
+custom_minimum_size = Vector2(360, 400)
+offset_right = 368.0
+offset_bottom = 400.0
 horizontal_scroll_mode = 0
 
 [node name="c" type="ColorRect" parent="sc"]
-custom_minimum_size = Vector2(360, 680)
+custom_minimum_size = Vector2(360, 640)
 layout_mode = 2
 mouse_filter = 1
 color = Color(0.0115189, 0.193908, 0.250748, 1)
@@ -142,15 +142,6 @@ offset_bottom = 351.0
 theme = ExtResource("2_oe6ot")
 text = "walk/drive bonus"
 autowrap_mode = 3
-
-[node name="btnClose" type="Button" parent="sc/c"]
-layout_mode = 0
-offset_left = 133.0
-offset_top = 639.0
-offset_right = 213.0
-offset_bottom = 672.0
-theme = ExtResource("2_oe6ot")
-text = "Close"
 
 [node name="moves" type="ColorRect" parent="sc/c"]
 layout_mode = 0
@@ -283,14 +274,28 @@ offset_right = 515.0
 offset_bottom = 747.0
 text = "Debug"
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = 400.0
+offset_right = 360.0
+offset_bottom = 440.0
+color = Color(0.0117647, 0.192157, 0.25098, 1)
+
+[node name="btnClose" type="Button" parent="ColorRect"]
+offset_left = 142.0
+offset_top = 3.0
+offset_right = 222.0
+offset_bottom = 36.0
+theme = ExtResource("2_oe6ot")
+text = "Close"
+
 [connection signal="pressed" from="sc/c/btnEvolve" to="." method="Evolve"]
 [connection signal="pressed" from="sc/c/btnTransform" to="." method="Transform"]
 [connection signal="pressed" from="sc/c/btnBoost" to="." method="Boost"]
 [connection signal="pressed" from="sc/c/btnTransfer" to="." method="Transfer"]
-[connection signal="pressed" from="sc/c/btnClose" to="." method="Close"]
 [connection signal="pressed" from="sc/c/moves/btnChangeFast" to="." method="ChangeFastMove"]
 [connection signal="pressed" from="sc/c/moves/btnChangeCharge1" to="." method="ChangeCharge1"]
 [connection signal="pressed" from="sc/c/moves/btnChangeCharge2" to="." method="UnlockOrChangeCharge2"]
 [connection signal="pressed" from="sc/c/megastone/btnMega1" to="." method="MegaEvolve1"]
 [connection signal="pressed" from="sc/c/megastone/btnMega2" to="." method="MegaEvolve2"]
 [connection signal="button_down" from="sc/c/Button" to="." method="DebugEvolveAll"]
+[connection signal="pressed" from="ColorRect/btnClose" to="." method="Close"]

@@ -4,7 +4,7 @@ var pokemonData
 var candyGrind = 0
 var evoCost = 0
 
-signal updateList
+signal updateList #This should connect to the parent
 
 func _ready() -> void:
 	if pokemonData == null:

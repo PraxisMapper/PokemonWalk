@@ -202,6 +202,7 @@ func UpdatePlacesList(placesList):
 	$header/lblPlaces.text = placesList
 
 func ShowPokemonInventory():
+	#DebugSpawnPokemon("ROTOM")
 	clearPopup()
 	var inventory = inventoryScreenPL.instantiate()
 	$popup.add_child(inventory)
@@ -241,7 +242,7 @@ func RaidBattle():
 		rngLocal.randf() #make the same number of random pulls so we get the same result next.
 	var thisWeekResults = rngLocal.randf()
 	var picked = int((raidSpawns.size() - 1) * thisWeekResults)
-	print("total of " + str(raidSpawns.size()) + " options, picked " + str(picked))
+	#print("total of " + str(raidSpawns.size()) + " options, picked " + str(picked))
 	var boss = PokemonGenerator.MakeMobilePokemon(raidSpawns[picked])
 	
 	#Raid upgrades. However it is we picked the boss, we need to upgrade them some.
