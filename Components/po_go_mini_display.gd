@@ -13,6 +13,9 @@ func _ready() -> void:
 	SetInfo(data)
 	$ClickListener.gui_input.connect(popInput)
 
+func SetColor(color):
+	$ColorRect.color = color
+
 func SetInfo(pokemonData):
 	if pokemonData == null or pokemonData.is_empty():
 		return
@@ -39,10 +42,12 @@ func popInput(inputEvent):
 			cancelLeftClick = false
 		else:
 			if cancelLeftClick == false:
+				data.nodeName = self.get_path()
 				leftClicked.emit(data)
 				cancelLeftClick  = true
 	elif inputEvent.button_index == MOUSE_BUTTON_RIGHT:
 		if inputEvent.pressed == true:
 			cancelLeftClick = true
 		else:
+			data.nodeName = self.id
 			rightClicked.emit(data)

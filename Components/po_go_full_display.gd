@@ -12,6 +12,8 @@ func _ready() -> void:
 	FillPage()
 
 func FillPage():
+	print("Pokemon is " + pokemonData.key)
+	print("sprite path is " + PokemonHelpers.GetPokemonFrontSprite(pokemonData.key, false, "M"))
 	var baseData = GameGlobals.baseData.pokemon[pokemonData.key]
 	$sc/c/lblName.text = pokemonData.name
 	$sc/c/lblPower.text = str(pokemonData.combatPower) + " CP"
@@ -254,7 +256,12 @@ func MegaEvolve2():
 func MegaEvolve(formIndex):
 	var baseData = GameGlobals.baseData.pokemon[pokemonData.key]
 	var newKey = pokemonData.key.split("_")[0] + "_" + baseData.otherForms[formIndex]
+	var newBase = GameGlobals.baseData.pokemon[newKey]
 	pokemonData.key = newKey
+	if newBase.formName.contains(baseData.name):
+		pokemonData.name = newBase.formName
+	else:
+		pokemonData.name = newBase.name + "(" + newBase.formName + ")"
 	pokemonData.combatPower = PokemonHelpers.GetCombatPower(pokemonData)
 	GameGlobals.playerData.candyByFamily[pokemonData.family] -= 100
 	GameGlobals.Save()
@@ -270,7 +277,7 @@ func Transform():
 	if thisForm == GameGlobals.baseData.pokemon[pokemonData.key].otherForms[GameGlobals.baseData.pokemon[pokemonData.key].otherForms.size() - 1]:
 		pokemonData.key = pokemonData.key.split("_")[0]
 	else:
-		print(str(GameGlobals.baseData.pokemon[pokemonData.key].otherForms))
+		#print(str(GameGlobals.baseData.pokemon[pokemonData.key].otherForms))
 		var idx = GameGlobals.baseData.pokemon[pokemonData.key].otherForms.find(str(thisForm))
 		if idx == GameGlobals.baseData.pokemon[pokemonData.key].otherForms.size() - 1:
 			idx = 0
@@ -279,7 +286,12 @@ func Transform():
 	
 		var newKey = pokemonData.key.split("_")[0] + "_" + GameGlobals.baseData.pokemon[pokemonData.key].otherForms[idx]
 		pokemonData.key = newKey
-		
+	
+	if GameGlobals.baseData.pokemon[pokemonData.key].formName.contains(GameGlobals.baseData.pokemon[pokemonData.key].name):
+		pokemonData.name = GameGlobals.baseData.pokemon[pokemonData.key].formName
+	else:
+		pokemonData.name = GameGlobals.baseData.pokemon[pokemonData.key].name + "(" + GameGlobals.baseData.pokemon[pokemonData.key].formName + ")"
+	
 	GameGlobals.playerData.currentCoins -= 100
 	GameGlobals.Save()
 	updateList.emit()

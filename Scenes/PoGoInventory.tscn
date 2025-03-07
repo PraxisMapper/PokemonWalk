@@ -41,21 +41,30 @@ columns = 3
 
 [node name="btnClose" type="Button" parent="."]
 offset_left = 255.0
-offset_top = 405.0
+offset_top = 404.0
 offset_right = 341.0
-offset_bottom = 433.0
+offset_bottom = 428.0
 theme = ExtResource("2_hw26e")
 theme_override_font_sizes/font_size = 16
 text = "Close"
 
-[node name="btnClose2" type="Button" parent="."]
-offset_left = 26.0
-offset_top = 405.0
-offset_right = 152.0
-offset_bottom = 433.0
+[node name="btnAutoTransfer" type="Button" parent="."]
+offset_left = 90.0
+offset_top = 404.0
+offset_right = 150.0
+offset_bottom = 427.0
 theme = ExtResource("2_hw26e")
 theme_override_font_sizes/font_size = 16
-text = "Auto-Transfer"
+text = "Auto"
+
+[node name="btnMultiTransfer" type="Button" parent="."]
+offset_left = 160.0
+offset_top = 404.0
+offset_right = 230.0
+offset_bottom = 427.0
+theme = ExtResource("2_hw26e")
+theme_override_font_sizes/font_size = 16
+text = "Multi"
 
 [node name="lblCount" type="Label" parent="."]
 offset_left = 120.0
@@ -67,6 +76,15 @@ theme_override_font_sizes/font_size = 16
 text = "Current Inventory: "
 horizontal_alignment = 2
 
+[node name="Label2" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 407.0
+offset_right = 89.0
+offset_bottom = 430.0
+theme = ExtResource("2_hw26e")
+text = "Transfer:"
+
 [connection signal="button_down" from="btnSortKey" to="." method="ChangeSort"]
 [connection signal="button_down" from="btnClose" to="." method="Close"]
-[connection signal="button_down" from="btnClose2" to="." method="SmartClearInventory"]
+[connection signal="button_down" from="btnAutoTransfer" to="." method="SmartClearInventory"]
+[connection signal="pressed" from="btnMultiTransfer" to="." method="MultiTransfer"]

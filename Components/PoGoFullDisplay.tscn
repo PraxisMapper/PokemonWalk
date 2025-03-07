@@ -281,6 +281,7 @@ offset_bottom = 440.0
 color = Color(0.0117647, 0.192157, 0.25098, 1)
 
 [node name="btnClose" type="Button" parent="ColorRect"]
+layout_mode = 0
 offset_left = 142.0
 offset_top = 3.0
 offset_right = 222.0

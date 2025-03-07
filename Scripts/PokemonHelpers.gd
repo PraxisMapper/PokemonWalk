@@ -4,7 +4,6 @@ class_name PokemonHelpers
 # TODO: remember I'm making abilities and types arrays to allow for possible fusions.
 
 static func GetPokemonFrontSprite(pokemonKey, isShiny, gender):
-	pass
 	#Naming rules:
 	#base path: Assets/Front
 	#if shiny? append " shiny"
@@ -23,16 +22,20 @@ static func GetPokemonFrontSprite(pokemonKey, isShiny, gender):
 		spriteName += "/"
 	
 	if (gender == "f"):
-		if FileAccess.file_exists(spriteName + pokemonKey + "_female.png"):
+		if ResourceLoader.exists(spriteName + pokemonKey + "_female.png"):
 			spriteName += pokemonKey + "_female.png"
 	else:
 		spriteName += pokemonKey + ".png"
 	
+	#NOTE: ResourceLoader is necessary to get these sprites in the released game.
+	#The textures are compressed and no longer on disk, so FileAccess.file_exists always fails on mobile.
 	if pokemonKey.contains("_"):
 		#If this form doesnt have a separate sprite, use the base one.
-		if !FileAccess.file_exists(spriteName):
+		print("Looking for filename " + spriteName)
+		if !ResourceLoader.exists(spriteName):
+			print("File not found, getting " + spriteName.split("_")[0] + ".png instead")
 			spriteName = spriteName.split("_")[0] + ".png"
-	
+			
 	return spriteName
 	
 static func NewPokemonData(pokemonNumber):
@@ -246,11 +249,19 @@ static func BoostPokemon(key):
 		instanceData.combatPower = PokemonHelpers.GetCombatPower(instanceData)
 		GameGlobals.Save()
 
-static func EvolvePokemon(key, targetForm): #TODO unused?
-	#the user wants to evolve this pokemon, so evolve it. 
-	#TODO: do they have an option to choose which one they get? Or is it random if multiple
-	#are available? I think some used an item, EEVEE had conditions.
-	
-	var instanceData = GameGlobals.pokemon[key]
-	var base = GameGlobals.baseData.pokemon[instanceData.key]
-	
+static func Transfer(pokemonId, skipSave = false):
+	var baseData =  GameGlobals.pokemon[pokemonId]
+	var pokemonData = GameGlobals.baseData.pokemon[baseData.key]
+
+	var candyGrind = 1
+	var idx = baseData.family.find(pokemonData.key)
+	if (idx > -1):
+		candyGrind = 1 + (idx * 2)
+	if (GameGlobals.playerData.candyByFamily.has(pokemonData.family)):
+		GameGlobals.playerData.candyByFamily[pokemonData.family] += candyGrind
+	else:
+		GameGlobals.playerData.candyByFamily[pokemonData.family] = candyGrind
+	GameGlobals.pokemon.erase(pokemonId)
+	GameGlobals.playerData.pokemonTransferred += 1
+	if !skipSave: #when multi-transferring, we save manually after all transfers.
+		GameGlobals.Save()

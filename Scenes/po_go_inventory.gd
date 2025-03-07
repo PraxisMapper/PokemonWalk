@@ -12,14 +12,13 @@ var currentItemToAdd = 0
 var allItems
 const sizeVec = Vector2(96, 96)
 
+var inMultiTransfer = false
+var multiSelected = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameGlobals.pokemonMutex.lock()
-	sortedList = GameGlobals.pokemon.values()
-	GameGlobals.pokemonMutex.unlock()
-	allItems = sortedList.size() - 1
+	UpdateList()
 	leftClicked.connect(PopDetails) #default behavior
-	FillGrid()
 
 const itemsPerFrame = 3
 func _process(time):
@@ -37,6 +36,13 @@ func _process(time):
 		display.leftClicked.connect(emitLeft) 
 		currentItemToAdd += 1
 		itemsLeft += 1
+
+func UpdateList():
+	GameGlobals.pokemonMutex.lock()
+	sortedList = GameGlobals.pokemon.values()
+	GameGlobals.pokemonMutex.unlock()
+	allItems = sortedList.size() - 1
+	FillGrid()
 
 func ChangeSort():
 	if (sortMode == "power"):
@@ -122,6 +128,38 @@ func SmartClearInventory():
 
 func SmartClearSort(a, b):
 	return a.combatPower > b.combatPower
+
+func MultiTransfer():
+	if inMultiTransfer:
+		#This is now the confirm button, clear out all the selected pokemon
+		for s in multiSelected: #Should be ID of the pokemon
+			print(s)
+			PokemonHelpers.Transfer(s, true)
+		multiSelected.clear()
+		GameGlobals.Save()
+		$btnMultiTransfer.text = "Multi"
+		$ColorRect.color = "01003e"
+		leftClicked.disconnect(MultiTransferTap)
+		leftClicked.connect(PopDetails)
+		UpdateList()
+	else:
+		#enable multi transfer mode and indicate this to the player
+		$btnMultiTransfer.text = "Confirm"
+		$ColorRect.color = "51508e"
+		leftClicked.disconnect(PopDetails)
+		leftClicked.connect(MultiTransferTap)
+	inMultiTransfer = !inMultiTransfer
+
+func MultiTransferTap(data):
+	#TODO: change color on selected control, check nodeName on data
+	var icon = get_node(data.nodeName)
+	var idx = multiSelected.find(data.id)
+	if  idx >= 0:
+		multiSelected.remove_at(idx)
+		icon.SetColor("FFFFFF")
+	else:
+		multiSelected.push_back(data.id)
+		icon.SetColor("CC0000")
 
 func Close():
 	queue_free()
