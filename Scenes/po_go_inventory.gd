@@ -87,7 +87,7 @@ func emitRight(data):
 func PopDetails(data):
 	var fullDisplay = plFullDisplay.instantiate()
 	fullDisplay.pokemonData = data
-	fullDisplay.updateList.connect(FillGrid)
+	fullDisplay.updateList.connect(UpdateList)
 	add_child(fullDisplay)
 
 func DisconnectDefault():
