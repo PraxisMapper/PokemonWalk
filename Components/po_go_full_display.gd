@@ -139,6 +139,7 @@ func FillPage():
 	$sc/c/btnTransfer.text = "Transfer to get " + str(candyGrind) + " Candies"
 	if GameGlobals.playerData.buddy == pokemonData.id:
 		$sc/c/btnTransfer.disabled = true
+		$ColorRect/btnBuddy.disabled = true
 	
 	#debugging stuff
 	#$sc/c/placesList/sc/lblPlaces.text += "CaughtSpeed:" + str(pokemonData.caughtSpeed) + "\ndistanceWalked:" + str(pokemonData.distanceWalked) + "\ndistanceTravelled:" + str(pokemonData.distanceTravelled)
@@ -307,6 +308,11 @@ func Transfer():
 	GameGlobals.Save()
 	updateList.emit()
 	Close()
+
+func SetBuddy():
+	var root = get_tree().current_scene
+	root.SetBuddy(pokemonData)
+	$ColorRect/btnBuddy.disabled = true
 
 func Close():
 	queue_free()

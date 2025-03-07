@@ -16,7 +16,7 @@ func _ready() -> void:
 	plusCodeChanged(PraxisCore.currentPlusCode, "")
 	
 	$header/PoGoMiniDisplay.leftClicked.connect(BuddyInfo)
-	$header/PoGoMiniDisplay.rightClicked.connect(ChangeBuddy)
+	$header/PoGoMiniDisplay.rightClicked.connect(ChangeBuddy) #This seems to have quit working in Godot 4.4?
 	
 	if GameGlobals.currentSpawnTable.is_empty():
 		GameGlobals.currentSpawnTable = SpawnLogic.SpawnTable(PraxisCore.currentPlusCode.substr(0,8))

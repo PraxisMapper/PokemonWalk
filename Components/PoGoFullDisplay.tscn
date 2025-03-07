@@ -282,12 +282,21 @@ color = Color(0.0117647, 0.192157, 0.25098, 1)
 
 [node name="btnClose" type="Button" parent="ColorRect"]
 layout_mode = 0
-offset_left = 142.0
-offset_top = 3.0
-offset_right = 222.0
-offset_bottom = 36.0
+offset_left = 274.0
+offset_top = 2.0
+offset_right = 354.0
+offset_bottom = 35.0
 theme = ExtResource("2_oe6ot")
 text = "Close"
+
+[node name="btnBuddy" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 134.0
+offset_bottom = 35.0
+theme = ExtResource("2_oe6ot")
+text = "Set as Buddy"
 
 [connection signal="pressed" from="sc/c/btnEvolve" to="." method="Evolve"]
 [connection signal="pressed" from="sc/c/btnTransform" to="." method="Transform"]
@@ -300,3 +309,4 @@ text = "Close"
 [connection signal="pressed" from="sc/c/megastone/btnMega2" to="." method="MegaEvolve2"]
 [connection signal="button_down" from="sc/c/Button" to="." method="DebugEvolveAll"]
 [connection signal="pressed" from="ColorRect/btnClose" to="." method="Close"]
+[connection signal="pressed" from="ColorRect/btnBuddy" to="." method="SetBuddy"]
