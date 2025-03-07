@@ -4,7 +4,6 @@ class_name GlobalData
 #This is accessed via GameGlobals autoload
 #Hold player info, game info loaded from files, etc.
 #Access everything from GameGlobals autoload node.
-
 signal updateHeader
 
 var currentPlace = ["", ""]
@@ -32,6 +31,7 @@ var playerData = {
 	#Probably easier to save this encrypted instead.
 	allowFusions = false, #set to true once unlocked
 	pokemonTransferred = 0, #tracked for story stuff.
+	soundEnabled = true,
 }
 var styleData = {}
 var cachedAreaData = {}
@@ -128,6 +128,9 @@ func UpdateSaveVersion():
 			print("distanceWalked is: " + str(pokemon[p].distanceWalked))
 		results = true
 		#TODO:additional work here to go from 1 to 2, as I make changes after release.
+	if !playerData.has("soundEnabled"):
+		playerData.soundEnabled = true
+		results = true
 	return results
 	
 func Load():

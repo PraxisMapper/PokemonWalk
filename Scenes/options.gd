@@ -1,6 +1,13 @@
 extends Node2D
 class_name OptionsScene
 
+func _ready():
+	$chkSound.button_pressed = GameGlobals.playerData.soundEnabled
+
+func ToggleSound(enabled):
+	GameGlobals.playerData.soundEnabled = enabled
+	GameGlobals.Save()
+
 func Close():
 	queue_free()
 

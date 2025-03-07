@@ -71,6 +71,10 @@ func recentCellVisit(cell10):
 	if eventResults <= 4:
 		$walkNotice/txrOpponent.visible = false
 		$walkNotice/lblMessage.text = "You got " + str(newCoins) + " coins"
+		print(GameGlobals.playerData.soundEnabled)
+		if GameGlobals.playerData.soundEnabled:
+			$AudioStreamPlayer.stream = SoundSystem.coinSound
+			$AudioStreamPlayer.play()
 	else:
 		#combat
 		$walkNotice/txrOpponent.visible = true
@@ -86,6 +90,9 @@ func recentCellVisit(cell10):
 		if (results == 1): #victory
 			opponent.caughtSpeed = PraxisCore.last_location.speed
 			if GameGlobals.playerData.autoCatch and GameGlobals.playerData.currentCoins >= 10:
+				if GameGlobals.playerData.soundEnabled:
+					$AudioStreamPlayer.stream = SoundSystem.catchSound
+					$AudioStreamPlayer.play()
 				GameGlobals.playerData.currentCoins -= 10
 				GameGlobals.pokemon[opponent.id] = opponent
 				$walkNotice/lblMessage.text = "Earned " + str(newCoins) + " coins and you caught a " + opponent.name + "!"
@@ -158,6 +165,9 @@ func plusCodeChanged(current, old):
 	var cell8 = current.substr(0,8)
 	UpdateRaidButton(cell8) # moved here so it unlocks if you're currently in it.
 	if cell8 != old.substr(0,8):
+		if GameGlobals.playerData.soundEnabled and !$footer/btnRaid.disabled:
+			$AudioStreamPlayer.stream = SoundSystem.raidSound
+			$AudioStreamPlayer.play()
 		#rebuild spawn table.
 		GameGlobals.currentSpawnTable = SpawnLogic.SpawnTable(cell8)
 
