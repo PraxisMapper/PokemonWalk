@@ -153,7 +153,8 @@ func UpdateRaidButton(cell8):
 
 func plusCodeChanged(current, old):
 	var workthread = Thread.new()
-	workthread.start(CheckPlaces.bind(current))
+	if (current.substr(0,10) != old.substr(0,10)): #dont do this update if we did a Cell11 move.
+		workthread.start(CheckPlaces.bind(current))
 	
 	$lblSpeed.text = "Speed: " + str(PraxisCore.last_location.speed)
 	
