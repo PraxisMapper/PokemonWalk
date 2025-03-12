@@ -67,3 +67,6 @@ func ImportData():
 	GameGlobals.Save()
 	$crInfo.visible = true
 	$crInfo/lblInfo.text = "Data Imported"
+
+func DownloadCell4Data():
+	$GetFile.getCell4File(PraxisCore.currentPlusCode.substr(0,4))

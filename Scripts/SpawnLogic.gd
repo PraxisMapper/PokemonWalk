@@ -91,7 +91,7 @@ static var eventEntries = [
 	{ #10, Mar 12-18
 		name = "Alola Week",
 		description = "Alolan forms ahoy!",
-		spawns = {"RATTATA_1" = 1, "SANDSHREW_1" = 1, "VULPIX_1" = 1, "DIGLET_1" = 1,
+		spawns = {"RATTATA_1" = 1, "SANDSHREW_1" = 1, "VULPIX_1" = 1, "DIGLETT_1" = 1,
 		"MEOWTH_1" = 1, "GEODUDE_1" = 1, "GRIMER_1" = 1}
 	},
 	{ #11, Mar 19-25
@@ -207,7 +207,7 @@ static var eventEntries = [
 	{ #29, Jul 23-29
 		name = "Alola Week",
 		description = "Alolan forms ahoy!",
-		spawns = {"RATTATA_1" = 1, "SANDSHREW_1" = 1, "VULPIX_1" = 1, "DIGLET_1" = 1,
+		spawns = {"RATTATA_1" = 1, "SANDSHREW_1" = 1, "VULPIX_1" = 1, "DIGLETT_1" = 1,
 		"MEOWTH_1" = 1, "GEODUDE_1" = 1, "GRIMER_1" = 1}
 	},
 	{ #30, Jul30-Aug5
@@ -329,7 +329,7 @@ static var eventEntries = [
 	{ #49, Dec 10-16
 		name = "Alola Week",
 		description = "Alolan forms ahoy!",
-		spawns = {"RATTATA_1" = 1, "SANDSHREW_1" = 1, "VULPIX_1" = 1, "DIGLET_1" = 1,
+		spawns = {"RATTATA_1" = 1, "SANDSHREW_1" = 1, "VULPIX_1" = 1, "DIGLETT_1" = 1,
 		"MEOWTH_1" = 1, "GEODUDE_1" = 1, "GRIMER_1" = 1}
 	},
 	{ #50, Dec 17-23

@@ -70,12 +70,11 @@ func SortList(a, b):
 	if sortMode == "order": #the order they were caught in, which should be the order of the dict.
 		var timeCaughtA = int(a.id.split("_")[2])
 		var timeCaughtB = int(b.id.split("_")[2])
-		return timeCaughtA < timeCaughtB
+		return timeCaughtA > timeCaughtB
 	elif sortMode == "power":
 		return a.combatPower > b.combatPower
-	elif sortMode == "name":
+	else: #sortMode == "name":
 		return a.name < b.name
-	#TODO other options later.
 	return a
 	
 func emitLeft(data):

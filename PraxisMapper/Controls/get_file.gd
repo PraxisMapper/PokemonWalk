@@ -41,6 +41,7 @@ func getCell4File(plusCode4):
 		var reader = ZIPReader.new()
 		var isGoodFile = reader.open("user://Data/Full/" + plusCode4 + ".zip")
 		if isGoodFile == OK:
+			print("file already exists")
 			file_downloaded.emit()
 			return 1 #already downloaded this! May have a future setup to force this.
 	

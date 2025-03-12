@@ -10,7 +10,7 @@ var currentPlace = ["", ""]
 
 var baseData = {}
 var playerData = {
-	version = 1,
+	version = 3,
 	saveCreated = Time.get_unix_time_from_system(),
 	currentXp = 0,
 	currentLevel = 1,
@@ -127,10 +127,14 @@ func UpdateSaveVersion():
 			print("distancetravelled is: " + str(pokemon[p].distanceTravelled))
 			print("distanceWalked is: " + str(pokemon[p].distanceWalked))
 		results = true
-		#TODO:additional work here to go from 1 to 2, as I make changes after release.
-	if !playerData.has("soundEnabled"):
-		playerData.soundEnabled = true
+	if playerData.version < 3: #Release 5 of Pokemon Walk
+		playerData.version = 3
+		if !playerData.has("soundEnabled"):
+			playerData.soundEnabled = true
+		for p in pokemon:
+			pokemon[p].combatPower = PokemonHelpers.GetCombatPower(pokemon[p])
 		results = true
+		#TODO:additional work here to go from 3 to 4, as I make changes after release.
 	return results
 	
 func Load():

@@ -16,7 +16,7 @@ func FillPage():
 	print("sprite path is " + PokemonHelpers.GetPokemonFrontSprite(pokemonData.key, false, "M"))
 	var baseData = GameGlobals.baseData.pokemon[pokemonData.key]
 	$sc/c/lblName.text = pokemonData.name
-	$sc/c/lblPower.text = str(pokemonData.combatPower) + " CP"
+	$sc/c/lblPower.text = str(PokemonHelpers.GetCombatPower(pokemonData)) + " CP"
 	
 	$sc/c/txrPoke.texture = load(PokemonHelpers.GetPokemonFrontSprite(pokemonData.key, false, "M"))
 	$sc/c/lblIVs.text = "IVs:\nATK " + str(pokemonData.IVs[0]) + " / DEF " + str(pokemonData.IVs[1]) + " / STA " + str(pokemonData.IVs[2])
@@ -108,6 +108,7 @@ func FillPage():
 		$sc/c/btnEvolve.visible = true
 		evoCost = 0
 		
+		
 		if family.size() == 2:
 			if family[0] == pokemonData.key.split("_")[0]:
 				evoCost = 50
@@ -122,10 +123,11 @@ func FillPage():
 			elif family[2] == pokemonData.key.split("_")[0]:
 				$sc/c/btnEvolve.visible = false #we are the max evolution
 		else:
-			pass
 			#TODO: Special cases where there's more options in the family line.
 			if pokemonData.key == "EEVEE" || family[0] == "APPLIN":
 				evoCost = 50
+			if pokemonData.family == "FUSION":
+				candyGrind = 3
 			
 		$sc/c/btnEvolve.text = "Evolve for " + str(evoCost) + " Candies"
 	else: #if baseData.formType != "TRANSFORM":

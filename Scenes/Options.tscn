@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://hni73v3pyiqg"]
+[gd_scene load_steps=4 format=3 uid="uid://hni73v3pyiqg"]
 
 [ext_resource type="Script" path="res://Scenes/options.gd" id="1_3h4ao"]
 [ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="2_05dgt"]
+[ext_resource type="PackedScene" uid="uid://bev1jin6r7t6n" path="res://PraxisMapper/Controls/GetFile.tscn" id="3_do45v"]
 
 [node name="Options" type="Node2D"]
 script = ExtResource("1_3h4ao")
@@ -28,6 +29,15 @@ offset_right = 135.0
 offset_bottom = 97.0
 theme = ExtResource("2_05dgt")
 text = "Import Data"
+
+[node name="btnCell4Data" type="Button" parent="cr"]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 81.0
+offset_right = 314.0
+offset_bottom = 107.0
+theme = ExtResource("2_05dgt")
+text = "Get Cell4 Data"
 
 [node name="btnClose" type="Button" parent="cr"]
 layout_mode = 0
@@ -74,7 +84,12 @@ theme = ExtResource("2_05dgt")
 button_pressed = true
 text = "Enable Sound"
 
+[node name="GetFile" parent="." instance=ExtResource("3_do45v")]
+position = Vector2(-77, 215)
+scale = Vector2(0.5, 0.5)
+
 [connection signal="pressed" from="cr/btnExport" to="." method="SaveFile2"]
 [connection signal="pressed" from="cr/btnImport" to="." method="ImportData"]
+[connection signal="pressed" from="cr/btnCell4Data" to="." method="DownloadCell4Data"]
 [connection signal="pressed" from="cr/btnClose" to="." method="Close"]
 [connection signal="toggled" from="chkSound" to="." method="ToggleSound"]

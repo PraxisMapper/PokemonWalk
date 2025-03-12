@@ -139,6 +139,7 @@ func Start():
 	if battle.boss.Stamina <= 0:
 		#player wins, catch boss, grant other rewards too.
 		boss.caughtSpeed = PraxisCore.last_location.speed
+		boss.combatPower = PokemonHelpers.GetCombatPower(boss)
 		GameGlobals.pokemon[boss.id] = boss
 		GameGlobals.playerData.currentCoins += 150
 		GameGlobals.playerData.stardust += 1000

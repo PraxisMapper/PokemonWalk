@@ -88,8 +88,9 @@ func recentCellVisit(cell10):
 		$walkNotice/txrOpponent.texture = load(PokemonHelpers.GetPokemonFrontSprite(opponent.key, false, "M"))
 		var results = PoGoAutoBattle.Battle1v1(GameGlobals.pokemon[GameGlobals.playerData.buddy], opponent)
 		if (results == 1): #victory
-			opponent.caughtSpeed = PraxisCore.last_location.speed
 			if GameGlobals.playerData.autoCatch and GameGlobals.playerData.currentCoins >= 10:
+				opponent.caughtSpeed = PraxisCore.last_location.speed
+				opponent.combatPower = PokemonHelpers.GetCombatPower(opponent)
 				if GameGlobals.playerData.soundEnabled:
 					$AudioStreamPlayer.stream = SoundSystem.catchSound
 					$AudioStreamPlayer.play()

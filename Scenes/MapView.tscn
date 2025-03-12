@@ -254,10 +254,10 @@ text = "Speed: "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="button_down" from="footer/btnPokemon" to="." method="ShowPokemonInventory"]
-[connection signal="button_down" from="footer/btnSpawns" to="." method="SpawnInfo"]
-[connection signal="button_down" from="footer/btnRaid" to="." method="RaidBattle"]
-[connection signal="button_down" from="footer/btnHelp" to="." method="ShowHelp"]
+[connection signal="pressed" from="footer/btnPokemon" to="." method="ShowPokemonInventory"]
+[connection signal="pressed" from="footer/btnSpawns" to="." method="SpawnInfo"]
+[connection signal="pressed" from="footer/btnRaid" to="." method="RaidBattle"]
+[connection signal="pressed" from="footer/btnHelp" to="." method="ShowHelp"]
 [connection signal="pressed" from="footer/btnHelp2" to="." method="ShowOptions"]
 [connection signal="timeout" from="walkNotice/tmrHide" to="." method="HideWalkNotice"]
 [connection signal="button_down" from="boxAlreadyWon/btnMove" to="." method="HideAlreadyWon"]
