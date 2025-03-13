@@ -32,6 +32,7 @@ var playerData = {
 	allowFusions = false, #set to true once unlocked
 	pokemonTransferred = 0, #tracked for story stuff.
 	soundEnabled = true,
+	showLocation = true,
 }
 var styleData = {}
 var cachedAreaData = {}
@@ -131,6 +132,8 @@ func UpdateSaveVersion():
 		playerData.version = 3
 		if !playerData.has("soundEnabled"):
 			playerData.soundEnabled = true
+		if !playerData.has("showLocation"):
+			playerData.showLocation = true
 		for p in pokemon:
 			pokemon[p].combatPower = PokemonHelpers.GetCombatPower(pokemon[p])
 		results = true

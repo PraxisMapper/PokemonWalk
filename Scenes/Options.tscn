@@ -84,6 +84,15 @@ theme = ExtResource("2_05dgt")
 button_pressed = true
 text = "Enable Sound"
 
+[node name="chkShowLocation" type="CheckBox" parent="."]
+offset_left = 20.0
+offset_top = 206.0
+offset_right = 176.0
+offset_bottom = 237.0
+theme = ExtResource("2_05dgt")
+button_pressed = true
+text = "Show Location Code"
+
 [node name="GetFile" parent="." instance=ExtResource("3_do45v")]
 position = Vector2(-77, 215)
 scale = Vector2(0.5, 0.5)
@@ -93,3 +102,4 @@ scale = Vector2(0.5, 0.5)
 [connection signal="pressed" from="cr/btnCell4Data" to="." method="DownloadCell4Data"]
 [connection signal="pressed" from="cr/btnClose" to="." method="Close"]
 [connection signal="toggled" from="chkSound" to="." method="ToggleSound"]
+[connection signal="toggled" from="chkShowLocation" to="." method="ToggleLocation"]

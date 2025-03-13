@@ -159,7 +159,7 @@ func plusCodeChanged(current, old):
 	
 	$lblSpeed.text = "Speed: " + str(PraxisCore.last_location.speed)
 	
-	$header/lblLocation.text = "Location: " + current
+	$header/lblLocation.text = "Location: " + (current if GameGlobals.playerData.showLocation else "Hidden")
 	#Quick check to enable raids, needs done before raid status is checked.
 	CheckRaidReset()
 	

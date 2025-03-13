@@ -3,9 +3,14 @@ class_name OptionsScene
 
 func _ready():
 	$chkSound.button_pressed = GameGlobals.playerData.soundEnabled
+	$chkShowLocation.button_pressed = GameGlobals.playerData.showLocation
 
 func ToggleSound(enabled):
 	GameGlobals.playerData.soundEnabled = enabled
+	GameGlobals.Save()
+
+func ToggleLocation(enabled):
+	GameGlobals.playerData.showLocation = enabled
 	GameGlobals.Save()
 
 func Close():
