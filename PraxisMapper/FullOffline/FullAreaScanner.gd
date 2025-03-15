@@ -31,7 +31,7 @@ func ReadPlaces(plusCode, category, terrainID, requirements, options = [], ignor
 		return possiblePlaces
 	
 	for place in areaData.entries[category]:
-		if !place.has("nid"): #ignore all unnamed places
+		if !place.has("nid") or place.nid == 0: #ignore all unnamed places #TODO: backport == 0 check to mainline
 			continue
 				
 		if terrainID != 0 and place.tid != terrainID:

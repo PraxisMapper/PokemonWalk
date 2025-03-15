@@ -33,6 +33,7 @@ var playerData = {
 	pokemonTransferred = 0, #tracked for story stuff.
 	soundEnabled = true,
 	showLocation = true,
+	pokedex = [],
 }
 var styleData = {}
 var cachedAreaData = {}
@@ -137,7 +138,14 @@ func UpdateSaveVersion():
 		for p in pokemon:
 			pokemon[p].combatPower = PokemonHelpers.GetCombatPower(pokemon[p])
 		results = true
-		#TODO:additional work here to go from 3 to 4, as I make changes after release.
+	if playerData.version < 4: #Release 6 of Pokemon Walk
+		playerData.version = 4
+		for p in pokemon:
+			#Add each existing pokemon to the pokedex now.
+			if playerData.pokedex.find(pokemon[p].key) == -1:
+				playerData.pokedex.append(pokemon[p].key)
+		results = true
+	#TODO:additional work here to go from 3 to 4, as I make changes after release.
 	return results
 	
 func Load():

@@ -58,23 +58,6 @@ content_scale_factor = 0.6
 mode_overrides_title = false
 access = 2
 
-[node name="crInfo" type="ColorRect" parent="."]
-visible = false
-offset_left = 25.0
-offset_top = 68.0
-offset_right = 341.0
-offset_bottom = 224.0
-color = Color(0.244581, 0.181031, 0, 1)
-
-[node name="lblInfo" type="Label" parent="crInfo"]
-layout_mode = 0
-offset_left = 95.0
-offset_top = 59.0
-offset_right = 217.0
-offset_bottom = 83.0
-theme = ExtResource("2_05dgt")
-text = "Data Exported"
-
 [node name="chkSound" type="CheckBox" parent="."]
 offset_left = 22.0
 offset_top = 165.0
@@ -92,6 +75,23 @@ offset_bottom = 237.0
 theme = ExtResource("2_05dgt")
 button_pressed = true
 text = "Show Location Code"
+
+[node name="crInfo" type="ColorRect" parent="."]
+visible = false
+offset_left = 25.0
+offset_top = 68.0
+offset_right = 341.0
+offset_bottom = 224.0
+color = Color(0.244581, 0.181031, 0, 1)
+
+[node name="lblInfo" type="Label" parent="crInfo"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 59.0
+offset_right = 217.0
+offset_bottom = 83.0
+theme = ExtResource("2_05dgt")
+text = "Data Exported"
 
 [node name="GetFile" parent="." instance=ExtResource("3_do45v")]
 position = Vector2(-77, 215)

@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=3 uid="uid://syoj78ud1t3x"]
+
+[ext_resource type="Script" path="res://Scenes/pokedex.gd" id="1_8fpoy"]
+[ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="2_vpnxx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g0lwh"]
+width = 192
+height = 192
+
+[node name="Pokedex" type="Node2D"]
+script = ExtResource("1_8fpoy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 360.0
+offset_bottom = 440.0
+color = Color(0.567519, 0.209429, 0.559626, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_top = 5.0
+offset_right = 77.0
+offset_bottom = 22.0
+theme = ExtResource("2_vpnxx")
+theme_override_font_sizes/font_size = 16
+text = "Showing:"
+
+[node name="btnSortKey" type="Button" parent="."]
+offset_left = 99.0
+offset_top = 3.0
+offset_right = 268.0
+offset_bottom = 27.0
+theme = ExtResource("2_vpnxx")
+text = "All"
+
+[node name="sc" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(340, 350)
+offset_left = 32.0
+offset_top = 43.0
+offset_right = 381.0
+offset_bottom = 393.0
+
+[node name="gc" type="GridContainer" parent="sc"]
+custom_minimum_size = Vector2(340, 350)
+layout_mode = 2
+columns = 3
+
+[node name="btnClose" type="Button" parent="."]
+offset_left = 255.0
+offset_top = 404.0
+offset_right = 341.0
+offset_bottom = 428.0
+theme = ExtResource("2_vpnxx")
+theme_override_font_sizes/font_size = 16
+text = "Close"
+
+[node name="PokeInfo" type="ColorRect" parent="."]
+offset_left = 484.0
+offset_top = 28.0
+offset_right = 844.0
+offset_bottom = 401.0
+color = Color(0.568627, 0.207843, 0.560784, 1)
+
+[node name="btnReturn" type="Button" parent="PokeInfo"]
+offset_left = 93.0
+offset_top = 337.0
+offset_right = 251.0
+offset_bottom = 361.0
+theme = ExtResource("2_vpnxx")
+theme_override_font_sizes/font_size = 16
+text = "Return to Pokedex"
+
+[node name="txrPokemon" type="TextureRect" parent="PokeInfo"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 42.0
+offset_right = 106.0
+offset_bottom = 138.0
+texture = SubResource("NoiseTexture2D_g0lwh")
+
+[node name="lblName" type="Label" parent="PokeInfo"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 8.0
+offset_right = 261.0
+offset_bottom = 31.0
+theme = ExtResource("2_vpnxx")
+text = "Pokemon Name"
+
+[node name="lblFindable" type="Label" parent="PokeInfo"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 237.0
+offset_right = 355.0
+offset_bottom = 279.0
+theme = ExtResource("2_vpnxx")
+text = "Areas Nearby:"
+autowrap_mode = 3
+
+[node name="lblDesc" type="Label" parent="PokeInfo"]
+layout_mode = 0
+offset_left = 207.0
+offset_top = 44.0
+offset_right = 357.0
+offset_bottom = 176.0
+theme = ExtResource("2_vpnxx")
+text = "Description"
+autowrap_mode = 3
+
+[connection signal="button_down" from="btnSortKey" to="." method="ChangeSort"]
+[connection signal="button_down" from="btnClose" to="." method="Close"]
+[connection signal="pressed" from="PokeInfo/btnReturn" to="." method="ClosePokeInfo"]

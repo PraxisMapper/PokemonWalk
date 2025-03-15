@@ -96,6 +96,8 @@ func recentCellVisit(cell10):
 					$AudioStreamPlayer.play()
 				GameGlobals.playerData.currentCoins -= 10
 				GameGlobals.pokemon[opponent.id] = opponent
+				if GameGlobals.playerData.pokedex.find(opponent.key) == -1:
+					GameGlobals.playerData.pokedex.append(opponent.key)
 				$walkNotice/lblMessage.text = "Earned " + str(newCoins) + " coins and you caught a " + opponent.name + "!"
 			else:
 				$walkNotice/lblMessage.text = "Earned " + str(newCoins) + " and you defeated a " + opponent.name
@@ -255,7 +257,7 @@ func RaidBattle():
 	var thisWeekResults = rngLocal.randf()
 	var picked = int((raidSpawns.size() - 1) * thisWeekResults)
 	#print("total of " + str(raidSpawns.size()) + " options, picked " + str(picked))
-	var boss = PokemonGenerator.MakeMobilePokemon(raidSpawns[picked])
+	var boss = PokemonGenerator.MakeMobilePokemon(SpawnLogic.PickRaidBoss(PraxisCore.currentPlusCode.substr(0,8)))
 	
 	#Raid upgrades. However it is we picked the boss, we need to upgrade them some.
 	#No matter what, their IVs are good
@@ -290,3 +292,8 @@ func ShowOptions():
 	var optionScene = preload("res://Scenes/Options.tscn").instantiate()
 	clearPopup()
 	$popup.add_child(optionScene)
+
+func ShowPokedex():
+	var dexScene = preload("res://Scenes/Pokedex.tscn").instantiate()
+	clearPopup()
+	$popup.add_child(dexScene)

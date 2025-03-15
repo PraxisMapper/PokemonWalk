@@ -244,6 +244,9 @@ func Evolve():
 		var randform = randi_range(0, GameGlobals.baseData.pokemon[pokemonData.key].otherForms.size() -1)
 		pokemonData.key = "VIVILLON_" + GameGlobals.baseData.pokemon[pokemonData.key].otherForms[randform]
 	
+	if !GameGlobals.playerData.pokedex.has(pokemonData.key):
+		GameGlobals.playerData.pokedex.append(pokemonData.key)
+	
 	pokemonData.combatPower = PokemonHelpers.GetCombatPower(pokemonData)
 	GameGlobals.playerData.candyByFamily[pokemonData.family] -= evoCost
 	GameGlobals.Save()
@@ -265,6 +268,10 @@ func MegaEvolve(formIndex):
 		pokemonData.name = newBase.formName
 	else:
 		pokemonData.name = newBase.name + "(" + newBase.formName + ")"
+	
+	if !GameGlobals.playerData.pokedex.has(pokemonData.key):
+		GameGlobals.playerData.pokedex.append(pokemonData.key)
+	
 	pokemonData.combatPower = PokemonHelpers.GetCombatPower(pokemonData)
 	GameGlobals.playerData.candyByFamily[pokemonData.family] -= 100
 	GameGlobals.Save()
@@ -294,6 +301,9 @@ func Transform():
 		pokemonData.name = GameGlobals.baseData.pokemon[pokemonData.key].formName
 	else:
 		pokemonData.name = GameGlobals.baseData.pokemon[pokemonData.key].name + "(" + GameGlobals.baseData.pokemon[pokemonData.key].formName + ")"
+	
+	if !GameGlobals.playerData.pokedex.has(pokemonData.key):
+		GameGlobals.playerData.pokedex.append(pokemonData.key)
 	
 	GameGlobals.playerData.currentCoins -= 100
 	GameGlobals.Save()

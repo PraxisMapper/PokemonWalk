@@ -3,6 +3,7 @@ class_name PoGoMiniDisplay
 
 var data = {}
 var cancelLeftClick = true
+var skipOnStart = false
 signal leftClicked(data)
 signal rightClicked(data)
 
@@ -10,7 +11,8 @@ func _get_minimum_size() -> Vector2:
 	return Vector2(64, 64)
 
 func _ready() -> void:
-	SetInfo(data)
+	if !skipOnStart:
+		SetInfo(data)
 	$ClickListener.gui_input.connect(popInput)
 
 func SetColor(color):
@@ -26,6 +28,19 @@ func SetInfo(pokemonData):
 		$lblName.text = pokemonData.name
 	if $lblPower != null:
 		$lblPower.text = str(PokemonHelpers.GetCombatPower(pokemonData)) + " CP"
+
+func SetPokedexInfo(key, isCaught):
+	#use this function to set up this display for pokedex mode.
+	data = {key = key, isCaught = isCaught}
+	if $txrPokemon != null:
+		$txrPokemon.texture = load(PokemonHelpers.GetPokemonFrontSprite(key, false, "M")) #ImageTexture.create_from_image(img)
+		$lblPower.text = ""
+		if isCaught:
+			$lblName.text = GameGlobals.baseData.pokemon[key].name
+		else:
+			#make the sprite solid black silhouette
+			$txrPokemon.modulate = "000000"
+			$lblName.text = "????"
 
 #This was quite a mess to figure out but I did it. I have to add a plain Control, then use THAT
 #to catch guiEvent signals and see if those are what I want.

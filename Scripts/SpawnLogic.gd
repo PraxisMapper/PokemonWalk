@@ -433,6 +433,24 @@ static func RaidSpawnTable():
 		options.append_array(GameGlobals.baseData.allFamilies["FUSION"])
 	
 	return options
+	
+static func PickRaidBoss(area):
+	var raidSpawns = SpawnLogic.RaidSpawnTable()
+	#TODO: functionalize this block
+	var currentString = Time.get_datetime_dict_from_system(true)
+	var yearAsSeconds= Time.get_unix_time_from_datetime_string(str(currentString.year) + "-01-01")
+	var secondsIntoYear = Time.get_unix_time_from_system() - yearAsSeconds
+	var weeksIntoYear = int(secondsIntoYear / (60 * 60 * 24 * 7))
+	
+	var rngLocal = RandomNumberGenerator.new()
+	rngLocal.seed  = area.substr(0, 8).hash()
+	
+	for w in weeksIntoYear:
+		rngLocal.randf() #make the same number of random pulls so we get the same result next.
+	var thisWeekResults = rngLocal.randf()
+	var picked = int((raidSpawns.size() - 1) * thisWeekResults)
+	#print("total of " + str(raidSpawns.size()) + " options, picked " + str(picked))
+	return raidSpawns[picked]
 
 #Test function for finding missing data
 static func CheckSprites():

@@ -162,6 +162,15 @@ offset_bottom = 88.0
 theme = ExtResource("4_dw2l7")
 text = "Help"
 
+[node name="btnPokedex" type="Button" parent="footer"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 55.0
+offset_right = 242.0
+offset_bottom = 88.0
+theme = ExtResource("4_dw2l7")
+text = "Pokedex"
+
 [node name="btnHelp2" type="Button" parent="footer"]
 layout_mode = 0
 offset_left = 277.0
@@ -258,6 +267,7 @@ text = "Speed: "
 [connection signal="pressed" from="footer/btnSpawns" to="." method="SpawnInfo"]
 [connection signal="pressed" from="footer/btnRaid" to="." method="RaidBattle"]
 [connection signal="pressed" from="footer/btnHelp" to="." method="ShowHelp"]
+[connection signal="pressed" from="footer/btnPokedex" to="." method="ShowPokedex"]
 [connection signal="pressed" from="footer/btnHelp2" to="." method="ShowOptions"]
 [connection signal="timeout" from="walkNotice/tmrHide" to="." method="HideWalkNotice"]
 [connection signal="button_down" from="boxAlreadyWon/btnMove" to="." method="HideAlreadyWon"]
