@@ -146,6 +146,11 @@ func UpdateSaveVersion():
 				playerData.pokedex.append(pokemon[p].key)
 		results = true
 	#TODO:additional work here to go from 3 to 4, as I make changes after release.
+	
+	#Always do this, data sanity check.
+	for p in pokemon:
+		if pokemon[p].level > (playerData.currentLevel + 5) * 2:
+			pokemon[p].level = (playerData.currentLevel + 5) * 2
 	return results
 	
 func Load():

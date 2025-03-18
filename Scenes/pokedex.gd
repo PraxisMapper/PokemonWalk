@@ -9,6 +9,7 @@ var displayedItems = GameGlobals.baseData.pokemon.keys()
 var allCount = displayedItems.size()
 const sizeVec = Vector2(96, 96)
 var plDisplay = preload("res://Components/PoGoMiniDisplay.tscn")
+var haveInSet = 0
 
 var scanner = FullAreaScanner.new()
 
@@ -35,6 +36,9 @@ func _process(delta: float) -> void:
 		display.leftClicked.connect(showPokedexInfo) 
 		currentItemToAdd += 1
 		itemsLeft += 1
+		if pokemonFound:
+			haveInSet += 1
+			$lblCount.text = str(haveInSet) + "/" + str(allCount)
 
 func showPokedexInfo(data):
 	#data has .key and .isCaught fields.
@@ -52,10 +56,14 @@ func showPokedexInfo(data):
 			desc += t + ", "
 		desc += "\n"
 	
-		desc += "Generation: " + baseData.generation + "\n"
-		desc += "Color: " + baseData.color + "\n"
-		desc += "Shape: " + baseData.shape + "\n"
-		desc += "Habitat: " + baseData.habitat + "\n"
+		if baseData.generation != null:
+			desc += "Generation: " + baseData.generation + "\n"
+		if baseData.color != null:
+			desc += "Color: " + baseData.color + "\n"
+		if baseData.shape != null:
+			desc += "Shape: " + baseData.shape + "\n"
+		if baseData.habitat != null:
+			desc += "Habitat: " + baseData.habitat + "\n"
 		$PokeInfo/lblDesc.text = desc
 	else:
 		$PokeInfo/lblDesc.text = "Find this pokemon to learn its details"
@@ -130,24 +138,99 @@ func Close():
 	queue_free()
 
 func ChangeSort():
+	var setItems 
+	displayedItems.clear()
 	match showing: #this is when we move to the next value
 		"all": 
 			$btnSortKey.text = "Uncaught"
 			showing = "uncaught"
-			var setItems = GameGlobals.baseData.pokemon.keys()
+			setItems = GameGlobals.baseData.pokemon.keys()
 			displayedItems = []
 
 			for a in setItems:
 				if !GameGlobals.playerData.pokedex.has(a):
 					displayedItems.append(a)
 		"uncaught":
+			$btnSortKey.text = "Kanto"
+			showing = "gen1"
+			setItems = GameGlobals.baseData.pokemon.keys()
+			for pokemon in setItems:
+				if GameGlobals.baseData.pokemon[pokemon].generation == "1":
+					displayedItems.append(pokemon)
+		"gen1":
+			$btnSortKey.text = "Johto"
+			showing = "gen2"
+			setItems = GameGlobals.baseData.pokemon.keys()
+			for pokemon in setItems:
+				if GameGlobals.baseData.pokemon[pokemon].generation == "2":
+					displayedItems.append(pokemon)
+		"gen2":
+			$btnSortKey.text = "Hoenn"
+			showing = "gen3"
+			setItems = GameGlobals.baseData.pokemon.keys()
+			for pokemon in setItems:
+				if GameGlobals.baseData.pokemon[pokemon].generation == "3":
+					displayedItems.append(pokemon)
+		"gen3":
+			$btnSortKey.text = "Sinnoh"
+			showing = "gen4"
+			setItems = GameGlobals.baseData.pokemon.keys()
+			for pokemon in setItems:
+				if GameGlobals.baseData.pokemon[pokemon].generation == "4":
+					displayedItems.append(pokemon)
+		"gen4":
+			$btnSortKey.text = "Unova"
+			showing = "gen5"
+			setItems = GameGlobals.baseData.pokemon.keys()
+			for pokemon in setItems:
+				if GameGlobals.baseData.pokemon[pokemon].generation == "5":
+					displayedItems.append(pokemon)
+		"gen5":
+			$btnSortKey.text = "Kalos"
+			showing = "gen6"
+			setItems = GameGlobals.baseData.pokemon.keys()
+			for pokemon in setItems:
+				if GameGlobals.baseData.pokemon[pokemon].generation == "6":
+					displayedItems.append(pokemon)
+		"gen6":
+			$btnSortKey.text = "Alola"
+			showing = "gen7"
+			setItems = GameGlobals.baseData.pokemon.keys()
+			for pokemon in setItems:
+				if GameGlobals.baseData.pokemon[pokemon].generation == "7":
+					displayedItems.append(pokemon)
+		"gen7":
+			$btnSortKey.text = "Galar"
+			showing = "gen8"
+			setItems = GameGlobals.baseData.pokemon.keys()
+			for pokemon in setItems:
+				if GameGlobals.baseData.pokemon[pokemon].generation == "8":
+					displayedItems.append(pokemon)
+		"gen8":
+			$btnSortKey.text = "Paldea"
+			showing = "gen9"
+			setItems = GameGlobals.baseData.pokemon.keys()
+			for pokemon in setItems:
+				if GameGlobals.baseData.pokemon[pokemon].generation == "9":
+					displayedItems.append(pokemon)
+		"gen9":
+			$btnSortKey.text = "Fusions"
+			showing = "fusion"
+			setItems = GameGlobals.baseData.pokemon.keys()
+			for pokemon in setItems:
+				if GameGlobals.baseData.pokemon[pokemon].family == "FUSION":
+					displayedItems.append(pokemon)
+		"fusion":
 			$btnSortKey.text = "All"
 			showing = "all"
 			displayedItems = GameGlobals.baseData.pokemon.keys()
+
 	allCount = displayedItems.size()
+	$lblCount.text = "0/" + str(allCount)
 	FillGrid()
 	
 func FillGrid():
+	haveInSet = 0
 	for x in $sc/gc.get_children():
 		$sc/gc.remove_child(x)
 		x.queue_free()

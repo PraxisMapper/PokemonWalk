@@ -23,6 +23,16 @@ theme = ExtResource("2_vpnxx")
 theme_override_font_sizes/font_size = 16
 text = "Showing:"
 
+[node name="lblCount" type="Label" parent="."]
+offset_left = 274.0
+offset_top = 8.0
+offset_right = 356.0
+offset_bottom = 25.0
+theme = ExtResource("2_vpnxx")
+theme_override_font_sizes/font_size = 16
+text = "0/0"
+horizontal_alignment = 2
+
 [node name="btnSortKey" type="Button" parent="."]
 offset_left = 99.0
 offset_top = 3.0
@@ -60,6 +70,7 @@ offset_bottom = 401.0
 color = Color(0.568627, 0.207843, 0.560784, 1)
 
 [node name="btnReturn" type="Button" parent="PokeInfo"]
+layout_mode = 0
 offset_left = 93.0
 offset_top = 337.0
 offset_right = 251.0
