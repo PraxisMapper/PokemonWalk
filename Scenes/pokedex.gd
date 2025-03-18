@@ -13,9 +13,8 @@ var haveInSet = 0
 
 var scanner = FullAreaScanner.new()
 
-
-func _ready() -> void:
-	pass # Replace with function body.
+#func _ready() -> void:
+	#FillGrid()
 
 const itemsPerFrame = 3
 func _process(delta: float) -> void:

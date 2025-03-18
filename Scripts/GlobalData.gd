@@ -10,7 +10,7 @@ var currentPlace = ["", ""]
 
 var baseData = {}
 var playerData = {
-	version = 3,
+	version = 4,
 	saveCreated = Time.get_unix_time_from_system(),
 	currentXp = 0,
 	currentLevel = 1,
@@ -140,6 +140,7 @@ func UpdateSaveVersion():
 		results = true
 	if playerData.version < 4: #Release 6 of Pokemon Walk
 		playerData.version = 4
+		playerData.pokedex = []
 		for p in pokemon:
 			#Add each existing pokemon to the pokedex now.
 			if playerData.pokedex.find(pokemon[p].key) == -1:
@@ -148,6 +149,11 @@ func UpdateSaveVersion():
 	#TODO:additional work here to go from 3 to 4, as I make changes after release.
 	
 	#Always do this, data sanity check.
+	if playerData.has("pokedex") == false:
+		print("asdfg pokedex is null, fixing.")
+		playerData.pokedex = []
+		results = true
+
 	for p in pokemon:
 		if pokemon[p].level > (playerData.currentLevel + 5) * 2:
 			pokemon[p].level = (playerData.currentLevel + 5) * 2

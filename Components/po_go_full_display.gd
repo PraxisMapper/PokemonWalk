@@ -63,7 +63,7 @@ func FillPage():
 	$sc/c/moves/btnChangeCharge2.disabled = GameGlobals.playerData.currentCoins < 1000
 	if (pokemonData.moveNames.size() == 3):
 		$sc/c/moves/lblCharge2.text = "Charge Move: " + GameGlobals.baseData.pogoMoves[pokemonData.moveNames[2]].name
-		$sc/c/moves/btnChangeCharge1.text = "Change (500 coins)"
+		$sc/c/moves/btnChangeCharge2.text = "Change (500 coins)"
 	else:
 		$sc/c/moves/lblCharge2.text = "2nd Charge locked"
 		$sc/c/moves/btnChangeCharge2.text = "Unlock (1000 coins)"
@@ -107,7 +107,6 @@ func FillPage():
 		
 		$sc/c/btnEvolve.visible = true
 		evoCost = 0
-		
 		
 		if family.size() == 2:
 			if family[0] == pokemonData.key.split("_")[0]:
