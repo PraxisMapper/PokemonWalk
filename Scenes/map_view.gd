@@ -216,7 +216,7 @@ func UpdatePlacesList(placesList):
 	$header/lblPlaces.text = placesList
 
 func ShowPokemonInventory():
-	#DebugSpawnPokemon("ZYGARDE")
+	#DebugSpawnPokemon("KIRLIA")
 	clearPopup()
 	var inventory = inventoryScreenPL.instantiate()
 	$popup.add_child(inventory)
