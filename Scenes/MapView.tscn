@@ -128,18 +128,18 @@ color = Color(0.204415, 0.0222078, 0.387335, 1)
 
 [node name="btnPokemon" type="Button" parent="footer"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 19.0
-offset_right = 105.0
-offset_bottom = 51.0
+offset_left = 4.0
+offset_top = 10.0
+offset_right = 101.0
+offset_bottom = 42.0
 theme = ExtResource("4_dw2l7")
 text = "Pokemon"
 
 [node name="btnSpawns" type="Button" parent="footer"]
 layout_mode = 0
-offset_left = 12.0
+offset_left = 4.0
 offset_top = 58.0
-offset_right = 164.0
+offset_right = 156.0
 offset_bottom = 90.0
 theme = ExtResource("4_dw2l7")
 text = "Learn Spawns"
@@ -147,35 +147,35 @@ text = "Learn Spawns"
 [node name="btnRaid" type="Button" parent="footer"]
 layout_mode = 0
 offset_left = 129.0
-offset_top = 21.0
+offset_top = 10.0
 offset_right = 258.0
-offset_bottom = 53.0
+offset_bottom = 42.0
 theme = ExtResource("4_dw2l7")
 text = "Fight Local Raid"
 
 [node name="btnHelp" type="Button" parent="footer"]
 layout_mode = 0
-offset_left = 276.0
-offset_top = 55.0
-offset_right = 335.0
-offset_bottom = 88.0
+offset_left = 291.0
+offset_top = 58.0
+offset_right = 350.0
+offset_bottom = 91.0
 theme = ExtResource("4_dw2l7")
 text = "Help"
 
 [node name="btnPokedex" type="Button" parent="footer"]
 layout_mode = 0
-offset_left = 183.0
-offset_top = 55.0
-offset_right = 242.0
-offset_bottom = 88.0
+offset_left = 211.0
+offset_top = 58.0
+offset_right = 281.0
+offset_bottom = 91.0
 theme = ExtResource("4_dw2l7")
 text = "Pokedex"
 
 [node name="btnHelp2" type="Button" parent="footer"]
 layout_mode = 0
-offset_left = 277.0
+offset_left = 280.0
 offset_top = 9.0
-offset_right = 348.0
+offset_right = 351.0
 offset_bottom = 42.0
 theme = ExtResource("4_dw2l7")
 text = "Options"
