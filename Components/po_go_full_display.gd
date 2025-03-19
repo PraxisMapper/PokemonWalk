@@ -239,9 +239,13 @@ func Evolve():
 	#TODO: dont change name if it has a nickname.
 	pokemonData.name = GameGlobals.baseData.pokemon[pokemonData.key].name
 	
+	#Special catches for pokemon that don't follow the common rules
 	if pokemonData.key == "VIVILLON":
 		var randform = randi_range(0, GameGlobals.baseData.pokemon[pokemonData.key].otherForms.size() -1)
 		pokemonData.key = "VIVILLON_" + GameGlobals.baseData.pokemon[pokemonData.key].otherForms[randform]
+	if pokemonData.key == "RAICHU" or pokemonData.key == "MAROWAK":
+		if randf() > 0.75:
+			pokemonData.key += "_1"
 	
 	if !GameGlobals.playerData.pokedex.has(pokemonData.key):
 		GameGlobals.playerData.pokedex.append(pokemonData.key)
