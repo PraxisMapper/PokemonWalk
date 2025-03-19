@@ -15,14 +15,16 @@ func FillPage():
 	print("Pokemon is " + pokemonData.key)
 	print("sprite path is " + PokemonHelpers.GetPokemonFrontSprite(pokemonData.key, false, "M"))
 	var baseData = GameGlobals.baseData.pokemon[pokemonData.key]
+	var family = GameGlobals.baseData.allFamilies[pokemonData.family]
+	var baseFamily = family[0] # fixes Gallade
 	$sc/c/lblName.text = pokemonData.name
 	$sc/c/lblPower.text = str(PokemonHelpers.GetCombatPower(pokemonData)) + " CP"
 	
 	$sc/c/txrPoke.texture = load(PokemonHelpers.GetPokemonFrontSprite(pokemonData.key, false, "M"))
 	$sc/c/lblIVs.text = "IVs:\nATK " + str(pokemonData.IVs[0]) + " / DEF " + str(pokemonData.IVs[1]) + " / STA " + str(pokemonData.IVs[2])
 	var candies = 0
-	if (GameGlobals.playerData.candyByFamily.has(pokemonData.family)):
-		candies = GameGlobals.playerData.candyByFamily[pokemonData.family]
+	if (GameGlobals.playerData.candyByFamily.has(baseFamily)):
+		candies = GameGlobals.playerData.candyByFamily[baseFamily]
 	$sc/c/lblCandy.text = str(candies) + " Candies"
 	$sc/c/lblLevel.text = "Level " + str(pokemonData.level)
 	
@@ -68,7 +70,7 @@ func FillPage():
 		$sc/c/moves/lblCharge2.text = "2nd Charge locked"
 		$sc/c/moves/btnChangeCharge2.text = "Unlock (1000 coins)"
 
-	var family = GameGlobals.baseData.allFamilies[pokemonData.family]
+	
 	candyGrind = max(1, 1 + (family.find(pokemonData.key) * 2)) # 1/3/5
 	
 	#Handle form changes:
@@ -97,8 +99,8 @@ func FillPage():
 						$sc/c/megastone/btnMega2.visible = true
 					else:
 						$sc/c/megastone/btnMega2.visible = false
-					$sc/c/megastone/btnMega1.disabled = (!GameGlobals.playerData.candyByFamily.has(baseData.family) or GameGlobals.playerData.candyByFamily[baseData.family] < 100)
-					$sc/c/megastone/btnMega2.disabled = (!GameGlobals.playerData.candyByFamily.has(baseData.family) or GameGlobals.playerData.candyByFamily[baseData.family] < 100)
+					$sc/c/megastone/btnMega1.disabled = (!GameGlobals.playerData.candyByFamily.has(baseFamily) or GameGlobals.playerData.candyByFamily[baseFamily] < 100)
+					$sc/c/megastone/btnMega2.disabled = (!GameGlobals.playerData.candyByFamily.has(baseFamily) or GameGlobals.playerData.candyByFamily[baseFamily] < 100)
 
 	if (baseData.evolutions != null and baseData.evolutions.length() > 0):
 		var evos = baseData.evolutions.split(",")
