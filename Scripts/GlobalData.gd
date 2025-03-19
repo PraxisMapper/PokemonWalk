@@ -150,7 +150,6 @@ func UpdateSaveVersion():
 	
 	#Always do this, data sanity check.
 	if playerData.has("pokedex") == false:
-		print("asdfg pokedex is null, fixing.")
 		playerData.pokedex = []
 		results = true
 
