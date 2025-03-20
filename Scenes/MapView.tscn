@@ -15,7 +15,7 @@
 script = ExtResource("1_rqcnq")
 
 [node name="ScrollingCenteredMap" parent="." instance=ExtResource("2_mqn16")]
-position = Vector2(-224, -287)
+position = Vector2(-224, -297)
 scale = Vector2(0.5, 0.5)
 
 [node name="GetFile" parent="." instance=ExtResource("3_iilpo")]

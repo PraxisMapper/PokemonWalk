@@ -68,8 +68,10 @@ func FillGrid():
 
 func SortList(a, b):
 	if sortMode == "order": #the order they were caught in, which should be the order of the dict.
-		var timeCaughtA = int(a.id.split("_")[2])
-		var timeCaughtB = int(b.id.split("_")[2])
+		var idBits1 = a.id.split("_")
+		var idBits2 = b.id.split("_")
+		var timeCaughtA = int(idBits1[idBits1.size() - 1])
+		var timeCaughtB = int(idBits2[idBits2.size() - 1])
 		return timeCaughtA > timeCaughtB
 	elif sortMode == "power":
 		return a.combatPower > b.combatPower

@@ -382,6 +382,12 @@ static func SpawnTable(cell8):
 		else:
 			table[family] += 10
 		table.total += 10
+	
+	if GameGlobals.playerData.allowFusions == true:
+		var fusionIdx = commonRng.randi_range(0, GameGlobals.baseData.allFamilies["FUSION"].size() - 1)
+		var fusionHere = GameGlobals.baseData.allFamilies["FUSION"][fusionIdx]
+		table[fusionHere] = 3
+		table.total += 3
 
 	#TODO functionalize this check
 	var currentString = Time.get_datetime_dict_from_system(true)
@@ -397,12 +403,6 @@ static func SpawnTable(cell8):
 			else:
 				table[i] += weekEventPokemon.spawns[i]
 			table.total += weekEventPokemon.spawns[i]
-	
-	if GameGlobals.playerData.allowFusions == true:
-		var fusionIdx = commonRng.randi_range(0, GameGlobals.baseData.allFamilies["FUSION"].size() - 1)
-		var fusionHere = GameGlobals.baseData.allFamilies["FUSION"][fusionIdx]
-		table[fusionHere] = 3
-		table.total += 3
 
 	return table
 	

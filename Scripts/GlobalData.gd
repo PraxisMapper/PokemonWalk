@@ -141,6 +141,8 @@ func UpdateSaveVersion():
 	if playerData.version < 4: #Release 6 of Pokemon Walk
 		playerData.version = 4
 		playerData.pokedex = []
+		if playerData.currentLevel >= 25:
+			playerData.alllowFusions = true
 		for p in pokemon:
 			#Add each existing pokemon to the pokedex now.
 			if playerData.pokedex.find(pokemon[p].key) == -1:
@@ -187,6 +189,9 @@ func GrantPlayerXP(amount):
 	playerData.currentXp += amount
 	if playerData.currentXp >= 100 * (playerData.currentLevel ** 2):
 		playerData.currentLevel += 1
+		if playerData.currentLevel >= 25:
+			playerData.allowFusions = true
+	
 
 #NOTE: this was for a full-combat setup, but I might keep it for the mobile style as well.
 func DefaultPlayerData():

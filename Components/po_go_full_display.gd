@@ -208,19 +208,23 @@ func Evolve():
 	#EEVEE: a bunch of possible things. For now, just pick 1 at random and fix/change/allow-force 
 	#options later.
 	
-	#sanity check
-	if (GameGlobals.baseData.pokemon[pokemonData.key].evolutions == null || 
-		GameGlobals.baseData.pokemon[pokemonData.key].evolutions.length() == 0 ||
-		GameGlobals.baseData.pokemon[pokemonData.key].evolutions.contains("None")):
-		return
-	
 	var baseData = GameGlobals.baseData.pokemon[pokemonData.key]
+	#sanity check
+	if (baseData.evolutions == null || 
+		baseData.evolutions.length() == 0):
+		return
+
 	var oldId = pokemonData.id
 	var evos = baseData.evolutions.split(",")
 	var options = evos.size() / 3
+	for e in options:
+		if evos[(e * 3) + 1] == "None":
+			options =- 1
+	
 	var nextstage = evos[randi_range(0, options - 1) * 3]
 	#Now, evos are 3 pieces. its KEY,process,requirement. 
 	#EX: IVYSAUR,Level,16 or FLAREON,Item,FireStone. I MOSTLY only care that they exist here.
+	#Some entries say None, which should mean that specific option doesn't count
 	
 	if (pokemonData.key.contains("_") and baseData.formType == "ALTERNATE"):
 		#Check if the target creature has a matching form, if not evolve to it.
