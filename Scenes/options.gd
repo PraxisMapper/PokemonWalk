@@ -49,7 +49,7 @@ func SaveFile2():
 	$crInfo.visible = true
 	
 func ImportData():
-	$FileDialog.files_selected.disconnect(ImportData)
+	#$FileDialog.files_selected.disconnect(ImportData)
 	var path = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/PokemonWalkExport.zip"
 	var reader = ZIPReader.new()
 	var err = reader.open(path)

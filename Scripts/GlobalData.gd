@@ -142,13 +142,17 @@ func UpdateSaveVersion():
 		playerData.version = 4
 		playerData.pokedex = []
 		if playerData.currentLevel >= 25:
-			playerData.alllowFusions = true
+			playerData.allowFusions = true # Was 'alllowFusions', which didn't work.
 		for p in pokemon:
 			#Add each existing pokemon to the pokedex now.
 			if playerData.pokedex.find(pokemon[p].key) == -1:
 				playerData.pokedex.append(pokemon[p].key)
 		results = true
-	#TODO:additional work here to go from 3 to 4, as I make changes after release.
+	if playerData.version < 5: #Release 7 of Pokemon Walk
+		playerData.version = 5
+		#Yes this is duplicated. There was a typo that made this fail in V6.
+		if playerData.currentLevel >= 25: 
+			playerData.allowFusions = true
 	
 	#Always do this, data sanity check.
 	if playerData.has("pokedex") == false:
