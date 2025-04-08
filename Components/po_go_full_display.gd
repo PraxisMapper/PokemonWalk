@@ -125,7 +125,7 @@ func FillPage():
 				$sc/c/btnEvolve.visible = false #we are the max evolution
 		else:
 			#TODO: Special cases where there's more options in the family line.
-			if pokemonData.key == "EEVEE" || family[0] == "APPLIN":
+			if pokemonData.key == "EEVEE" || family[0] == "APPLIN"  || family[0] == "TYROGUE":
 				evoCost = 50
 			if pokemonData.family == "FUSION":
 				candyGrind = 3
@@ -149,6 +149,37 @@ func FillPage():
 
 	#this part is here to handle when we push a button to update that display.
 	GameGlobals.updateHeader.emit()
+
+func GetEvoCost(baseData):
+	var family = GameGlobals.baseData.allFamilies[baseData.family]
+	if (baseData.evolutions != null and baseData.evolutions.length() > 0):
+		var evos = baseData.evolutions.split(",")
+		#Now, evos are 3 pieces. its KEY,process,requirement. 
+		#EX: IVYSAUR,Level,16 or FLAREON,Item,FireStone. I MOSTLY only care that they exist here.
+		
+		#$sc/c/btnEvolve.visible = true
+		evoCost = 0
+		
+		if family.size() == 2:
+			if family[0] == pokemonData.key.split("_")[0]:
+				evoCost = 50
+			else:
+				#$sc/c/btnEvolve.visible = false #we are the max evolution
+				candyGrind = 3
+		elif family.size() == 3: #TODO: this may need to adjust for forms.
+			if family[0] == pokemonData.key.split("_")[0]:
+				evoCost = 25
+			elif family[1] == pokemonData.key.split("_")[0]:
+				evoCost = 100
+			#elif family[2] == pokemonData.key.split("_")[0]:
+				#$sc/c/btnEvolve.visible = false #we are the max evolution
+		else:
+			#TODO: Special cases where there's more options in the family line.
+			if pokemonData.key == "EEVEE" || family[0] == "APPLIN"  || family[0] == "TYROGUE":
+				evoCost = 50
+			#if pokemonData.family == "FUSION":
+				#candyGrind = 3
+		return evoCost
 
 func Boost():
 	if pokemonData.level > (GameGlobals.playerData.currentLevel + 5) * 2:
