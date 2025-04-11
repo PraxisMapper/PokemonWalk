@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://0kiblap0u8q"]
 
 [ext_resource type="PackedScene" uid="uid://bpebv3bpdb1k6" path="res://Components/PokemonDisplayMini.tscn" id="1_ocbom"]
-[ext_resource type="Script" path="res://Scenes/CombatTest.gd" id="1_paw3h"]
+[ext_resource type="Script" uid="uid://dnf1we2sb5mva" path="res://Scenes/CombatTest.gd" id="1_paw3h"]
 
 [node name="CombatTest" type="Node2D"]
 script = ExtResource("1_paw3h")

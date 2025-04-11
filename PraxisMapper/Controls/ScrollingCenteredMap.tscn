@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://i7s1o6y03ab0"]
 
-[ext_resource type="Script" path="res://PraxisMapper/Controls/ScrollingCenteredMap.gd" id="1_17115"]
+[ext_resource type="Script" uid="uid://2dtcx3j7w8rc" path="res://PraxisMapper/Controls/ScrollingCenteredMap.gd" id="1_17115"]
 [ext_resource type="PackedScene" uid="uid://b16445g8mkbaa" path="res://PraxisMapper/FullOffline/FullSingleTile.tscn" id="2_cuosq"]
 [ext_resource type="PackedScene" uid="uid://fipn8k07sdhc" path="res://PraxisMapper/FullOffline/FullSingleTileQueued.tscn" id="5_p6el8"]
 

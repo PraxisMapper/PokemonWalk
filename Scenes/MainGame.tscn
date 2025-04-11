@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6eifg1lfwklb"]
 
-[ext_resource type="Script" path="res://Scenes/MainGame.gd" id="1_t5qxi"]
+[ext_resource type="Script" uid="uid://dlricwye73c0i" path="res://Scenes/MainGame.gd" id="1_t5qxi"]
 [ext_resource type="PackedScene" uid="uid://gclnpuvxbwr4" path="res://Components/PartyDisplay.tscn" id="2_btuf5"]
 [ext_resource type="PackedScene" uid="uid://b2hnhr1t57jm7" path="res://PraxisMapper/Controls/CellTracker.tscn" id="2_gehoh"]
 [ext_resource type="PackedScene" uid="uid://oqn0ra3pglqe" path="res://Components/AreaInfo.tscn" id="3_bgh5c"]
-[ext_resource type="PackedScene" path="res://PraxisMapper/Controls/PlaceTracker.tscn" id="3_e0eka"]
+[ext_resource type="PackedScene" uid="uid://dgnoeyus8vqce" path="res://PraxisMapper/Controls/PlaceTracker.tscn" id="3_e0eka"]
 [ext_resource type="PackedScene" uid="uid://bqkyt5e3qh8y7" path="res://Components/Commands.tscn" id="4_q0adx"]
 [ext_resource type="PackedScene" uid="uid://b87f88w2akk0n" path="res://Components/DailyChallenge.tscn" id="9_4puci"]
 

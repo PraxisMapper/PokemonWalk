@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://syoj78ud1t3x"]
 
-[ext_resource type="Script" path="res://Scenes/pokedex.gd" id="1_8fpoy"]
+[ext_resource type="Script" uid="uid://bemorxvvb7kpu" path="res://Scenes/pokedex.gd" id="1_8fpoy"]
 [ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="2_vpnxx"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g0lwh"]

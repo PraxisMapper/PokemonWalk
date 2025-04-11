@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://gclnpuvxbwr4"]
 
-[ext_resource type="Script" path="res://Components/PartyDisplay.gd" id="1_er4gt"]
+[ext_resource type="Script" uid="uid://b07nbcanrllyd" path="res://Components/PartyDisplay.gd" id="1_er4gt"]
 [ext_resource type="PackedScene" uid="uid://be3xs3yc68qvm" path="res://Components/PokemonDisplay.tscn" id="1_td5va"]
 
 [node name="PartyDisplay" type="Node2D"]

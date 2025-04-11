@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://d0u4xxxcd4uco"]
 
-[ext_resource type="Script" path="res://Scenes/map_view.gd" id="1_rqcnq"]
+[ext_resource type="Script" uid="uid://dbtc7dsk6s22a" path="res://Scenes/map_view.gd" id="1_rqcnq"]
 [ext_resource type="PackedScene" uid="uid://i7s1o6y03ab0" path="res://PraxisMapper/Controls/ScrollingCenteredMap.tscn" id="2_mqn16"]
 [ext_resource type="PackedScene" uid="uid://bev1jin6r7t6n" path="res://PraxisMapper/Controls/GetFile.tscn" id="3_iilpo"]
 [ext_resource type="Texture2D" uid="uid://c5qg38y1c2hkg" path="res://Assets/Trainers/LEADER_Giovanni.png" id="4_2ae7k"]
 [ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="4_dw2l7"]
 [ext_resource type="Texture2D" uid="uid://c1rvh58sfrtgm" path="res://Assets/Front/EEVEE.png" id="5_bq2b2"]
 [ext_resource type="PackedScene" uid="uid://byo6edysi20a" path="res://Components/PoGoMiniDisplay.tscn" id="5_fhuqw"]
-[ext_resource type="Script" path="res://PraxisMapper/Controls/RecentActivityTracker.gd" id="6_jo0bv"]
+[ext_resource type="Script" uid="uid://ck3kjvtalq061" path="res://PraxisMapper/Controls/RecentActivityTracker.gd" id="6_jo0bv"]
 [ext_resource type="PackedScene" uid="uid://dgnoeyus8vqce" path="res://PraxisMapper/Controls/PlaceTracker.tscn" id="7_b3tg4"]
 [ext_resource type="Texture2D" uid="uid://c3033wigb05gp" path="res://PraxisMapper/Resources/kenney_arrow.png" id="9_psrup"]
 

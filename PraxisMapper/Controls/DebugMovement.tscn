@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cajwrijcg2n1h"]
 
-[ext_resource type="Script" path="res://PraxisMapper/Controls/DebugMovement.gd" id="1_1g2xv"]
+[ext_resource type="Script" uid="uid://dkrbu50wq2wrm" path="res://PraxisMapper/Controls/DebugMovement.gd" id="1_1g2xv"]
 [ext_resource type="Texture2D" uid="uid://c3033wigb05gp" path="res://PraxisMapper/Resources/kenney_arrow.png" id="2_u00f4"]
 
 [node name="DebugMovement" type="Node2D"]

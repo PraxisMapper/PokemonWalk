@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://yfwujtib4ogb"]
 
-[ext_resource type="Script" path="res://Scenes/landing.gd" id="1_1e1to"]
+[ext_resource type="Script" uid="uid://b5lrila8uf03i" path="res://Scenes/landing.gd" id="1_1e1to"]
 [ext_resource type="PackedScene" uid="uid://bev1jin6r7t6n" path="res://PraxisMapper/Controls/GetFile.tscn" id="2_llpnn"]
 [ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="3_7iixc"]
 

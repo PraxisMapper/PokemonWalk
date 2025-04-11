@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6cfprdbul55o"]
 
-[ext_resource type="Script" path="res://PraxisMapper/FullOffline/FullOfflineTiles.gd" id="1_rv5jx"]
+[ext_resource type="Script" uid="uid://bc0nqm7qp80vs" path="res://PraxisMapper/FullOffline/FullOfflineTiles.gd" id="1_rv5jx"]
 [ext_resource type="PackedScene" uid="uid://8os6eof5qcbh" path="res://PraxisMapper/APICalls/PraxisEndpoints.tscn" id="2_rp3kp"]
-[ext_resource type="Script" path="res://PraxisMapper/FullOffline/DrawOfflineTile.gd" id="3_n6eua"]
-[ext_resource type="Script" path="res://PraxisMapper/FullOffline/DrawOfflineNameTile.gd" id="4_n8854"]
-[ext_resource type="Script" path="res://PraxisMapper/FullOffline/DrawOfflineBoundsTile.gd" id="5_apl8f"]
-[ext_resource type="Script" path="res://PraxisMapper/FullOffline/DrawOfflineTerrainTile.gd" id="6_fvihv"]
+[ext_resource type="Script" uid="uid://l4qw0v2n6nas" path="res://PraxisMapper/FullOffline/DrawOfflineTile.gd" id="3_n6eua"]
+[ext_resource type="Script" uid="uid://b4m6bi72dvmq3" path="res://PraxisMapper/FullOffline/DrawOfflineNameTile.gd" id="4_n8854"]
+[ext_resource type="Script" uid="uid://drjni0nartcat" path="res://PraxisMapper/FullOffline/DrawOfflineBoundsTile.gd" id="5_apl8f"]
+[ext_resource type="Script" uid="uid://bw8mnm7ol8qrj" path="res://PraxisMapper/FullOffline/DrawOfflineTerrainTile.gd" id="6_fvihv"]
 
 [node name="OfflineData" type="Node2D"]
 script = ExtResource("1_rv5jx")

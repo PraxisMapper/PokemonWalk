@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://byuoc420a66nc"]
 
-[ext_resource type="Script" path="res://PraxisMapper/Scenes/LoginScene.gd" id="1_xhe06"]
+[ext_resource type="Script" uid="uid://ms5goq4lgk7k" path="res://PraxisMapper/Scenes/LoginScene.gd" id="1_xhe06"]
 [ext_resource type="PackedScene" uid="uid://8os6eof5qcbh" path="res://PraxisMapper/APICalls/PraxisEndpoints.tscn" id="2_xm5lo"]
 
 [node name="LoginScene" type="Node2D"]

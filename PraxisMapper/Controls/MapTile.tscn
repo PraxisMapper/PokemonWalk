@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://pcj5vqd7p4l4"]
 
-[ext_resource type="Script" path="res://PraxisMapper/Controls/MapTile.gd" id="1_57dev"]
+[ext_resource type="Script" uid="uid://csa6ydf3e62rn" path="res://PraxisMapper/Controls/MapTile.gd" id="1_57dev"]
 [ext_resource type="PackedScene" uid="uid://8os6eof5qcbh" path="res://PraxisMapper/APICalls/PraxisEndpoints.tscn" id="2_j7ipw"]
 
 [node name="MapTile" type="Node2D"]

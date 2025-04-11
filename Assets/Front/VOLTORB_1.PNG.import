@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dcbn6y0o1wh3f"
-path="res://.godot/imported/VOLTORB_1.png-84693281ad622fe078b9a4b7738c238c.ctex"
+path="res://.godot/imported/VOLTORB_1.PNG-29a8210cb0ccbb33dab2b9bd74c0d9dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/VOLTORB_1.png"
-dest_files=["res://.godot/imported/VOLTORB_1.png-84693281ad622fe078b9a4b7738c238c.ctex"]
+source_file="res://Assets/Front/VOLTORB_1.PNG"
+dest_files=["res://.godot/imported/VOLTORB_1.PNG-29a8210cb0ccbb33dab2b9bd74c0d9dd.ctex"]
 
 [params]
 

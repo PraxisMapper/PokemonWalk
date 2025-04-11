@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://boribdyb7trxc"]
 
-[ext_resource type="Script" path="res://Scenes/po_go_gym_fight.gd" id="1_gumfl"]
+[ext_resource type="Script" uid="uid://dotnr2omc0828" path="res://Scenes/po_go_gym_fight.gd" id="1_gumfl"]
 [ext_resource type="PackedScene" uid="uid://ctwjfi6yfhnpm" path="res://Scenes/PoGoInventory.tscn" id="2_8r15x"]
 [ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="2_l7mcl"]
 [ext_resource type="PackedScene" uid="uid://byo6edysi20a" path="res://Components/PoGoMiniDisplay.tscn" id="3_ausoc"]

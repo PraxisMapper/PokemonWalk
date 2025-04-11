@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b16445g8mkbaa"]
 
-[ext_resource type="Script" path="res://PraxisMapper/FullOffline/FullSingleTile.gd" id="1_r2ooq"]
-[ext_resource type="Script" path="res://PraxisMapper/FullOffline/DrawSingleTile.gd" id="3_s2ulk"]
+[ext_resource type="Script" uid="uid://dkuf2drvxuodo" path="res://PraxisMapper/FullOffline/FullSingleTile.gd" id="1_r2ooq"]
+[ext_resource type="Script" uid="uid://ha0kao1q6roh" path="res://PraxisMapper/FullOffline/DrawSingleTile.gd" id="3_s2ulk"]
 
 [node name="OfflineData" type="Node2D"]
 script = ExtResource("1_r2ooq")

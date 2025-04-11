@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmtvesi6uwifa"]
 
-[ext_resource type="Script" path="res://Components/po_go_full_display.gd" id="1_32yl8"]
+[ext_resource type="Script" uid="uid://bq7yosekcrerb" path="res://Components/po_go_full_display.gd" id="1_32yl8"]
 [ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="2_oe6ot"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u26e7"]

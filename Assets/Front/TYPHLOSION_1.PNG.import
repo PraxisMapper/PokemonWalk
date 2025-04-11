@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bskbuhglmyse4"
-path="res://.godot/imported/TYPHLOSION_1.png-8bc6545ab44dd4cb947153c9a09155ba.ctex"
+path="res://.godot/imported/TYPHLOSION_1.PNG-7865fee0e08b977591c41dafd2501f6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/TYPHLOSION_1.png"
-dest_files=["res://.godot/imported/TYPHLOSION_1.png-8bc6545ab44dd4cb947153c9a09155ba.ctex"]
+source_file="res://Assets/Front/TYPHLOSION_1.PNG"
+dest_files=["res://.godot/imported/TYPHLOSION_1.PNG-7865fee0e08b977591c41dafd2501f6e.ctex"]
 
 [params]
 

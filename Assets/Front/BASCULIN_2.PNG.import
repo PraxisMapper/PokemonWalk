@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxqnwkxxcwmef"
-path="res://.godot/imported/BASCULIN_2.png-7266ebe5b1a91e0cf9a8cbbb3a3411d9.ctex"
+path="res://.godot/imported/BASCULIN_2.PNG-7490c0d901e1ce205f5e882219aa7398.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/BASCULIN_2.png"
-dest_files=["res://.godot/imported/BASCULIN_2.png-7266ebe5b1a91e0cf9a8cbbb3a3411d9.ctex"]
+source_file="res://Assets/Front/BASCULIN_2.PNG"
+dest_files=["res://.godot/imported/BASCULIN_2.PNG-7490c0d901e1ce205f5e882219aa7398.ctex"]
 
 [params]
 

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Pokemon Walk"
 run/main_scene="res://Scenes/Landing.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/image="res://PraxisMapper/Resources/PraxisMapper Splash Screen.png"
 config/icon="res://Assets/icon.png"
 
@@ -32,12 +32,12 @@ directories/dch_directory={
 "Dialogs/finalBoss": "res://android/build/assets/Dialogs/finalBoss.dch",
 "Dialogs/introCharacter": "res://android/build/assets/Dialogs/introCharacter.dch",
 "assistant": "res://Dialogs/assistant.dch",
-"debug/Dialogs/Developer": "res://android/build/build/intermediates/assets/debug/Dialogs/Developer.dch",
-"debug/Dialogs/assistant": "res://android/build/build/intermediates/assets/debug/Dialogs/assistant.dch",
-"debug/Dialogs/finalBoss": "res://android/build/build/intermediates/assets/debug/Dialogs/finalBoss.dch",
-"debug/Dialogs/introCharacter": "res://android/build/build/intermediates/assets/debug/Dialogs/introCharacter.dch",
 "finalBoss": "res://Dialogs/finalBoss.dch",
-"introCharacter": "res://Dialogs/introCharacter.dch"
+"introCharacter": "res://Dialogs/introCharacter.dch",
+"standardDebug/Dialogs/Developer": "res://android/build/build/intermediates/assets/standardDebug/Dialogs/Developer.dch",
+"standardDebug/Dialogs/assistant": "res://android/build/build/intermediates/assets/standardDebug/Dialogs/assistant.dch",
+"standardDebug/Dialogs/finalBoss": "res://android/build/build/intermediates/assets/standardDebug/Dialogs/finalBoss.dch",
+"standardDebug/Dialogs/introCharacter": "res://android/build/build/intermediates/assets/standardDebug/Dialogs/introCharacter.dch"
 }
 directories/dtl_directory={
 "Dialogs/DifferencesTimeline": "res://android/build/assets/Dialogs/DifferencesTimeline.dtl",
@@ -50,11 +50,11 @@ directories/dtl_directory={
 "FusionTimeline": "res://Dialogs/FusionTimeline.dtl",
 "HelpTimeline": "res://Dialogs/HelpTimeline.dtl",
 "IntroTimeline": "res://Dialogs/IntroTimeline.dtl",
-"debug/Dialogs/DifferencesTimeline": "res://android/build/build/intermediates/assets/debug/Dialogs/DifferencesTimeline.dtl",
-"debug/Dialogs/FinalBossEncounterTimeline": "res://android/build/build/intermediates/assets/debug/Dialogs/FinalBossEncounterTimeline.dtl",
-"debug/Dialogs/FusionTimeline": "res://android/build/build/intermediates/assets/debug/Dialogs/FusionTimeline.dtl",
-"debug/Dialogs/HelpTimeline": "res://android/build/build/intermediates/assets/debug/Dialogs/HelpTimeline.dtl",
-"debug/Dialogs/IntroTimeline": "res://android/build/build/intermediates/assets/debug/Dialogs/IntroTimeline.dtl"
+"standardDebug/Dialogs/DifferencesTimeline": "res://android/build/build/intermediates/assets/standardDebug/Dialogs/DifferencesTimeline.dtl",
+"standardDebug/Dialogs/FinalBossEncounterTimeline": "res://android/build/build/intermediates/assets/standardDebug/Dialogs/FinalBossEncounterTimeline.dtl",
+"standardDebug/Dialogs/FusionTimeline": "res://android/build/build/intermediates/assets/standardDebug/Dialogs/FusionTimeline.dtl",
+"standardDebug/Dialogs/HelpTimeline": "res://android/build/build/intermediates/assets/standardDebug/Dialogs/HelpTimeline.dtl",
+"standardDebug/Dialogs/IntroTimeline": "res://android/build/build/intermediates/assets/standardDebug/Dialogs/IntroTimeline.dtl"
 }
 variables={
 "ProfGender": "X"

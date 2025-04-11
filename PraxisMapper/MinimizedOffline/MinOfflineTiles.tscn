@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlr56hkndvvt0"]
 
-[ext_resource type="Script" path="res://PraxisMapper/MinimizedOffline/MinOfflineTiles.gd" id="1_kadxa"]
-[ext_resource type="Script" path="res://PraxisMapper/MinimizedOffline/DrawMinOfflineTile.gd" id="2_5a5q0"]
-[ext_resource type="Script" path="res://PraxisMapper/MinimizedOffline/DrawMinOfflineNameTile.gd" id="3_x476w"]
-[ext_resource type="Script" path="res://PraxisMapper/MinimizedOffline/DrawMinOfflineTerrainTile.gd" id="4_5es4l"]
+[ext_resource type="Script" uid="uid://cyvl0y8jnxfsy" path="res://PraxisMapper/MinimizedOffline/MinOfflineTiles.gd" id="1_kadxa"]
+[ext_resource type="Script" uid="uid://bgj7wj6qadngl" path="res://PraxisMapper/MinimizedOffline/DrawMinOfflineTile.gd" id="2_5a5q0"]
+[ext_resource type="Script" uid="uid://st0fts1hvk5l" path="res://PraxisMapper/MinimizedOffline/DrawMinOfflineNameTile.gd" id="3_x476w"]
+[ext_resource type="Script" uid="uid://d4g8wgaraem1j" path="res://PraxisMapper/MinimizedOffline/DrawMinOfflineTerrainTile.gd" id="4_5es4l"]
 
 [node name="MinOfflineTiles" type="Node2D"]
 script = ExtResource("1_kadxa")

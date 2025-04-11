@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bu4g56k8xjniu"
-path="res://.godot/imported/ENAMORUS.png-85e70a4601af4f2b2242b349b62a4071.ctex"
+path="res://.godot/imported/ENAMORUS.PNG-512df018fb849a3cba9a15db7043d2d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/ENAMORUS.png"
-dest_files=["res://.godot/imported/ENAMORUS.png-85e70a4601af4f2b2242b349b62a4071.ctex"]
+source_file="res://Assets/Front/ENAMORUS.PNG"
+dest_files=["res://.godot/imported/ENAMORUS.PNG-512df018fb849a3cba9a15db7043d2d7.ctex"]
 
 [params]
 

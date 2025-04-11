@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bcx8d87r2n86c"]
 
-[ext_resource type="Script" path="res://Components/show_spawn_info.gd" id="1_j0ryp"]
+[ext_resource type="Script" uid="uid://bqeyk6rg7400k" path="res://Components/show_spawn_info.gd" id="1_j0ryp"]
 [ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="2_ie8uf"]
 
 [node name="ShowSpawnInfo" type="Node2D"]

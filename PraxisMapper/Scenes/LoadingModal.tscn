@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://1bql6vxd38y3"]
 
-[ext_resource type="Script" path="res://PraxisMapper/Scenes/LoadingModal.gd" id="1_wykcr"]
+[ext_resource type="Script" uid="uid://cv3iea1qdq7ks" path="res://PraxisMapper/Scenes/LoadingModal.gd" id="1_wykcr"]
 [ext_resource type="Texture2D" uid="uid://xvyj5uj4aqpi" path="res://PraxisMapper/Resources/LoadingOverlay.png" id="2_s0ms4"]
 
 [node name="LoadingModal" type="Node2D"]

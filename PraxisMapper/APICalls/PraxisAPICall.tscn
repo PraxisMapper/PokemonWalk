@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ddl6jqncfeef4"]
 
-[ext_resource type="Script" path="res://PraxisMapper/APICalls/PraxisAPICall.gd" id="1_duea4"]
+[ext_resource type="Script" uid="uid://bigi57vb8cv2u" path="res://PraxisMapper/APICalls/PraxisAPICall.gd" id="1_duea4"]
 
 [node name="PraxisAPICall" type="Node"]
 process_thread_group = 2
