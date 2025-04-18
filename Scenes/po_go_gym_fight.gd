@@ -146,6 +146,8 @@ func Start():
 		GameGlobals.playerData.stardust += 1000
 		GameGlobals.playerData.dailyClearedRaids.append(PraxisCore.currentPlusCode.substr(0,8))
 		
+		if GameGlobals.playerData.pokedex.find(boss.key) == -1:
+			GameGlobals.playerData.pokedex.append(boss.key)
 		GameGlobals.Save()
 	else:
 		#player did not win. I guess the reasons why dont matter.

@@ -125,10 +125,14 @@ func FillPage():
 				$sc/c/btnEvolve.visible = false #we are the max evolution
 		else:
 			#TODO: Special cases where there's more options in the family line.
-			if pokemonData.key == "EEVEE" || family[0] == "APPLIN"  || family[0] == "TYROGUE":
+			if pokemonData.key == "EEVEE" or family[0] == "APPLIN" or family[0] == "TYROGUE":
 				evoCost = 50
 			if pokemonData.family == "FUSION":
 				candyGrind = 3
+			if pokemonData.key == "WURMPLE":
+				evoCost = 25
+			if pokemonData.key == "SILCOON" or pokemonData.key == "CASCOON":
+				evoCost = 100
 			
 		$sc/c/btnEvolve.text = "Evolve for " + str(evoCost) + " Candies"
 	else: #if baseData.formType != "TRANSFORM":
@@ -283,6 +287,13 @@ func Evolve():
 	if pokemonData.key == "RAICHU" or pokemonData.key == "MAROWAK":
 		if randf() > 0.75:
 			pokemonData.key += "_1"
+	if pokemonData.key == "WURMPLE":
+		var wurmpOpts = ["SILCOON", "CASCOON"]
+		pokemonData.key = wurmpOpts.pick_random()
+	if pokemonData.key == "SILCOON":
+		pokemonData.key = "BEAUTIFLY"
+	if pokemonData.key == "CASCOON":
+		pokemonData.key = "DUSTOX"
 	
 	if !GameGlobals.playerData.pokedex.has(pokemonData.key):
 		GameGlobals.playerData.pokedex.append(pokemonData.key)

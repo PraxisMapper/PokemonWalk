@@ -122,7 +122,7 @@ static var eventEntries = [
 		name = "Ghost Week",
 		description = "The best type, now available worldwide",
 		spawns = {"MISDREAVUS" = 1, "SINISTEA" = 1, "GREAVARD" = 1, "GASTLY" = 1, "SPIRITOMB" = 1, 
-		"PUMPKABOO" = 1, "SANDYGHAST" = 1, "HONEDGE" = 1 }
+		"PUMPKABOO" = 1, "SANDYGAST" = 1, "HONEDGE" = 1 }
 	},
 	{ #16, Apr 23-29
 		name = "Dragon Week",
@@ -292,7 +292,7 @@ static var eventEntries = [
 		name = "Ghost Week",
 		description = "The best type, now available worldwide",
 		spawns = {"MISDREAVUS" = 1, "SINISTEA" = 1, "GREAVARD" = 1, "GASTLY" = 1, "SPIRITOMB" = 1, 
-		"PUMPKABOO" = 1, "SANDYGHAST" = 1, "HONEDGE" = 1 }
+		"PUMPKABOO" = 1, "SANDYGAST" = 1, "HONEDGE" = 1 }
 	}, #44, Nov 5-11
 	{
 		name = "Grass Starter Week",
