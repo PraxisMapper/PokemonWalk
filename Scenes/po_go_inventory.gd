@@ -23,7 +23,7 @@ func _ready() -> void:
 const itemsPerFrame = 3
 func _process(time):
 	var itemsLeft = 0
-	if currentItemToAdd < allItems and itemsLeft < itemsPerFrame:
+	if currentItemToAdd <= allItems and itemsLeft < itemsPerFrame:
 		var cc = Control.new()
 		cc.set_size(sizeVec)
 		cc.mouse_filter = Control.MOUSE_FILTER_IGNORE
