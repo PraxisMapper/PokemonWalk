@@ -18,15 +18,15 @@ func FillPage():
 	var family = GameGlobals.baseData.allFamilies[pokemonData.family]
 	var baseFamily = family[0] # fixes Gallade
 	$sc/c/lblName.text = pokemonData.name
-	$sc/c/lblPower.text = str(PokemonHelpers.GetCombatPower(pokemonData)) + " CP"
+	$sc/c/lblPower.text = str(int(PokemonHelpers.GetCombatPower(pokemonData))) + " CP"
 	
 	$sc/c/txrPoke.texture = load(PokemonHelpers.GetPokemonFrontSprite(pokemonData.key, false, "M"))
-	$sc/c/lblIVs.text = "IVs:\nATK " + str(pokemonData.IVs[0]) + " / DEF " + str(pokemonData.IVs[1]) + " / STA " + str(pokemonData.IVs[2])
+	$sc/c/lblIVs.text = "IVs:\nATK " + str(int(pokemonData.IVs[0])) + " / DEF " + str(int(pokemonData.IVs[1])) + " / STA " + str(int(pokemonData.IVs[2]))
 	var candies = 0
 	if (GameGlobals.playerData.candyByFamily.has(baseFamily)):
 		candies = GameGlobals.playerData.candyByFamily[baseFamily]
-	$sc/c/lblCandy.text = str(candies) + " Candies"
-	$sc/c/lblLevel.text = "Level " + str(pokemonData.level)
+	$sc/c/lblCandy.text = str(int(candies)) + " Candies"
+	$sc/c/lblLevel.text = "Level " + str(int(pokemonData.level))
 	
 	$sc/c/lblTypes.text = "Types: "
 	for t in baseData.types:

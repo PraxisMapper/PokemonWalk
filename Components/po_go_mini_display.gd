@@ -27,7 +27,7 @@ func SetInfo(pokemonData):
 	if $lblName != null:
 		$lblName.text = pokemonData.name
 	if $lblPower != null:
-		$lblPower.text = str(PokemonHelpers.GetCombatPower(pokemonData)) + " CP"
+		$lblPower.text = str(int(PokemonHelpers.GetCombatPower(pokemonData))) + " CP"
 
 func SetPokedexInfo(key, isCaught):
 	#use this function to set up this display for pokedex mode.

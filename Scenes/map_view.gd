@@ -28,13 +28,13 @@ func _process(delta: float) -> void:
 	$playerArrow.rotation = PraxisCore.GetCompassHeading()
 
 func UpdateHeader():
-	$header/lblCoins.text = "Coins: " + str(GameGlobals.playerData.currentCoins) + " Stardust: " +str(GameGlobals.playerData.stardust)
+	$header/lblCoins.text = "Coins: " + str(int(GameGlobals.playerData.currentCoins)) + " Stardust: " +str(int(GameGlobals.playerData.stardust))
 	
 	#Balance notes: when this is * 1000, it takes way too long for your player level to increase.
 	#Reduced it to 100, so it should be 10x faster. I expect this is a reasonable amount.
 	var prevLevel = ((GameGlobals.playerData.currentLevel - 1) ** 2 * 100)
 	var thisLevel = ((GameGlobals.playerData.currentLevel) ** 2 * 100) - prevLevel
-	$header/lblXp.text = "Level " + str(GameGlobals.playerData.currentLevel) + " XP: " + str(GameGlobals.playerData.currentXp - prevLevel) + "/" + str(thisLevel)
+	$header/lblXp.text = "Level " + str(int(GameGlobals.playerData.currentLevel)) + " XP: " + str(int(GameGlobals.playerData.currentXp - prevLevel)) + "/" + str(int(thisLevel))
 	
 	if (GameGlobals.playerData.unlockedSpawnData.has(PraxisCore.currentPlusCode.substr(0,8))):
 		$footer/btnSpawns.text  = "View Spawn Info"

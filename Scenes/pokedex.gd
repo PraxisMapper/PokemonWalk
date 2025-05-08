@@ -96,8 +96,8 @@ func FindNearbyRaids(key, locationCell8, searchRange = -1):
 			if spawnData == key:
 				found = code
 				var dist = PlusCodes.GetDistanceCell8s(locationCell8, code)
-				found += abs(dist.x) + " tiles " + ("east, " if dist.x > 0 else "west, ")
-				found += abs(dist.y) + " tiles " + ("north" if dist.y > 0 else "south")
+				found += str(int(abs(dist.x))) + " tiles " + ("east, " if dist.x > 0 else "west, ")
+				found += str(int(abs(dist.y))) + " tiles " + ("north" if dist.y > 0 else "south")
 				var dir = PlusCodes.GetDirection(locationCell8, code)
 				found += ", " + str(dist) + " maptiles, heading " + str(dir)
 				if PraxisOfflineData.OfflineDataExists(code):
@@ -122,8 +122,8 @@ func FindNearbySpawns(key, locationCell8, searchRange = -1):
 			if spawnData.has(key):
 				found = code
 				var dist = PlusCodes.GetDistanceCell8s(code, locationCell8)
-				found += ", " + str(abs(dist.x)) + " tiles " + ("east, " if dist.x > 0 else "west, ")
-				found += str(abs(dist.y)) + " tiles " + ("north" if dist.y > 0 else "south")
+				found += ", " + str(int(abs(dist.x))) + " tiles " + ("east, " if dist.x > 0 else "west, ")
+				found += str(int(abs(dist.y))) + " tiles " + ("north" if dist.y > 0 else "south")
 				#var dir = PlusCodes.GetDirection(locationCell8, code)
 				#found += ", " + " heading " + str(dir)
 				if PraxisOfflineData.OfflineDataExists(code):

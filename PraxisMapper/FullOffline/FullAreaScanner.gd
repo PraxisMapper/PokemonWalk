@@ -38,10 +38,10 @@ func ReadPlaces(plusCode, category, terrainID, requirements, options = [], ignor
 			continue
 		
 		#These options are more complicated, and will be brough in here as just a list of values
-		if options.size() > 0 and options.find(place.tid) == -1:
+		if options.size() > 0 and options.find(int(place.tid)) == -1:
 			continue
 		
-		var name = areaData.nameTable[str(place.nid)]
+		var name = areaData.nameTable[str(int(place.nid))]
 		if visitedPlaces != null and visitedPlaces.GetInfo(name, plusCode).size() > 0: #exclude visited places
 			continue
 		if ignoreArray.find(name) >= 0:
@@ -54,7 +54,7 @@ func ReadPlaces(plusCode, category, terrainID, requirements, options = [], ignor
 			
 		var reportedData = {}
 		reportedData.name = name
-		reportedData.type = styleData[str(place.tid)].name
+		reportedData.type = styleData[str(int(place.tid))].name
 		
 		#Estimate center. For horseshoe-shaped places, this will often not actually be in-bounds.
 		var centerVector = Vector2i(0,0)
