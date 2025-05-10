@@ -13,8 +13,9 @@ var haveInSet = 0
 
 var scanner = FullAreaScanner.new()
 
-#func _ready() -> void:
-	#FillGrid()
+func _ready() -> void:
+	var res = DisplayServer.screen_get_size(DisplayServer.window_get_current_screen())
+	$sc.scroll_deadzone = (res.y / 50) #2% of the screen must be scrolled to work.
 
 const itemsPerFrame = 3
 func _process(delta: float) -> void:

@@ -110,6 +110,10 @@ dialogic_default_action={
 [input_devices]
 
 pointing/android/enable_long_press_as_right_click=true
+sensors/enable_accelerometer=true
+sensors/enable_gravity=true
+sensors/enable_gyroscope=true
+sensors/enable_magnetometer=true
 
 [rendering]
 

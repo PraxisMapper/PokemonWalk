@@ -19,6 +19,9 @@ var multiSelected = []
 func _ready() -> void:
 	UpdateList()
 	leftClicked.connect(PopDetails) #default behavior
+	#testing logic for fixing some samsung phones
+	var res = DisplayServer.screen_get_size(DisplayServer.window_get_current_screen())
+	$sc.scroll_deadzone = (res.y / 50) #2% of the screen must be scrolled to work.
 
 const itemsPerFrame = 3
 func _process(time):
@@ -29,6 +32,7 @@ func _process(time):
 		cc.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		cc.custom_minimum_size = sizeVec
 		var display = plDisplay.instantiate()
+		
 		
 		display.data = sortedList[currentItemToAdd]
 		cc.add_child(display)

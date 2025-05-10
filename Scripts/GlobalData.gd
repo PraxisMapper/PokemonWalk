@@ -103,6 +103,7 @@ func _ready():
 			pokemon[starter.id] = starter
 			playerData.candyByFamily[starter.family] = 1
 			playerData.buddy = starter.id
+			GameGlobals.playerData.pokedex.append(starter.key)
 		Save()
 		
 	if UpdateSaveVersion():
