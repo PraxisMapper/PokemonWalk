@@ -36,7 +36,7 @@ static var eventEntries = [
 		name = "Galar Week",
 		description = "Galar forms ahoy!",
 		spawns = {"PONYTA_1" = 1, "FARFETCHD_1" = 1, "MRMIME_1" = 1, "CORSOLA_1" = 1,
-		"MEOWTH_2" = 1, "ZIGZAGZOON_1" = 1, "DARUMAKA_2" = 1, "YAMASK_1" = 1, "SLOWPOKE_1" = 1}
+		"MEOWTH_2" = 1, "ZIGZAGOON_1" = 1, "DARUMAKA_2" = 1, "YAMASK_1" = 1, "SLOWPOKE_1" = 1}
 	},
 	{ # 2, Jan 15-21
 		name = "Fusion Week 1",
@@ -152,7 +152,7 @@ static var eventEntries = [
 		name = "Galar Week",
 		description = "Galar forms ahoy!",
 		spawns = {"PONYTA_1" = 1, "FARFETCHD_1" = 1, "MRMIME_1" = 1, "CORSOLA_1" = 1,
-		"MEOWTH_2" = 1, "ZIGZAGZOON_1" = 1, "DARUMAKA_2" = 1, "YAMASK_1" = 1, "SLOWPOKE_1" = 1}
+		"MEOWTH_2" = 1, "ZIGZAGOON_1" = 1, "DARUMAKA_2" = 1, "YAMASK_1" = 1, "SLOWPOKE_1" = 1}
 	}, 
 	{ #21, May28 - Jun3
 		name = "Fusion Week 1",
@@ -274,7 +274,7 @@ static var eventEntries = [
 		name = "Galar Week",
 		description = "Galar forms ahoy!",
 		spawns = {"PONYTA_1" = 1, "FARFETCHD_1" = 1, "MRMIME_1" = 1, "CORSOLA_1" = 1,
-		"MEOWTH_2" = 1, "ZIGZAGZOON_1" = 1, "DARUMAKA_2" = 1, "YAMASK_1" = 1, "SLOWPOKE_1" = 1}
+		"MEOWTH_2" = 1, "ZIGZAGOON_1" = 1, "DARUMAKA_2" = 1, "YAMASK_1" = 1, "SLOWPOKE_1" = 1}
 	},
 	{ #41 Oct 15-21
 		name = "Fusion Week 1",
