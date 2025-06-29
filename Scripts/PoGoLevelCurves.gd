@@ -24,4 +24,6 @@ static func GetCombatPowerMultiplier(instanceData):
 		baseMul *= (1 - GameGlobals.speedBuff)
 	baseMul *= (1 + instanceData.buddyBoost)
 	baseMul *= (1 + (instanceData.distanceWalked * 0.000001)) # convert m to km, then take 1% of that.
+	if instanceData.isShiny:
+		baseMul *= (1 + GameGlobals.shinyBuff)
 	return baseMul

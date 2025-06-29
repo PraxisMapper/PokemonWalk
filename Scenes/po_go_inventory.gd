@@ -119,6 +119,8 @@ func SmartClearInventory():
 		if counter < size:
 			counter += 1
 			continue
+		if e.isShiny:
+			continue
 		
 		#now, this pokemon is not in the top half, and isn't unique. Transfer it.
 		if (GameGlobals.playerData.candyByFamily.has(e.family)):

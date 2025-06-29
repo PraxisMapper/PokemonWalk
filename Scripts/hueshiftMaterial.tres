@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://co00ye2jn8w2e"]
+
+[ext_resource type="Shader" uid="uid://crb4yvx7wimjp" path="res://Scripts/hueshift.gdshader" id="1_ehjdn"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_ehjdn")
+shader_parameter/hue_shift = 0.4

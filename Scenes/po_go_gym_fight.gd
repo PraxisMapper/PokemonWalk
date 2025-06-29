@@ -104,15 +104,15 @@ func update6(data):
 	
 func Start():
 	$pickParty.position.x = -1600
-	$txrBoss.texture = load(PokemonHelpers.GetPokemonFrontSprite(boss.key, false, "M"))
+	$txrBoss.texture = load(PokemonHelpers.GetPokemonFrontSprite(boss.key, boss.isShiny, "M"))
 	
 	print(party[0])
-	$txrParty1.texture = load(PokemonHelpers.GetPokemonFrontSprite($pickParty/PoGoMiniDisplay.data.key, false, "M"))
-	$txrParty2.texture = load(PokemonHelpers.GetPokemonFrontSprite($pickParty/PoGoMiniDisplay2.data.key, false, "M"))
-	$txrParty3.texture = load(PokemonHelpers.GetPokemonFrontSprite($pickParty/PoGoMiniDisplay3.data.key, false, "M"))
-	$txrParty4.texture = load(PokemonHelpers.GetPokemonFrontSprite($pickParty/PoGoMiniDisplay4.data.key, false, "M"))
-	$txrParty5.texture = load(PokemonHelpers.GetPokemonFrontSprite($pickParty/PoGoMiniDisplay5.data.key, false, "M"))
-	$txrParty6.texture = load(PokemonHelpers.GetPokemonFrontSprite($pickParty/PoGoMiniDisplay6.data.key, false, "M"))
+	$txrParty1.texture = load(PokemonHelpers.GetPokemonFrontSprite($pickParty/PoGoMiniDisplay.data.key, $pickParty/PoGoMiniDisplay.data.isShiny, "M"))
+	$txrParty2.texture = load(PokemonHelpers.GetPokemonFrontSprite($pickParty/PoGoMiniDisplay2.data.key, $pickParty/PoGoMiniDisplay2.data.isShiny, "M"))
+	$txrParty3.texture = load(PokemonHelpers.GetPokemonFrontSprite($pickParty/PoGoMiniDisplay3.data.key, $pickParty/PoGoMiniDisplay3.data.isShiny, "M"))
+	$txrParty4.texture = load(PokemonHelpers.GetPokemonFrontSprite($pickParty/PoGoMiniDisplay4.data.key, $pickParty/PoGoMiniDisplay4.data.isShiny, "M"))
+	$txrParty5.texture = load(PokemonHelpers.GetPokemonFrontSprite($pickParty/PoGoMiniDisplay5.data.key, $pickParty/PoGoMiniDisplay5.data.isShiny, "M"))
+	$txrParty6.texture = load(PokemonHelpers.GetPokemonFrontSprite($pickParty/PoGoMiniDisplay6.data.key, $pickParty/PoGoMiniDisplay6.data.isShiny, "M"))
 	
 	battle.boss = battle.HydrateGoPokemon(boss)
 	battle.boss.Stamina *= 2.5 # Increase boss durability so they're not automatic wins.

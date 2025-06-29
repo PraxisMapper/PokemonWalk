@@ -10,7 +10,7 @@ var currentPlace = ["", ""]
 
 var baseData = {}
 var playerData = {
-	version = 4,
+	version = 6,
 	saveCreated = Time.get_unix_time_from_system(),
 	currentXp = 0,
 	currentLevel = 1,
@@ -34,6 +34,8 @@ var playerData = {
 	soundEnabled = true,
 	showLocation = true,
 	pokedex = [],
+	secretsGranted = [],
+	shinyPityCount = 0,
 }
 var styleData = {}
 var cachedAreaData = {}
@@ -49,8 +51,11 @@ var speedLimit = 5.5
 var speedBuff = .15
 #This is how much extra stuff (xp, candy, stardust) you get for walking, versus driving.
 var walkingMultiplier = 4 
+#shiny pokemon are slightly stronger
+var shinyBuff = .1
 #pokemon caught as events, versus wild spawns, might get a power tweak?
 #var eventMod = 0.1
+
 
 #variables that I didn't end up using.
 var commonPokemonPerArea = 6
@@ -95,6 +100,12 @@ func _ready():
 		if playerData.candyByFamily[family] < 0:
 			playerData.candyByFamily[family] = 1
 
+	#Check for a data-wipe error
+	if pokemon.size() == 0 and playerData.buddy != "": #we HAD pokemon, and now we dont
+		print("Total collection loss detected!")
+		pass #TODO: what action can be done here? Restore backup? Alert player?
+		
+
 	if (playerData.buddy == ""):
 		if pokemon.size() > 0:
 			playerData.buddy = pokemon.keys()[0]
@@ -108,6 +119,8 @@ func _ready():
 		
 	if UpdateSaveVersion():
 		Save()
+	
+	MakeBackups()
 	
 func UpdateSaveVersion():
 	var results = false
@@ -154,15 +167,28 @@ func UpdateSaveVersion():
 		#Yes this is duplicated. There was a typo that made this fail in V6.
 		if playerData.currentLevel >= 25: 
 			playerData.allowFusions = true
+		results = true
+	if playerData.version < 6:  #release 10
+		playerData.version = 6
+		playerData.secretsGranted = []
+		playerData.shinyPityCount = 0
+		pokemonMutex.lock()
+		for p in pokemon:
+			var data = pokemon[p]
+			data.isShiny = false #randf() <= .0009765625 #People will re-import to get shinies, skip this
+			pokemon[p] = data
+		pokemonMutex.unlock()
+		results = true
 	
 	#Always do this, data sanity check.
 	if playerData.has("pokedex") == false:
 		playerData.pokedex = []
 		results = true
-
+	
+	var levelCap = (playerData.currentLevel + 5) * 2
 	for p in pokemon:
-		if pokemon[p].level > (playerData.currentLevel + 5) * 2:
-			pokemon[p].level = (playerData.currentLevel + 5) * 2
+		if pokemon[p].level > levelCap:
+			pokemon[p].level = levelCap
 	return results
 	
 func Load():
@@ -189,6 +215,20 @@ func Save():
 	PraxisCore.SaveData("user://pokemonCollection.json", pokemon)
 	pokemonMutex.unlock()
 	PraxisCore.SaveData("user://gymData.json", gymData)
+	
+func MakeBackups():
+	print("making backups")
+	var date =  int(Time.get_unix_time_from_system())
+	PraxisCore.SaveData("user://Backups/" + str(date) + "-saveData.backup.json", playerData) 
+	PraxisCore.SaveData("user://Backups/" + str(date) + "-pokemonCollection.backup.json", pokemon) 
+	PraxisCore.SaveData("user://Backups/" + str(date) + "-gymData.backup.json", gymData) 
+
+func RestoreBackup(date):
+	print("restoring backups")
+	playerData = PraxisCore.LoadData("user://Backups/" + str(date) + "-saveData.backup.json") 
+	pokemon = PraxisCore.LoadData("user://Backups/" + str(date) + "-pokemonCollection.backup.json") 
+	gymData = PraxisCore.LoadData("user://Backups/" + str(date) + "-gymData.backup.json") 
+	UpdateSaveVersion()
 
 func GrantPlayerXP(amount):
 	playerData.currentXp += amount

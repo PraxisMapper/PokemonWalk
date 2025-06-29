@@ -21,13 +21,15 @@ func SetColor(color):
 func SetInfo(pokemonData):
 	if pokemonData == null or pokemonData.is_empty():
 		return
-	data = pokemonData
 	if $txrPokemon != null:
-		$txrPokemon.texture = load(PokemonHelpers.GetPokemonFrontSprite(pokemonData.key, false, "M")) #ImageTexture.create_from_image(img)
+		$txrPokemon.texture = load(PokemonHelpers.GetPokemonFrontSprite(pokemonData.key, pokemonData.isShiny, "M")) #ImageTexture.create_from_image(img)
 	if $lblName != null:
 		$lblName.text = pokemonData.name
+		if pokemonData.isShiny:
+			$lblName.text = "*" + $lblName.text + "*"
 	if $lblPower != null:
 		$lblPower.text = str(int(PokemonHelpers.GetCombatPower(pokemonData))) + " CP"
+	data = pokemonData
 
 func SetPokedexInfo(key, isCaught):
 	#use this function to set up this display for pokedex mode.

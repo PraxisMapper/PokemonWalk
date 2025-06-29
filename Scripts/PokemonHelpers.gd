@@ -15,11 +15,11 @@ static func GetPokemonFrontSprite(pokemonKey, isShiny, gender):
 	#the presence of that filename.
 	#add .png. Thats the file name to get.
 	
-	var spriteName = "res://Assets/Front"
-	if (isShiny):
-		spriteName += " shiny/"
-	else:
-		spriteName += "/"
+	var spriteName = "res://Assets/Front/"
+	
+	
+	#else:
+		#spriteName += "/"
 	
 	if (gender == "f"):
 		if ResourceLoader.exists(spriteName + pokemonKey + "_female.png"):
@@ -36,6 +36,14 @@ static func GetPokemonFrontSprite(pokemonKey, isShiny, gender):
 			print("File not found, getting " + spriteName.split("_")[0] + ".png instead")
 			spriteName = spriteName.split("_")[0] + ".png"
 			
+	#Now that all keys are applied, do a shiny check
+	if isShiny:
+		var shinyCheck = spriteName.replace("Front/", "Front/shiny/")
+		if ResourceLoader.exists(shinyCheck):
+			spriteName = shinyCheck
+		else:
+			print("No shiny form found for " + pokemonKey)
+
 	return spriteName
 	
 static func NewPokemonData(pokemonNumber):
@@ -48,7 +56,7 @@ static func NewPokemonDataByKey(pokemonKey):
 		key = pokemonKey, #baseData.pokemon[pokemonKey], #pokemonKey, #PIKACHU, in baseData.allPokemon
 		xp = 0, #This gets saved per pokemon
 		item = {}, #ITEM, in baseData.items when i get there.
-		isShiny = false,
+		isShiny = randf() <= .0009765625, #1 in 1024 is shiny.
 		gender = "m",
 		abilityId = 0, #which entry in the abilities array is this pokemon's ability.
 		nature = "",

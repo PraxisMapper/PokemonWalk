@@ -89,10 +89,21 @@ func recentCellVisit(cell10):
 		var results = PoGoAutoBattle.Battle1v1(GameGlobals.pokemon[GameGlobals.playerData.buddy], opponent)
 		if (results == 1): #victory
 			if GameGlobals.playerData.autoCatch and GameGlobals.playerData.currentCoins >= 10:
+				if !opponent.isShiny:
+					GameGlobals.playerData.shinyPityCount += 1
+					print(str(GameGlobals.playerData.shinyPityCount))
+					if GameGlobals.playerData.shinyPityCount == 750: #everyone loves to be ahead of the curve.
+						opponent.isShiny = true
+						GameGlobals.playerData.shinyPityCount == 0
+				else:
+					print("wild shiny!")
 				opponent.caughtSpeed = PraxisCore.last_location.speed
 				opponent.combatPower = PokemonHelpers.GetCombatPower(opponent)
 				if GameGlobals.playerData.soundEnabled:
-					$AudioStreamPlayer.stream = SoundSystem.catchSound
+					if opponent.isShiny:
+						$AudioStreamPlayer.stream = SoundSystem.secretSound
+					else:
+						$AudioStreamPlayer.stream = SoundSystem.catchSound
 					$AudioStreamPlayer.play()
 				GameGlobals.playerData.currentCoins -= 10
 				GameGlobals.pokemon[opponent.id] = opponent

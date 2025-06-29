@@ -14,7 +14,7 @@ func SetInfo(pokemonData, flipImg = false): #NOT party slot
 	#var data = GameGlobals.baseData.pokemon[pokemonData.baseDataKey.key]
 	var name = PokemonHelpers.GetPokemonFrontSprite(pokemonData.key, pokemonData.isShiny, pokemonData.gender)
 	
-	var texture = load(name)
+	#var texture = load(name)
 	#NOTE: these textures are 192x192
 	$pokemonImg.texture = load(name)
 	$pokemonImg.position.x = 0

@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://b6entxwhnnrn"]
+
+[ext_resource type="Shader" uid="uid://76ae0wum6r6n" path="res://Scripts/foil.gdshader" id="1_h30o1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2mnsc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jsrne"]
+
+[resource]
+shader = ExtResource("1_h30o1")
+shader_parameter/mouse_position = Vector2(25, 25)
+shader_parameter/sprite_position = Vector2(25, 25)
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/inset = 0.0
+shader_parameter/max_tilt = 1.0
+shader_parameter/max_distance = 500.0
+shader_parameter/foilcolor = Color(0, 0, 0, 1)
+shader_parameter/threshold = 0.1
+shader_parameter/fuzziness = 0.1
+shader_parameter/period = 1.0
+shader_parameter/scroll = 1.0
+shader_parameter/normal_strength = 0.1
+shader_parameter/effect_alpha_mult = 1.0
+shader_parameter/direction = 0.5
+shader_parameter/noise = SubResource("NoiseTexture2D_2mnsc")
+shader_parameter/normal_map = SubResource("NoiseTexture2D_jsrne")
