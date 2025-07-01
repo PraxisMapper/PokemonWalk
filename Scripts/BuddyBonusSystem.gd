@@ -33,7 +33,7 @@ static func UpdateBonus(buddyKey, placedata, currentPosition):
 	var startingBoost = pokemon.buddyBoost
 	for p in placedata:
 		if p.category == "mapTiles":
-			if Adapter.gameplayFullIds.has(str(p.typeId)):
+			if Adapter.gameplayFullIds.has(str(int(p.typeId))):
 				var add = true
 				for bp in pokemon.buddyPlaces:
 					if (bp.n == p.name):

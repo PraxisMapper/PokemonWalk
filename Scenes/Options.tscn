@@ -119,6 +119,7 @@ offset_left = 70.0
 offset_top = 11.0
 offset_right = 214.0
 offset_bottom = 34.0
+theme = ExtResource("2_05dgt")
 text = "Available Backups:"
 
 [node name="ItemList" type="ItemList" parent="crRestore"]
@@ -127,6 +128,7 @@ offset_left = 13.0
 offset_top = 43.0
 offset_right = 276.0
 offset_bottom = 286.0
+theme = ExtResource("2_05dgt")
 
 [node name="btnRestoreReal" type="Button" parent="crRestore"]
 layout_mode = 0
@@ -134,6 +136,7 @@ offset_left = 30.0
 offset_top = 328.0
 offset_right = 98.0
 offset_bottom = 365.0
+theme = ExtResource("2_05dgt")
 text = "Restore"
 
 [node name="btnCancel" type="Button" parent="crRestore"]
@@ -142,6 +145,7 @@ offset_left = 187.0
 offset_top = 328.0
 offset_right = 255.0
 offset_bottom = 365.0
+theme = ExtResource("2_05dgt")
 text = "Cancel"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]

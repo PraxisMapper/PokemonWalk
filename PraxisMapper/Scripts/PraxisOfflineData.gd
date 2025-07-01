@@ -1,6 +1,8 @@
 extends Node
 class_name PraxisOfflineData
 
+#TODO: backport updates here to PraxisGodotComponents
+
 #Once we read a file from disk, keep it in memory. Odds are high the player will read it again.
 static var allData = {}
 
@@ -95,9 +97,14 @@ static func ProcessData(jsonData):
 	return jsonData
 	
 static func GetPlacesPresent(plusCode):
+	#TODO: have this use offline data for places if there's no downloaded extra data.
 	var data = await GetDataFromZip(plusCode.substr(0,6))
 	if data == null:
-		return
+		var minData = MinimizedOffline.GetDataFromZip(plusCode.substr(0,6))
+		if minData == null:
+			return
+		return GetMinOfflinePlaces(minData, plusCode)
+
 	var point = PlusCodeToDataCoords(plusCode)
 	#print("PlusCode " + plusCode + " translated to coords " + str(point))
 	var results = []
@@ -114,9 +121,71 @@ static func GetPlacesPresent(plusCode):
 					})
 	return results
 
+static func GetMinOfflinePlaces(data, plusCode):
+	var point = PlusCodeToDataCoords(plusCode) / Vector2(16,25) #back to Cell10s for these.
+	#print("PlusCode " + plusCode + " translated to coords " + str(point))
+	var results = []
+	var size = plusCode.length()
+	
+	var idMap = {}
+	for a in Adapter.gameplayAreas:
+		idMap[Adapter.gameplayAreas[a].offline] = Adapter.gameplayAreas[a].full
+	
+	for category in data.entries:
+		for entry in data.entries[category]:
+			if entry.has("nid") and entry.nid != 0:
+				if IsPointInMinPlace(point, entry):
+					results.push_back({ 
+						name  = data.nameTable[str(int(entry.nid))],
+						category = 'mapTiles', #suggestedmini mimicks mapTiles
+						typeId = idMap[int(entry.tid)]
+					})
+	return results
+
+#TODO: make full data version of this:
+#TODO: see if this should instead use the AreaScanner class?
+static func FindNearestMinimizedPlace(plusCode):
+	var data = MinimizedOffline.GetDataFromZip(plusCode.substr(0,6))
+	if data == null:
+		return null
+	var point = PlusCodeToDataCoords(plusCode) / Vector2(16,25) #back to Cell10s for these.
+	#print("PlusCode " + plusCode + " translated to coords " + str(point))
+	var results = []
+	var size = plusCode.length()
+	
+	var idMap = {}
+	for a in Adapter.gameplayAreas:
+		idMap[Adapter.gameplayAreas[a].offline] = Adapter.gameplayAreas[a].full
+	
+	var nearestDist = 999999999
+	var nearestItem = {}
+	for category in data.entries:
+		for entry in data.entries[category]:
+			if entry.has("nid") and entry.nid != 0:
+				var placeCoords = entry.c.split(",")
+				var placeVector = Vector2(int(placeCoords[0]),int(placeCoords[1]))
+				var dist = abs(point.distance_to(placeVector))
+				if dist < nearestDist:
+					nearestDist = dist
+					nearestItem = entry
+
+	return  { name = data.nameTable[str(int(nearestItem.nid))],
+				category = 'mapTiles', #suggestedmini mimicks mapTiles
+				typeId = idMap[int(nearestItem.tid)],
+				distance = nearestDist
+			}
+
 static func IsPlusCodeInPlace(plusCode, place):
 	var point = PlusCodeToDataCoords(plusCode)
 	return IsPointInPlace(point, place, plusCode.size())
+	
+	
+static func IsPointInMinPlace(point, place):
+	var placeCoords = place.c.split(",")
+	var placeVector = Vector2(int(placeCoords[0]),int(placeCoords[1]))
+	#print("Point is " + str(abs(point.distance_to(placeVector))) + " pixels away")
+	return abs(point.distance_to(placeVector)) <= place.r 
+	
 	
 static func IsPointInPlace(point, place, size, name = "unnamed"):
 	#NOTE: Rect2 has an origin in the top-left, so I generally want to make sure 

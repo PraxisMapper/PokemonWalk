@@ -12,6 +12,7 @@ var plDisplay = preload("res://Components/PoGoMiniDisplay.tscn")
 var haveInSet = 0
 
 var scanner = FullAreaScanner.new()
+var offlineScanner = AreaScanner.new()
 
 func _ready() -> void:
 	var res = DisplayServer.screen_get_size(DisplayServer.window_get_current_screen())
