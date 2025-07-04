@@ -10,7 +10,7 @@ func _process(delta):
 func UpdateScreen(current, _old):
 	$CellTracker.Add(current)
 	var place = $PlaceTracker.CheckForPlace(current)
-	print(place)
+	#print(place)
 	GameGlobals.currentPlace = place
 	
 	$PartyDisplay.UpdateScreen()

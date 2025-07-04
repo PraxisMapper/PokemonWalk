@@ -7,17 +7,14 @@
 [node name="Landing" type="Node2D"]
 script = ExtResource("1_1e1to")
 
-[node name="GetFile" parent="." instance=ExtResource("2_llpnn")]
-position = Vector2(0, 542)
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
 [node name="sc" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(360, 640)
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 360.0
+offset_bottom = 640.0
 
 [node name="c" type="ColorRect" parent="sc"]
 custom_minimum_size = Vector2(360, 920)
@@ -118,6 +115,9 @@ offset_bottom = 915.0
 theme = ExtResource("3_7iixc")
 text = "This game is a parody and satire of Pokemon games, and does not claim ownership of any material owned by Nintendo, Game Freak, or The Pokemon Company."
 autowrap_mode = 3
+
+[node name="GetFile" parent="." instance=ExtResource("2_llpnn")]
+position = Vector2(0, 542)
 
 [connection signal="button_down" from="sc/c/btnGPS" to="." method="GrantPermission"]
 [connection signal="button_down" from="sc/c/btnStart" to="." method="StartGame"]

@@ -15,7 +15,7 @@ assistant: What do you need help with?
 	assistant: Power up your pokemon with stardust and candy so they'll win more fights, and you can fight raid bosses. They're stronger, rare pokemon that you will have to fight using 6 pokemon of your choice. Your strongest 6 are auto-chosen when a raid starts, but you can change them by tapping the panels for each one.
 - What does Auto-Tranfer do?
 	assistant: Tapping Auto-Transfer in the Inventory screen will trade weaker duplicate pokemon for candy.
-	assistant: It sorts your pokemon by combat power, skips the top half of the list, then skips any pokemon you don't have duplicates of, and transfers the rest.
+	assistant: It sorts your pokemon by combat power, skips the top half of the list, shinies, and the first instance of any pokemon or form, and transfers the rest.
 - Exit Help
 	[end_timeline]
 jump menu

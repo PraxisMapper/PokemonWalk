@@ -28,6 +28,7 @@ func RunQueue():
 		currentFile = file
 		await getCell6FileSync(file)
 	isActive = false
+	GameGlobals.updateData.emit()
 	fadeout()
 
 #OK, immediately upon trying to do this, I realize I'm gonna hit issues with files overlapping

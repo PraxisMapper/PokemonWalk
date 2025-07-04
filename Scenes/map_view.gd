@@ -18,6 +18,8 @@ func _ready() -> void:
 	$header/PoGoMiniDisplay.leftClicked.connect(BuddyInfo)
 	$header/PoGoMiniDisplay.rightClicked.connect(ChangeBuddy) #This seems to have quit working in Godot 4.4?
 	
+	GameGlobals.updateData.connect(ForceRefresh)
+	
 	if GameGlobals.currentSpawnTable.is_empty():
 		GameGlobals.currentSpawnTable = SpawnLogic.SpawnTable(PraxisCore.currentPlusCode.substr(0,8))
 	
@@ -71,7 +73,7 @@ func recentCellVisit(cell10):
 	if eventResults <= 4:
 		$walkNotice/txrOpponent.visible = false
 		$walkNotice/lblMessage.text = "You got " + str(newCoins) + " coins"
-		print(GameGlobals.playerData.soundEnabled)
+		#print(GameGlobals.playerData.soundEnabled)
 		if GameGlobals.playerData.soundEnabled:
 			$AudioStreamPlayer.stream = SoundSystem.coinSound
 			$AudioStreamPlayer.play()
@@ -91,7 +93,7 @@ func recentCellVisit(cell10):
 			if GameGlobals.playerData.autoCatch and GameGlobals.playerData.currentCoins >= 10:
 				if !opponent.isShiny:
 					GameGlobals.playerData.shinyPityCount += 1
-					print(str(GameGlobals.playerData.shinyPityCount))
+					#print(str(GameGlobals.playerData.shinyPityCount))
 					if GameGlobals.playerData.shinyPityCount == 750: #everyone loves to be ahead of the curve.
 						opponent.isShiny = true
 						GameGlobals.playerData.shinyPityCount == 0
@@ -167,8 +169,11 @@ func UpdateRaidButton(cell8):
 
 func plusCodeChanged(current, old):
 	var workthread = Thread.new()
+	var workStarted = false
 	if (current.substr(0,10) != old.substr(0,10)): #dont do this update if we did a Cell11 move.
+		#print("starting work thread")
 		workthread.start(CheckPlaces.bind(current))
+		workStarted = true
 	
 	$lblSpeed.text = "Speed: " + str(PraxisCore.last_location.speed)
 	
@@ -191,11 +196,13 @@ func plusCodeChanged(current, old):
 	for c2l in cellsToLoad:
 		if !PraxisOfflineData.OfflineDataExists(c2l):
 			$GetFile.skipTween = true
-			print("Getting new map file")
+			#print("Getting new map file")
 			$GetFile.AddToQueue(c2l)
 	$ScrollingCenteredMap.plusCode_changed(PraxisCore.currentPlusCode, PraxisCore.lastPlusCode)
 	UpdateHeader()
-	workthread.wait_to_finish()
+	if workStarted:
+		#print("waiting for work thread")
+		workthread.wait_to_finish()
 
 func SpawnInfo():
 	if (GameGlobals.playerData.unlockedSpawnData.has(PraxisCore.currentPlusCode.substr(0,8))):
@@ -213,21 +220,23 @@ func clearPopup():
 		c.queue_free()
 
 func CheckPlaces(current):
+	var start = Time.get_unix_time_from_system()
 	var text = "Places:"
 	var places = await PraxisOfflineData.GetPlacesPresent(current)
 	if places != null:
 		for place in places:
-			if place.category != "adminBoundsFilled":
+			if place.category != "adminBoundsFilled" and !text.contains(place.name):
 				text += place.name + ', '
-	BuddyBonusSystem.UpdateBonus(GameGlobals.playerData.buddy, places, current) 
+		BuddyBonusSystem.UpdateBonus(GameGlobals.playerData.buddy, places, current)
 	BuddyBonusSystem.AddDistance(GameGlobals.playerData.buddy, 1) #add 1 cell to our distance walked.
+	var elapsed = Time.get_unix_time_from_system() - start
+	#print("CheckPlaces ran in " + str(elapsed))
 	call_deferred("UpdatePlacesList", text)
 
 func UpdatePlacesList(placesList):
 	$header/lblPlaces.text = placesList
 
 func ShowPokemonInventory():
-	#DebugSpawnPokemon("YAMASK_1")
 	clearPopup()
 	var inventory = inventoryScreenPL.instantiate()
 	$popup.add_child(inventory)
@@ -308,3 +317,7 @@ func ShowPokedex():
 	var dexScene = preload("res://Scenes/Pokedex.tscn").instantiate()
 	clearPopup()
 	$popup.add_child(dexScene)
+	
+func ForceRefresh():
+	print("Forcing refresh")
+	$ScrollingCenteredMap.RefreshTiles(PraxisCore.currentPlusCode)

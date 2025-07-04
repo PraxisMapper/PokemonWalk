@@ -5,6 +5,7 @@ class_name GlobalData
 #Hold player info, game info loaded from files, etc.
 #Access everything from GameGlobals autoload node.
 signal updateHeader
+signal updateData
 
 var currentPlace = ["", ""]
 

@@ -50,6 +50,9 @@ func UpdateList():
 
 func ChangeSort():
 	if (sortMode == "power"):
+		sortMode = "shiny"
+		$btnSortKey.text = "Shinies First"
+	elif sortMode == "shiny":
 		sortMode = "order"
 		$btnSortKey.text = "Order Caught"
 	elif sortMode == "order":
@@ -79,10 +82,15 @@ func SortList(a, b):
 		return timeCaughtA > timeCaughtB
 	elif sortMode == "power":
 		return a.combatPower > b.combatPower
+	elif sortMode == "shiny":
+		if a.isShiny == b.isShiny:
+			return a.combatPower > b.combatPower
+		else:
+			return a.isShiny && !b.isShiny
 	else: #sortMode == "name":
 		return a.name < b.name
 	return a
-	
+
 func emitLeft(data):
 	leftClicked.emit(data)
 
