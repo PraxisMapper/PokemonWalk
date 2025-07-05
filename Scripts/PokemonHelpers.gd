@@ -52,11 +52,14 @@ static func NewPokemonData(pokemonNumber):
 	return NewPokemonDataByKey(entry)
 
 static func NewPokemonDataByKey(pokemonKey):
+	var shinyOdds= .0009765625 #1 in 1024 is shiny.
+	if Time.get_datetime_dict_from_system().day == 27:
+		shinyOdds = .001953125 #1 in 512 is shiny on Shiny Day
 	var data = {
 		key = pokemonKey, #baseData.pokemon[pokemonKey], #pokemonKey, #PIKACHU, in baseData.allPokemon
 		xp = 0, #This gets saved per pokemon
 		item = {}, #ITEM, in baseData.items when i get there.
-		isShiny = randf() <= .0009765625, #1 in 1024 is shiny.
+		isShiny = randf() <= shinyOdds,
 		gender = "m",
 		abilityId = 0, #which entry in the abilities array is this pokemon's ability.
 		nature = "",

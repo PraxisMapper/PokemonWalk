@@ -263,6 +263,20 @@ text = "Speed: "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[node name="debugpanel" type="ColorRect" parent="."]
+offset_left = 437.0
+offset_top = 456.0
+offset_right = 796.0
+offset_bottom = 598.0
+color = Color(0.0342401, 0.0636224, 3.00817e-09, 1)
+
+[node name="lblD" type="Label" parent="debugpanel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 231.0
+offset_bottom = 45.0
+
 [connection signal="pressed" from="footer/btnPokemon" to="." method="ShowPokemonInventory"]
 [connection signal="pressed" from="footer/btnSpawns" to="." method="SpawnInfo"]
 [connection signal="pressed" from="footer/btnRaid" to="." method="RaidBattle"]

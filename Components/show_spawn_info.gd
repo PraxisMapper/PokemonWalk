@@ -16,6 +16,9 @@ func _ready() -> void:
 	var spawnTable = SpawnLogic.SpawnTable(code.substr(0,8))
 	var writeup = "In " + code.substr(0,8) + " today you can find:\n"
 	
+	if Time.get_datetime_dict_from_system().day == 27:
+		writeup += "Its Shiny Day! 2X shiny chance!\n"
+	
 	for k in spawnTable.keys():
 		if k == "total":
 			continue

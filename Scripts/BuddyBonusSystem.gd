@@ -6,22 +6,21 @@ static func RecalcBonus():
 	#Intended to be run on a version upgrade to prove a value is legit, 
 	#or to validate a remote pokemon
 	
-const candyDistanceMeters = 340.0 #~200 cells, ~2 minute of highway driving.
+#4km, 284 Cells10s per candy, or ~140 seconds of driving. 307m of walking at an x13 bonus, or roughly 240 seconds.
+#1 candy granted every 26 Cell10s walking, or 279 driving. Should be roughly 2 minutes either way
+const candyDistanceMeters = 4000.0 
 static func AddDistance(buddyKey, cell10s):
 	var pokemon = GameGlobals.pokemon[buddyKey]
-	print("Pokemon walked " + str(pokemon.distanceWalked) + " meters so far")
-	var curCount = int(pokemon.distanceWalked / candyDistanceMeters)
+	var curCount = int(pokemon.distanceTravelled / candyDistanceMeters)
 	pokemon.distanceTravelled += PraxisCore.DistanceDegreesToMetersLat(PraxisCore.resolutionCell10)
-	if (PraxisCore.last_location.speed < GameGlobals.speedLimit):
+	if PraxisCore.last_location.speed < GameGlobals.speedLimit: #11x fewer tiles walking than driving.
+		pokemon.distanceTravelled += PraxisCore.DistanceDegreesToMetersLat(PraxisCore.resolutionCell10) * 12
 		pokemon.distanceWalked += PraxisCore.DistanceDegreesToMetersLat(PraxisCore.resolutionCell10)
 	if int(pokemon.distanceTravelled / candyDistanceMeters) != curCount: #just crossed over the threshold
-		print("Granting 1 candy")
-		print("pre:" + str(GameGlobals.playerData.candyByFamily[pokemon.family]))
-		if GameGlobals.playerData.candyByFamilycandyByFamily.has(pokemon.family):
+		if GameGlobals.playerData.candyByFamily.has(pokemon.family):
 			GameGlobals.playerData.candyByFamily[pokemon.family] += 1
 		else:
 			GameGlobals.playerData.candyByFamily[pokemon.family] = 1
-		print("post:" + str(GameGlobals.playerData.candyByFamily[pokemon.family]))
 
 static func UpdateBonus(buddyKey, placedata, currentPosition):
 	#I want this function to do the least looping possible.

@@ -26,8 +26,11 @@ func _ready() -> void:
 	GameGlobals.updateHeader.connect(UpdateHeader)
 	UpdateHeader()
 
+var debug = false
 func _process(delta: float) -> void:
 	$playerArrow.rotation = PraxisCore.GetCompassHeading()
+	if debug:
+		DebugUpdate() #for tracking down stuff on-device sometimes
 
 func UpdateHeader():
 	$header/lblCoins.text = "Coins: " + str(int(GameGlobals.playerData.currentCoins)) + " Stardust: " +str(int(GameGlobals.playerData.stardust))
@@ -170,9 +173,11 @@ func UpdateRaidButton(cell8):
 func plusCodeChanged(current, old):
 	var workthread = Thread.new()
 	var workStarted = false
-	if (current.substr(0,10) != old.substr(0,10)): #dont do this update if we did a Cell11 move.
+	var curCode = PlusCodes.RemovePlus(current)
+	var oldCode = PlusCodes.RemovePlus(old)
+	if (curCode.substr(0,10) != oldCode.substr(0,10)): #dont do this update if we did a Cell11 move.
 		#print("starting work thread")
-		workthread.start(CheckPlaces.bind(current))
+		workthread.start(CheckPlaces.bind(curCode))
 		workStarted = true
 	
 	$lblSpeed.text = "Speed: " + str(PraxisCore.last_location.speed)
@@ -321,3 +326,12 @@ func ShowPokedex():
 func ForceRefresh():
 	print("Forcing refresh")
 	$ScrollingCenteredMap.RefreshTiles(PraxisCore.currentPlusCode)
+
+func DebugUpdate():
+	if !debug:
+		return
+	#var pokemon = GameGlobals.pokemon[GameGlobals.playerData.buddy]
+	#var candies = GameGlobals.playerData.candyByFamily[pokemon.family]
+	#$debugpanel/lblD.text = "Buddy Candies: " + str(candies) 
+	#var distT = pokemon.distanceTravelled
+	#$debugpanel/lblD.text += "\nTravel Dist: " + str(distT) 

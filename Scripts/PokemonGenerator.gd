@@ -23,7 +23,10 @@ static func MakeMobilePokemon(key):
 	results.caughtSpeed = 0 #This is set to the current speed value if the player wins
 	results.isEvent = false #if this pokemon was from a weekly event, versus a wild spawn
 	results.location = PraxisCore.currentPlusCode.substr(0,8)
-	results.isShiny = randf() <= .0009765625 #1 in 1024 is shiny.
+	if Time.get_datetime_dict_from_system().day == 27:
+		results.isShiny = randf() <= .001953125 #1 in 512 is shiny on Shiny Day
+	else:
+		results.isShiny = randf() <= .0009765625 #1 in 1024 is shiny.
 	results.signed = ""
 	results.publicKey = ""
 	#This must be last, since speed affects it
