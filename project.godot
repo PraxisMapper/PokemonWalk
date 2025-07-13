@@ -18,9 +18,9 @@ config/icon="res://Assets/icon.png"
 
 [autoload]
 
+PraxisCore="*res://PraxisMapper/Scripts/PraxisCore.gd"
 GameGlobals="*res://Scripts/GlobalData.gd"
 PraxisServer="*res://PraxisMapper/Scripts/PraxisServer.gd"
-PraxisCore="*res://PraxisMapper/Scripts/PraxisCore.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]

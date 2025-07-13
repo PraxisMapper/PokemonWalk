@@ -46,6 +46,7 @@ func UpdateHeader():
 	else:
 		$footer/btnSpawns.text = "Learn Spawns: 100 Coins"
 	
+	#this hung once opening the game, lets see if this is a weird race condition
 	$header/PoGoMiniDisplay.SetInfo(GameGlobals.pokemon[GameGlobals.playerData.buddy])
 
 func BuddyInfo(data):
@@ -65,7 +66,8 @@ func ChangeBuddy(data):
 func SetBuddy(data):
 	$header/PoGoMiniDisplay.SetInfo(data)
 	GameGlobals.playerData.buddy = data.id
-	GameGlobals.Save()
+	MapSave("setting buddy")
+	#GameGlobals.Save()
 	clearPopup()
 
 func recentCellVisit(cell10):
@@ -152,7 +154,8 @@ func recentCellVisit(cell10):
 	
 	$walkNotice.visible = true
 	$walkNotice/tmrHide.start()
-	GameGlobals.Save()
+	#GameGlobals.Save()
+	MapSave("entering Cell10")
 
 func HideWalkNotice():
 	$walkNotice.visible = false
@@ -217,7 +220,8 @@ func SpawnInfo():
 	elif GameGlobals.playerData.currentCoins >= 100:
 		GameGlobals.playerData.currentCoins -= 100
 		GameGlobals.playerData.unlockedSpawnData.append(PraxisCore.currentPlusCode.substr(0,8))
-		GameGlobals.Save()
+		#GameGlobals.Save()
+		MapSave("Unlocking spawn data")
 		UpdateHeader()
 
 func clearPopup():
@@ -254,7 +258,8 @@ func CheckRaidReset():
 		var tomorrow = today + 86400
 		GameGlobals.playerData.dailyClearedRaids.clear()
 		GameGlobals.playerData.raidsLastCleared = today
-		GameGlobals.Save()
+		#GameGlobals.Save()
+		MapSave("Resetting raid data")
 
 func RaidBattle():
 	#Determine which raid boss to fight here, pass info to battle scene, run it.
@@ -326,6 +331,14 @@ func ShowPokedex():
 func ForceRefresh():
 	print("Forcing refresh")
 	$ScrollingCenteredMap.RefreshTiles(PraxisCore.currentPlusCode)
+
+func MapSave(where = "unknown"):
+	var success = GameGlobals.Save()
+	if success == false:
+		#Alert me! I want to know why this failed to save.
+		$debugpanel.position = Vector2(40, 500)
+		$debugpanel/lblD.text = "Saving failed, your game data may be in a corrupted state. Failed at: " + where
+		
 
 func DebugUpdate():
 	if !debug:

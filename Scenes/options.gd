@@ -147,4 +147,15 @@ func RestoreReal():
 
 func RestoreCancel():
 	$crRestore.position.x = 1000
+
+func ViewErrors():
+	$crError.position.x = 40
+	var errorData = PraxisCore.ReadErrorLog()
+	var errors = errorData.split("\n")
+	errors.reverse()
 	
+	for e in errors:
+		$crError/sc/lblErrors.text += e + "\n"
+
+func ErrorLogCancel():
+	$crError.position.x = 2000

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5uisapqj7n2v"
-path="res://.godot/imported/ZORUA_1.PNG-7d1c96ea00bf1bc4dfca1ae169e24a81.ctex"
+uid="uid://yeaiwv6xo6r5"
+path="res://.godot/imported/ZORUA_1.png-b97a19c612e962ccd4f7a3f613cfad35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/ZORUA_1.PNG"
-dest_files=["res://.godot/imported/ZORUA_1.PNG-7d1c96ea00bf1bc4dfca1ae169e24a81.ctex"]
+source_file="res://Assets/Front/ZORUA_1.png"
+dest_files=["res://.godot/imported/ZORUA_1.png-b97a19c612e962ccd4f7a3f613cfad35.ctex"]
 
 [params]
 

@@ -18,11 +18,6 @@ func _ready():
 func _process(delta):
 	pass
 
-
-#TODO:
-#Have a weekly rotation of pokemon that cycles through based on date.
-#Not a huge influence on the spawn table, but available everywhere and available for a week.
-#The trick is making 52 or 53 weeks of pairs to theme up.
 static func CalcPossiblePokemon(current, old):
 	var cell8 = current.substr(0,8)
 	

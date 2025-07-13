@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxgk3fejm0a6i"
-path="res://.godot/imported/SLIGGOO_1.PNG-5356c384e403d70dec0ce93aa9ebbca0.ctex"
+uid="uid://b8f8xfk7kqits"
+path="res://.godot/imported/SLIGGOO_1.png-a1196fc4d35eebfc77130a2bf6f9fef1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/SLIGGOO_1.PNG"
-dest_files=["res://.godot/imported/SLIGGOO_1.PNG-5356c384e403d70dec0ce93aa9ebbca0.ctex"]
+source_file="res://Assets/Front/SLIGGOO_1.png"
+dest_files=["res://.godot/imported/SLIGGOO_1.png-a1196fc4d35eebfc77130a2bf6f9fef1.ctex"]
 
 [params]
 

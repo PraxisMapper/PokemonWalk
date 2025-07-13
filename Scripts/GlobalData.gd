@@ -104,6 +104,7 @@ func _ready():
 	#Check for a data-wipe error
 	if pokemon.size() == 0 and playerData.buddy != "": #we HAD pokemon, and now we dont
 		print("Total collection loss detected!")
+		PraxisCore.WriteErrorLog("Total collection loss detected on startup!")
 		pass #TODO: what action can be done here? Restore backup? Alert player?
 		
 
@@ -197,12 +198,16 @@ func Load():
 	if (loadplayerData != null):
 		playerData = loadplayerData
 	pokemonMutex.lock()
+	print("loading pokemon")
 	pokemon = PraxisCore.LoadData("user://pokemonCollection.json")
 	if pokemon == null:
+		print("pokemon collection failed to load!")
 		pokemon = {}
+	print("Pokemon collection size: " + str(pokemon.size()))
 	pokemonMutex.unlock()
 	
-	gymData = PraxisCore.LoadData("user://gymData.json")
+	#TODO: restore this if/when gyms are added.
+	#gymData = PraxisCore.LoadData("user://gymData.json")
 	if gymData == null:
 		gymData = {}
 	
@@ -211,11 +216,19 @@ func Load():
 		Save()
 	
 func Save():
-	PraxisCore.SaveData("user://saveData.json", playerData)
+	var success = true
+	success = success and PraxisCore.SaveData("user://saveData.json", playerData)
+	if success == false:
+		print("Failed on saving user data!")
 	pokemonMutex.lock()
-	PraxisCore.SaveData("user://pokemonCollection.json", pokemon)
+	success = success and PraxisCore.SaveData("user://pokemonCollection.json", pokemon)
+	if success == false:
+		print("Failed on saving pokemon data!")
 	pokemonMutex.unlock()
-	PraxisCore.SaveData("user://gymData.json", gymData)
+	#success = success and PraxisCore.SaveData("user://gymData.json", gymData)
+	#if success == false:
+		#print("Failed on saving Gym data!")
+	return success
 	
 func MakeBackups():
 	print("making backups")

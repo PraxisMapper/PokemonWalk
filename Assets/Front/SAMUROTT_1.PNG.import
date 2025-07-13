@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce47cjdhl2qo1"
-path="res://.godot/imported/SAMUROTT_1.PNG-6445c3e656a49768cca80f93bb7b3a56.ctex"
+uid="uid://blc6hu2y0gay5"
+path="res://.godot/imported/SAMUROTT_1.png-e778d8de93ac2e3818d733dff191b0f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/SAMUROTT_1.PNG"
-dest_files=["res://.godot/imported/SAMUROTT_1.PNG-6445c3e656a49768cca80f93bb7b3a56.ctex"]
+source_file="res://Assets/Front/SAMUROTT_1.png"
+dest_files=["res://.godot/imported/SAMUROTT_1.png-e778d8de93ac2e3818d733dff191b0f2.ctex"]
 
 [params]
 

@@ -110,6 +110,9 @@ func FillPage():
 		#Now, evos are 3 pieces. its KEY,process,requirement. 
 		#EX: IVYSAUR,Level,16 or FLAREON,Item,FireStone. I MOSTLY only care that they exist here.
 		
+		#TODO: if it says 'NONE', that option doesn't count here, ignore it.
+		#Mostly for MrMime (normal) not evolving into MrRime (form 1)
+		
 		$sc/c/btnEvolve.visible = true
 		evoCost = 0
 		
@@ -289,6 +292,9 @@ func Evolve():
 		pokemonData.key = "VIVILLON_" + GameGlobals.baseData.pokemon[pokemonData.key].otherForms[randform]
 	if pokemonData.key == "RAICHU" or pokemonData.key == "MAROWAK":
 		if randf() > 0.75:
+			pokemonData.key += "_1"
+	if pokemonData.key == "MRMIME":
+		if randf() > 0.5:
 			pokemonData.key += "_1"
 	if pokemonData.key == "WURMPLE":
 		var wurmpOpts = ["SILCOON", "CASCOON"]

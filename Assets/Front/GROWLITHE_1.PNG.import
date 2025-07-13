@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjqd7e270eqfj"
-path="res://.godot/imported/GROWLITHE_1.PNG-0db15d7c077e7e0c0d51c82d370e7d75.ctex"
+uid="uid://qtkmnvjg1nbi"
+path="res://.godot/imported/GROWLITHE_1.png-f1fdeb799141e1b062f41f25cda12452.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/GROWLITHE_1.PNG"
-dest_files=["res://.godot/imported/GROWLITHE_1.PNG-0db15d7c077e7e0c0d51c82d370e7d75.ctex"]
+source_file="res://Assets/Front/GROWLITHE_1.png"
+dest_files=["res://.godot/imported/GROWLITHE_1.png-f1fdeb799141e1b062f41f25cda12452.ctex"]
 
 [params]
 

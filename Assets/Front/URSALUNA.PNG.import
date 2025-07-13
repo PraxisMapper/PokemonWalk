@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mxiy7h8awal0"
-path="res://.godot/imported/URSALUNA.PNG-4f47a7a733147664dfb124c6e7bcff87.ctex"
+uid="uid://hcpgfccax0el"
+path="res://.godot/imported/URSALUNA.png-dcc0b386d86ef25cd0b7e5a73765951e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/URSALUNA.PNG"
-dest_files=["res://.godot/imported/URSALUNA.PNG-4f47a7a733147664dfb124c6e7bcff87.ctex"]
+source_file="res://Assets/Front/URSALUNA.png"
+dest_files=["res://.godot/imported/URSALUNA.png-dcc0b386d86ef25cd0b7e5a73765951e.ctex"]
 
 [params]
 

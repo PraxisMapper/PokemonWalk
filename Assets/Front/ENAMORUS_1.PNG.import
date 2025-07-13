@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqt0ebi1u5uwt"
-path="res://.godot/imported/ENAMORUS_1.PNG-bf72f2ba8aa05906c19fb213e624410a.ctex"
+uid="uid://drn0ncadtncfs"
+path="res://.godot/imported/ENAMORUS_1.png-3d456e85ea42f49f4d327194d5305c3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/ENAMORUS_1.PNG"
-dest_files=["res://.godot/imported/ENAMORUS_1.PNG-bf72f2ba8aa05906c19fb213e624410a.ctex"]
+source_file="res://Assets/Front/ENAMORUS_1.png"
+dest_files=["res://.godot/imported/ENAMORUS_1.png-3d456e85ea42f49f4d327194d5305c3c.ctex"]
 
 [params]
 

@@ -166,7 +166,6 @@ func MultiTransfer():
 	inMultiTransfer = !inMultiTransfer
 
 func MultiTransferTap(data):
-	#TODO: change color on selected control, check nodeName on data
 	var icon = get_node(data.nodeName)
 	var idx = multiSelected.find(data.id)
 	if  idx >= 0:

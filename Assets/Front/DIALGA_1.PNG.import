@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://becrawvropfi5"
-path="res://.godot/imported/DIALGA_1.PNG-206ff2842608a7fbf9865eb8e7574a15.ctex"
+uid="uid://7s74gucmqtdu"
+path="res://.godot/imported/DIALGA_1.png-28e12e403aeaf337111f606e3de8d4e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/DIALGA_1.PNG"
-dest_files=["res://.godot/imported/DIALGA_1.PNG-206ff2842608a7fbf9865eb8e7574a15.ctex"]
+source_file="res://Assets/Front/DIALGA_1.png"
+dest_files=["res://.godot/imported/DIALGA_1.png-28e12e403aeaf337111f606e3de8d4e3.ctex"]
 
 [params]
 

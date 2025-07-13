@@ -144,8 +144,6 @@ static func GetDistanceCell10s(plusCode1, plusCode2):
 		diff *= multipliers[ycoords.find(y)]
 		diffY += diff
 	for x in xcoords:
-		#TODO: reverse this. These coords are backwards if we're using 1 as the base for the results.
-		#and update places that call this function.
 		diff = PlusCodes.GetLetterIndex(plusCode1[x]) - PlusCodes.GetLetterIndex(plusCode2[x])
 		diff *= multipliers[xcoords.find(x)]
 		diffX += diff

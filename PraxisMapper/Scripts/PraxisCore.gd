@@ -14,7 +14,7 @@ var debugStartingPlusCode = "85633QG4VV" #Elysian Park, Los Angeles, CA, USA
 #var debugStartingPlusCode = "86FRXXXPM8" #Ohio State University, Columbus, OH, USA
 
 var prettyPrintSaveData = false
-
+var errorLog = "user://errors.log"
 
 #System global values
 #Resolution of PlusCode cells in degrees
@@ -132,6 +132,12 @@ func _ready():
 	
 	get_tree().on_request_permissions_result.connect(perm_check)
 	
+	#ensure we have an error log to write to
+	if !FileAccess.file_exists(errorLog):
+		var log = FileAccess.open(errorLog, FileAccess.WRITE)
+		log.close()
+	
+	
 	gps_provider = Engine.get_singleton("PraxisMapperGPSPlugin")
 	if gps_provider != null:
 		var perms = OS.get_granted_permissions()
@@ -216,24 +222,60 @@ func GetCompassHeading():
 func LoadData(fileName):
 	var recentFile = FileAccess.open(fileName, FileAccess.READ)
 	if (recentFile == null):
+		var errorCode = FileAccess.get_open_error()
+		WriteErrorLog("Error reading data from " + fileName + ": " + str(errorCode) + " | " + str(Time.get_unix_time_from_system()))
 		return
 	else:
 		var json = JSON.new()
-		json.parse(recentFile.get_as_text())
+		var dataLoading = recentFile.get_as_text()
+		var errorParse = json.parse(dataLoading)
+		if errorParse != OK:
+			var errorLine = json.get_error_line()
+			var errorMessage = json.get_error_message()
+			WriteErrorLog("First Chars: " + dataLoading.substr(0,50))
+			WriteErrorLog("Error parsing data from " + fileName + ": " + str(errorParse) + " | Line " + str(errorLine) + ": " + errorMessage + " | " + str(Time.get_unix_time_from_system()))
 		var info = json.get_data()
+		if info is Dictionary:
+			if info.size() == 0:
+				WriteErrorLog("Got empty dictionary from " + fileName + " | " + str(Time.get_unix_time_from_system()))
 		recentFile.close()
 		return info
 
+var lastErrorData = ""
 #Convenience function
 func SaveData(fileName, dictionary):
 	var recentFile = FileAccess.open(fileName, FileAccess.WRITE)
 	if (recentFile == null):
-		print(FileAccess.get_open_error())
-		return
+		var errorCode = FileAccess.get_open_error()
+		print(errorCode)
+		WriteErrorLog("Error saving data to " + fileName + ": " + str(errorCode) + " | " + str(Time.get_unix_time_from_system()))
+		lastErrorData = "Opening Save File"
+		return false
 	
 	var json = JSON.new()
-	recentFile.store_string(json.stringify(dictionary, '\t' if prettyPrintSaveData == true else ''))
+	var stringified = json.stringify(dictionary, '\t' if prettyPrintSaveData == true else '')
+	if stringified == null or stringified.length() < 5: #Should be empty on failure, allowing room for an empty dict "{}".
+		WriteErrorLog("Error changing data to JSON for " + fileName + " | " + str(Time.get_unix_time_from_system()))
+		lastErrorData = "Stringify to JSON"
+		return false
+		#TODO: how to save this out? I can't stringify this dictionary.
+		#var devDumpFilePath = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS)
+		#if !devDumpFilePath.ends_with("/"):
+			#devDumpFilePath += "/"
+		#devDumpFilePath += "lastFailedStringify.txt"
+		#var devDumpFile = FileAccess.open(devDumpFilePath, FileAccess.WRITE)
+		
+		
+	var stored = recentFile.store_string(stringified)
+	if stored == false:
+		var storeError = recentFile.get_error()
+		print(storeError)
+		WriteErrorLog("Error storing data to " + fileName + ": " + str(storeError) + " | " + str(Time.get_unix_time_from_system()))
+		lastErrorData = "Saving data"
+		recentFile.close()
+		return false
 	recentFile.close()
+	return true
 
 func PlusCodeToScreenCoords(plusCodeCoords, plusCodeScreenBase):
 	pass
@@ -241,3 +283,21 @@ func PlusCodeToScreenCoords(plusCodeCoords, plusCodeScreenBase):
 	#If my tiles are always the same size, I can do that here.
 	#take the first8 of PlusCodeScreenBase, and then work down the character pair differences
 	#until I have a solid running total.
+
+#TODO: backport to core components?
+var errorMutex = Mutex.new()
+func ReadErrorLog():
+	errorMutex.lock()
+	var file = FileAccess.open(errorLog, FileAccess.READ_WRITE)
+	var data = file.get_as_text()
+	file.close()
+	errorMutex.unlock()
+	return data
+
+func WriteErrorLog(errorData):
+	errorMutex.lock()
+	var file = FileAccess.open(errorLog, FileAccess.READ_WRITE)
+	file.seek_end()
+	file.store_line(errorData)
+	file.close()
+	errorMutex.unlock()

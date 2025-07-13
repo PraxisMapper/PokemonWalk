@@ -274,8 +274,9 @@ color = Color(0.0342401, 0.0636224, 3.00817e-09, 1)
 layout_mode = 0
 offset_left = 14.0
 offset_top = 11.0
-offset_right = 231.0
-offset_bottom = 45.0
+offset_right = 353.0
+offset_bottom = 134.0
+autowrap_mode = 3
 
 [connection signal="pressed" from="footer/btnPokemon" to="." method="ShowPokemonInventory"]
 [connection signal="pressed" from="footer/btnSpawns" to="." method="SpawnInfo"]

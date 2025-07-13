@@ -30,6 +30,15 @@ offset_bottom = 278.0
 theme = ExtResource("2_05dgt")
 text = "Restore Backup"
 
+[node name="btnRestore2" type="Button" parent="cr"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 397.0
+offset_right = 354.0
+offset_bottom = 423.0
+theme = ExtResource("2_05dgt")
+text = "View Error Log"
+
 [node name="btnImport" type="Button" parent="cr"]
 layout_mode = 0
 offset_left = 22.0
@@ -150,8 +159,41 @@ text = "Cancel"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 
+[node name="crError" type="ColorRect" parent="."]
+offset_left = 774.0
+offset_top = 22.0
+offset_right = 1067.0
+offset_bottom = 421.0
+color = Color(0.135554, 0, 0.00568221, 1)
+
+[node name="Label" type="Label" parent="crError"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Error Log"
+
+[node name="sc" type="ScrollContainer" parent="crError"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 31.0
+offset_right = 276.0
+offset_bottom = 319.0
+
+[node name="lblErrors" type="Label" parent="crError/sc"]
+layout_mode = 2
+
+[node name="btnCancel2" type="Button" parent="crError"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 345.0
+offset_right = 185.0
+offset_bottom = 382.0
+theme = ExtResource("2_05dgt")
+text = "Close"
+
 [connection signal="pressed" from="cr/btnExport" to="." method="SaveFile2"]
 [connection signal="pressed" from="cr/btnRestore" to="." method="RestoreWindow"]
+[connection signal="pressed" from="cr/btnRestore2" to="." method="ViewErrors"]
 [connection signal="pressed" from="cr/btnImport" to="." method="ImportData"]
 [connection signal="pressed" from="cr/btnCell4Data" to="." method="DownloadCell4Data"]
 [connection signal="pressed" from="cr/btnClose" to="." method="Close"]
@@ -159,3 +201,4 @@ text = "Cancel"
 [connection signal="toggled" from="chkShowLocation" to="." method="ToggleLocation"]
 [connection signal="pressed" from="crRestore/btnRestoreReal" to="." method="RestoreReal"]
 [connection signal="pressed" from="crRestore/btnCancel" to="." method="RestoreCancel"]
+[connection signal="pressed" from="crError/btnCancel2" to="." method="ErrorLogCancel"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fufd46n6v35a"
-path="res://.godot/imported/ELECTRODE_1.PNG-86c7ada3980d20777722318d8ae55ea9.ctex"
+uid="uid://d382bl7et3jmc"
+path="res://.godot/imported/ELECTRODE_1.png-9ae596dd9340a5448e0b715da05d6344.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Front/ELECTRODE_1.PNG"
-dest_files=["res://.godot/imported/ELECTRODE_1.PNG-86c7ada3980d20777722318d8ae55ea9.ctex"]
+source_file="res://Assets/Front/ELECTRODE_1.png"
+dest_files=["res://.godot/imported/ELECTRODE_1.png-9ae596dd9340a5448e0b715da05d6344.ctex"]
 
 [params]
 
