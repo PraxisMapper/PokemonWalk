@@ -8,7 +8,6 @@ class_name Adapter
 #FUTURE TODO: this should probably try to automatically fill in from styles rather than
 #being a hard-coded list if I make changes. That requires the styles to be marked as gameplay places.
 
-
 #NOTE: in actual styles, names may have spaces.
 static var gameplayAreas = {
 	park = { full = 1000, offline = 1},

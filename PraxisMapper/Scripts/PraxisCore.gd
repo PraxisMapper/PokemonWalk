@@ -97,15 +97,19 @@ func on_monitoring_location_result(location: Dictionary) -> void:
 		var inGamePoint = proxyBase - diff
 		location["longitude"] = inGamePoint.x
 		location["latitude"] = inGamePoint.y
-
+	
+	print("location change detected, firing off.")
 	last_location = location
 	location_changed.emit(location)
+	print("location change signal fired.")
 	var plusCode = ""
 	var accuracy = float(location["accuracy"])
 	if (autoPrecision and accuracy <= 6) or precision == 11:
 		plusCode = PlusCodes.EncodeLatLonSize(location["latitude"], location["longitude"], 11)
 	else:
 		plusCode = PlusCodes.EncodeLatLonSize(location["latitude"], location["longitude"], 10)
+	
+	print("Detected plus code: " + plusCode)
 	
 	if (plusCode != currentPlusCode):
 		lastPlusCode = currentPlusCode
@@ -137,16 +141,30 @@ func _ready():
 		var log = FileAccess.open(errorLog, FileAccess.WRITE)
 		log.close()
 	
-	
-	gps_provider = Engine.get_singleton("PraxisMapperGPSPlugin")
-	if gps_provider != null:
-		var perms = OS.get_granted_permissions()
-		if perms.find("android.permission.ACCESS_FINE_LOCATION") > -1:
-			print("enabling GPS")
-			gps_provider.onLocationUpdates.connect(on_monitoring_location_result)
-			gps_provider.StartListening()
+	var platform = OS.get_name()
+	print(platform)
+	if platform == "Android":
+		gps_provider = Engine.get_singleton("PraxisMapperGPSPlugin")
+		if gps_provider != null:
+			var perms = OS.get_granted_permissions()
+			if perms.find("android.permission.ACCESS_FINE_LOCATION") > -1:
+				print("enabling GPS")
+				gps_provider.onLocationUpdates.connect(on_monitoring_location_result)
+				gps_provider.StartListening()
+	elif platform == "Web":
+		#Engage new web app location update loop instead of android plugin.
+		#Testing if I can make it as easy as this single string and single timer.
+		print("Starting web location provider")
+		var evalString = "startListening();"
+		var evalResults = JavaScriptBridge.eval(evalString)
+		var webTimer = Timer.new()
+		add_child(webTimer)
+		webTimer.timeout.connect(WebLocationUpdate)
+		webTimer.wait_time = 0.5
+		webTimer.start()
 	else:
 		print("GPS Provider not loaded (probably debugging on PC)")
+			
 		currentPlusCode = debugStartingPlusCode
 		var debugControlScene = preload("res://PraxisMapper/Controls/DebugMovement.tscn")
 		var debugControls = debugControlScene.instantiate()
@@ -155,6 +173,14 @@ func _ready():
 		debugControls.position.y = 0
 		debugControls.z_index = 200
 
+func WebLocationUpdate():
+	var evalString = "currentPos();"
+	var evalResults = JavaScriptBridge.eval(evalString)
+	print("Web location results:" + evalResults)
+	if evalResults != "<null>":
+		var loc = JSON.parse_string(evalResults)
+		on_monitoring_location_result(loc.coords)
+	
 func GetStyle(style):
 	var styleData = FileAccess.open("res://PraxisMapper/Styles/" + style + ".json", FileAccess.READ)
 	if (styleData == null):
