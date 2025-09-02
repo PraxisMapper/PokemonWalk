@@ -97,6 +97,26 @@ body {
 	<body>
 <script>
 	var lastLoc = {"test":"missing"};
+	var wakeLock = null;
+	async function getWakeLock()
+	{
+		try {
+			wakeLock = await navigator.wakeLock.request();
+		}
+		catch(err) {
+		//boo!
+		}
+	}
+	
+	async function handleVisibilityChange() {
+		if (wakeLock !== null && document.visibilityState === 'visible')
+			await getWakeLock;
+	}
+	
+	document.addEventListener('visibilitychange', handleVisibilityChange);
+	
+	getWakeLock();
+	
 	function startListening()
 	{
 		return navigator.geolocation.watchPosition(gotLoc, null, {timeout: 1000, enableHighAccuracy: true});
