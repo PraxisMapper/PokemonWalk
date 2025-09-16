@@ -153,7 +153,6 @@ func _ready():
 				gps_provider.StartListening()
 	elif platform == "Web":
 		#Engage new web app location update loop instead of android plugin.
-		#Testing if I can make it as easy as this single string and single timer.
 		print("Starting web location provider")
 		var evalString = "startListening();"
 		var evalResults = JavaScriptBridge.eval(evalString)
