@@ -11,7 +11,7 @@ var currentPlace = ["", ""]
 
 var baseData = {}
 var playerData = {
-	version = 6,
+	version = 7,
 	saveCreated = Time.get_unix_time_from_system(),
 	currentXp = 0,
 	currentLevel = 1,
@@ -181,6 +181,14 @@ func UpdateSaveVersion():
 			pokemon[p] = data
 		pokemonMutex.unlock()
 		results = true
+	if playerData.version < 7:  #release 15
+		playerData.version = 7
+		var files = DirAccess.get_files_at('user://Data/Full/')
+		for f in files:
+			DirAccess.remove_absolute(f) #Auto-delete old map data on this update.
+		var files2 = DirAccess.get_files_at('user://MapTiles/')
+		for f in files2:
+			DirAccess.remove_absolute(f) #auto delete old map tiles on this update.
 	
 	#Always do this, data sanity check.
 	if playerData.has("pokedex") == false:

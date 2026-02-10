@@ -4,7 +4,7 @@ class_name PlaceTracker
 #keys are [plusCode6][placeName], value is dictionary (type, time visited)
 #EX: [223344][Main Park] = {type = 50, timeFirstVisisted = 12345.679}
 var allPlaces = {} 
-var category = "mapTiles" #Use a separate PlaceTracker for adminBoundaries
+var category = "offline" #Use a separate PlaceTracker for adminBoundaries
 #NOTE: if you want a custom filename for multiple placetrackers, set this value after calling _ready()
 var fileName = "user://Data/PlaceTracker" + category + ".json"
 var styleData = {}

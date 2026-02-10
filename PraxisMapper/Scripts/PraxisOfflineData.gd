@@ -137,7 +137,7 @@ static func GetMinOfflinePlaces(data, plusCode):
 				if IsPointInMinPlace(point, entry):
 					results.push_back({ 
 						name  = data.nameTable[str(int(entry.nid))],
-						category = 'mapTiles', #suggestedmini mimicks mapTiles
+						category = 'offline', #suggestedmini mimicks mapTiles
 						typeId = idMap[int(entry.tid)]
 					})
 	return results
@@ -170,7 +170,7 @@ static func FindNearestMinimizedPlace(plusCode):
 					nearestItem = entry
 
 	return  { name = data.nameTable[str(int(nearestItem.nid))],
-				category = 'mapTiles', #suggestedmini mimicks mapTiles
+				category = 'offline', #suggestedmini mimicks mapTiles
 				typeId = idMap[int(nearestItem.tid)],
 				distance = nearestDist
 			}

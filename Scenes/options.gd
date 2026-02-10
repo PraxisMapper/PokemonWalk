@@ -159,3 +159,13 @@ func ViewErrors():
 
 func ErrorLogCancel():
 	$crError.position.x = 2000
+
+func DeleteMapTiles():
+	var files = DirAccess.get_files_at('user://MapTiles/')
+	for f in files:
+		DirAccess.remove_absolute(f)
+
+func DeleteCell4Data():
+	var files = DirAccess.get_files_at('user://Data/Full/')
+	for f in files:
+		DirAccess.remove_absolute(f)

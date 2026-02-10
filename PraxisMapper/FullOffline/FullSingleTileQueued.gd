@@ -14,7 +14,7 @@ var mapData
 var busy = false
 var tilesToDraw = []
 
-@export var drawnStyle = "mapTiles"
+@export var drawnStyle = "offline"
 @export var makeMapTile = true
 #@export var makeTerrainTile = false
 #@export var makeNameTile = false
@@ -68,13 +68,13 @@ func GetAndProcessData(plusCode, scale = 1):
 	scaleVal = scale
 	await RenderingServer.frame_post_draw
 	
-	var styleData = await PraxisCore.GetStyle(drawnStyle)
-	$svc/SubViewport/fullMap.style = styleData
-	
 	mapData = await PraxisOfflineData.GetDataFromZip(plusCode6) 
 	if (mapData == null):
 		$Banner.visible = false
 		return
+	
+	var styleData = await PraxisCore.GetStyle(drawnStyle)
+	$svc/SubViewport/fullMap.style = styleData
 		
 	#$Banner/lblStatus.text = "Data Loaded. Processing " + str(mapData.entries["mapTiles"].size()) + " items, please wait...." 
 	await RenderingServer.frame_post_draw
@@ -106,7 +106,7 @@ func CreateTile(oneTile = null):
 	
 	if makeMapTile == true:
 		print("drawing map (single)")
-		await $svc/SubViewport/fullMap.DrawSingleTile(mapData.entries["mapTiles"], scaleVal, plusCode6 + oneTile)
+		await $svc/SubViewport/fullMap.DrawSingleTile(mapData.entries[drawnStyle], scaleVal, plusCode6 + oneTile)
 	
 	var xList = PlusCodes.CODE_ALPHABET_
 	var yList = PlusCodes.CODE_ALPHABET_

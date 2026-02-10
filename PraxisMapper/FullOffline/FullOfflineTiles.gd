@@ -20,7 +20,7 @@ var plusCode6 = ""
 var scaleVal = 1
 var mapData
 
-@export var drawnStyle = "mapTiles"
+@export var drawnStyle = "offline"
 @export var makeMapTile = true
 @export var makeTerrainTile = false
 @export var makeNameTile = false
@@ -53,7 +53,7 @@ func GetAndProcessData(plusCode, scale = 1):
 		$Banner/lblStatus.text = "Error getting map data. Try again." 
 		return
 		
-	$Banner/lblStatus.text = "Data Loaded. Processing " + str(mapData.entries["mapTiles"].size()) + " items, please wait...." 
+	$Banner/lblStatus.text = "Data Loaded. Processing " + str(mapData.entries["offline"].size()) + " items, please wait...." 
 	await RenderingServer.frame_post_draw
 	#Game is probably going to freeze for a couple seconds here while Godot draws stuff to the node
 
@@ -104,16 +104,16 @@ func CreateAllTiles(oneTile = null):
 	$Banner/lblStatus.text = "Drawing " + plusCode6 + "..."
 	if makeMapTile == true:
 		print("drawing map (full)")
-		await $svc/SubViewport/fullMap.DrawOfflineTile(mapData.entries["mapTiles"], scaleVal)
+		await $svc/SubViewport/fullMap.DrawOfflineTile(mapData.entries["offline"], scaleVal)
 	if makeNameTile == true:
 		print("drawing name")
-		await $svc2/SubViewport/nameMap.DrawOfflineNameTile(mapData.entries["mapTiles"], scaleVal)
+		await $svc2/SubViewport/nameMap.DrawOfflineNameTile(mapData.entries["offline"], scaleVal)
 	if makeBoundsTile == true and mapData.entries.has("adminBoundsFilled"): #dont draw if theres no data.
 		print("drawing bounds")
 		await $svc3/SubViewport/boundsMap.DrawOfflineBoundsTile(mapData.entries["adminBoundsFilled"], scaleVal)
 	if makeTerrainTile == true:
 		print("drawing terrain")
-		await $svc4/SubViewport/terrainMap.DrawOfflineTerrainTile(mapData.entries["mapTiles"], scaleVal)
+		await $svc4/SubViewport/terrainMap.DrawOfflineTerrainTile(mapData.entries["offline"], scaleVal)
 	
 	var xList = PlusCodes.CODE_ALPHABET_
 	var yList = PlusCodes.CODE_ALPHABET_

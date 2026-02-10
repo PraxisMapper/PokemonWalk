@@ -1,18 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://hni73v3pyiqg"]
+[gd_scene format=3 uid="uid://hni73v3pyiqg"]
 
 [ext_resource type="Script" uid="uid://ddx6snuudosga" path="res://Scenes/options.gd" id="1_3h4ao"]
 [ext_resource type="Theme" uid="uid://csq6qjiqail4e" path="res://Assets/gametheme.tres" id="2_05dgt"]
 [ext_resource type="PackedScene" uid="uid://bev1jin6r7t6n" path="res://PraxisMapper/Controls/GetFile.tscn" id="3_do45v"]
 
-[node name="Options" type="Node2D"]
+[node name="Options" type="Node2D" unique_id=2075754734]
 script = ExtResource("1_3h4ao")
 
-[node name="cr" type="ColorRect" parent="."]
+[node name="cr" type="ColorRect" parent="." unique_id=834536573]
 offset_right = 360.0
 offset_bottom = 440.0
 color = Color(0, 0.279055, 0.216098, 1)
 
-[node name="btnExport" type="Button" parent="cr"]
+[node name="btnExport" type="Button" parent="cr" unique_id=14203475]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 31.0
@@ -21,7 +21,7 @@ offset_bottom = 57.0
 theme = ExtResource("2_05dgt")
 text = "Export Data"
 
-[node name="btnRestore" type="Button" parent="cr"]
+[node name="btnRestore" type="Button" parent="cr" unique_id=1096994083]
 layout_mode = 0
 offset_left = 202.0
 offset_top = 252.0
@@ -30,7 +30,25 @@ offset_bottom = 278.0
 theme = ExtResource("2_05dgt")
 text = "Restore Backup"
 
-[node name="btnRestore2" type="Button" parent="cr"]
+[node name="btnClearMapTiles" type="Button" parent="cr" unique_id=1618471112]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 250.0
+offset_right = 179.0
+offset_bottom = 276.0
+theme = ExtResource("2_05dgt")
+text = "Delete Map Tiles"
+
+[node name="btnDelCell4Data" type="Button" parent="cr" unique_id=852393330]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 81.0
+offset_right = 336.0
+offset_bottom = 107.0
+theme = ExtResource("2_05dgt")
+text = "Delete Cell4 Data"
+
+[node name="btnRestore2" type="Button" parent="cr" unique_id=488875956]
 layout_mode = 0
 offset_left = 216.0
 offset_top = 397.0
@@ -39,7 +57,7 @@ offset_bottom = 423.0
 theme = ExtResource("2_05dgt")
 text = "View Error Log"
 
-[node name="btnImport" type="Button" parent="cr"]
+[node name="btnImport" type="Button" parent="cr" unique_id=1320655135]
 layout_mode = 0
 offset_left = 22.0
 offset_top = 71.0
@@ -48,16 +66,16 @@ offset_bottom = 97.0
 theme = ExtResource("2_05dgt")
 text = "Import Data"
 
-[node name="btnCell4Data" type="Button" parent="cr"]
+[node name="btnCell4Data" type="Button" parent="cr" unique_id=1025864261]
 layout_mode = 0
-offset_left = 201.0
-offset_top = 81.0
-offset_right = 314.0
-offset_bottom = 107.0
+offset_left = 208.0
+offset_top = 35.0
+offset_right = 326.0
+offset_bottom = 61.0
 theme = ExtResource("2_05dgt")
 text = "Get Cell4 Data"
 
-[node name="btnClose" type="Button" parent="cr"]
+[node name="btnClose" type="Button" parent="cr" unique_id=953653789]
 layout_mode = 0
 offset_left = 113.0
 offset_top = 340.0
@@ -66,7 +84,7 @@ offset_bottom = 366.0
 theme = ExtResource("2_05dgt")
 text = "Close"
 
-[node name="FileDialog" type="FileDialog" parent="."]
+[node name="FileDialog" type="FileDialog" parent="." unique_id=793409688]
 title = "Export"
 position = Vector2i(-400, 50)
 size = Vector2i(352, 400)
@@ -76,7 +94,7 @@ content_scale_factor = 0.6
 mode_overrides_title = false
 access = 2
 
-[node name="chkSound" type="CheckBox" parent="."]
+[node name="chkSound" type="CheckBox" parent="." unique_id=591306465]
 offset_left = 22.0
 offset_top = 165.0
 offset_right = 178.0
@@ -85,7 +103,7 @@ theme = ExtResource("2_05dgt")
 button_pressed = true
 text = "Enable Sound"
 
-[node name="chkShowLocation" type="CheckBox" parent="."]
+[node name="chkShowLocation" type="CheckBox" parent="." unique_id=63964182]
 offset_left = 20.0
 offset_top = 206.0
 offset_right = 176.0
@@ -94,7 +112,7 @@ theme = ExtResource("2_05dgt")
 button_pressed = true
 text = "Show Location Code"
 
-[node name="crInfo" type="ColorRect" parent="."]
+[node name="crInfo" type="ColorRect" parent="." unique_id=218564626]
 visible = false
 offset_left = 25.0
 offset_top = 68.0
@@ -102,7 +120,7 @@ offset_right = 341.0
 offset_bottom = 224.0
 color = Color(0.244581, 0.181031, 0, 1)
 
-[node name="lblInfo" type="Label" parent="crInfo"]
+[node name="lblInfo" type="Label" parent="crInfo" unique_id=413839435]
 layout_mode = 0
 offset_left = 95.0
 offset_top = 59.0
@@ -111,18 +129,18 @@ offset_bottom = 83.0
 theme = ExtResource("2_05dgt")
 text = "Data Exported"
 
-[node name="GetFile" parent="." instance=ExtResource("3_do45v")]
+[node name="GetFile" parent="." unique_id=2065958413 instance=ExtResource("3_do45v")]
 position = Vector2(-77, 215)
 scale = Vector2(0.5, 0.5)
 
-[node name="crRestore" type="ColorRect" parent="."]
+[node name="crRestore" type="ColorRect" parent="." unique_id=1937947132]
 offset_left = 417.0
 offset_top = 21.0
 offset_right = 710.0
 offset_bottom = 420.0
 color = Color(0.118638, 0.000171706, 0.307463, 1)
 
-[node name="Label" type="Label" parent="crRestore"]
+[node name="Label" type="Label" parent="crRestore" unique_id=1731939984]
 layout_mode = 0
 offset_left = 70.0
 offset_top = 11.0
@@ -131,7 +149,7 @@ offset_bottom = 34.0
 theme = ExtResource("2_05dgt")
 text = "Available Backups:"
 
-[node name="ItemList" type="ItemList" parent="crRestore"]
+[node name="ItemList" type="ItemList" parent="crRestore" unique_id=1503223839]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 43.0
@@ -139,7 +157,7 @@ offset_right = 276.0
 offset_bottom = 286.0
 theme = ExtResource("2_05dgt")
 
-[node name="btnRestoreReal" type="Button" parent="crRestore"]
+[node name="btnRestoreReal" type="Button" parent="crRestore" unique_id=1226368791]
 layout_mode = 0
 offset_left = 30.0
 offset_top = 328.0
@@ -148,7 +166,7 @@ offset_bottom = 365.0
 theme = ExtResource("2_05dgt")
 text = "Restore"
 
-[node name="btnCancel" type="Button" parent="crRestore"]
+[node name="btnCancel" type="Button" parent="crRestore" unique_id=1765085127]
 layout_mode = 0
 offset_left = 187.0
 offset_top = 328.0
@@ -157,32 +175,32 @@ offset_bottom = 365.0
 theme = ExtResource("2_05dgt")
 text = "Cancel"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1307828411]
 
-[node name="crError" type="ColorRect" parent="."]
+[node name="crError" type="ColorRect" parent="." unique_id=1286453184]
 offset_left = 774.0
 offset_top = 22.0
 offset_right = 1067.0
 offset_bottom = 421.0
 color = Color(0.135554, 0, 0.00568221, 1)
 
-[node name="Label" type="Label" parent="crError"]
+[node name="Label" type="Label" parent="crError" unique_id=640455963]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Error Log"
 
-[node name="sc" type="ScrollContainer" parent="crError"]
+[node name="sc" type="ScrollContainer" parent="crError" unique_id=439391913]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 31.0
 offset_right = 276.0
 offset_bottom = 319.0
 
-[node name="lblErrors" type="Label" parent="crError/sc"]
+[node name="lblErrors" type="Label" parent="crError/sc" unique_id=2080785244]
 layout_mode = 2
 
-[node name="btnCancel2" type="Button" parent="crError"]
+[node name="btnCancel2" type="Button" parent="crError" unique_id=1304310950]
 layout_mode = 0
 offset_left = 117.0
 offset_top = 345.0
@@ -193,6 +211,8 @@ text = "Close"
 
 [connection signal="pressed" from="cr/btnExport" to="." method="SaveFile2"]
 [connection signal="pressed" from="cr/btnRestore" to="." method="RestoreWindow"]
+[connection signal="pressed" from="cr/btnClearMapTiles" to="." method="DeleteMapTiles"]
+[connection signal="pressed" from="cr/btnDelCell4Data" to="." method="DeleteCell4Data"]
 [connection signal="pressed" from="cr/btnRestore2" to="." method="ViewErrors"]
 [connection signal="pressed" from="cr/btnImport" to="." method="ImportData"]
 [connection signal="pressed" from="cr/btnCell4Data" to="." method="DownloadCell4Data"]

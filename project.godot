@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Pokemon Walk"
 run/main_scene="res://Scenes/Landing.tscn"
-config/features=PackedStringArray("4.5", "Mobile")
+config/features=PackedStringArray("4.6", "Mobile")
 boot_splash/image="res://PraxisMapper/Resources/PraxisMapper Splash Screen.png"
 config/icon="res://Assets/icon.png"
 

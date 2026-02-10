@@ -233,8 +233,8 @@ func CheckPlaces(current):
 	var text = "Places:"
 	var places = await PraxisOfflineData.GetPlacesPresent(current)
 	if places != null:
-		for place in places:
-			if place.category != "adminBoundsFilled" and !text.contains(place.name):
+		for place in places: #filter out adminBounds by id now.
+			if !(place.typeId >= 1600.0 and place.typeId <= 1611.0) and !text.contains(place.name):
 				text += place.name + ', '
 		BuddyBonusSystem.UpdateBonus(GameGlobals.playerData.buddy, places, current)
 	BuddyBonusSystem.AddDistance(GameGlobals.playerData.buddy, 1) #add 1 cell to our distance walked.
